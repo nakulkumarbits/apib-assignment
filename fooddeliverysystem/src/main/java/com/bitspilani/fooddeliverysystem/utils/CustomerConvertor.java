@@ -1,7 +1,9 @@
 package com.bitspilani.fooddeliverysystem.utils;
 
 import com.bitspilani.fooddeliverysystem.dto.CustomerDTO;
+import com.bitspilani.fooddeliverysystem.enums.UserRole;
 import com.bitspilani.fooddeliverysystem.model.Customer;
+import com.bitspilani.fooddeliverysystem.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +14,15 @@ public class CustomerConvertor {
         customer.setFirstName(customerDTO.getFirstName());
         customer.setLastName(customerDTO.getLastName());
         customer.setEmail(customerDTO.getEmail());
-        customer.setUsername(customerDTO.getUsername());
-        customer.setPassword(customerDTO.getPassword());
         customer.setMobileNo(customerDTO.getMobileNo());
         customer.setDeliveryAddress(AddressConvertor.toAddress(customerDTO.getAddress()));
         customer.setPaymentDetails(customerDTO.getPaymentDetails());
+
+        User user = new User();
+        user.setUsername(customerDTO.getUsername());
+        user.setPassword(customerDTO.getPassword());
+        user.setRole(UserRole.CUSTOMER);
+        customer.setUser(user);
         return customer;
     }
 
@@ -25,8 +31,7 @@ public class CustomerConvertor {
         customerDTO.setFirstName(customer.getFirstName());
         customerDTO.setLastName(customer.getLastName());
         customerDTO.setEmail(customer.getEmail());
-        customerDTO.setUsername(customer.getUsername());
-//        customerDTO.setPassword(customer.getPassword());
+        customerDTO.setUsername(customer.getUser().getUsername());
         customerDTO.setMobileNo(customer.getMobileNo());
         customerDTO.setAddress(AddressConvertor.toAddressDTO(customer.getDeliveryAddress()));
         customerDTO.setPaymentDetails(customer.getPaymentDetails());

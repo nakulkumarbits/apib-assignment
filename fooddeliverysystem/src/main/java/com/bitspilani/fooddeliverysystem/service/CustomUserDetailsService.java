@@ -1,14 +1,11 @@
 package com.bitspilani.fooddeliverysystem.service;
 
-import com.bitspilani.fooddeliverysystem.model.Administrator;
-import com.bitspilani.fooddeliverysystem.model.Customer;
-import com.bitspilani.fooddeliverysystem.model.DeliveryPersonnel;
-import com.bitspilani.fooddeliverysystem.model.RestaurantOwner;
+import com.bitspilani.fooddeliverysystem.enums.UserRole;
 import com.bitspilani.fooddeliverysystem.repository.AdministratorRepository;
 import com.bitspilani.fooddeliverysystem.repository.CustomerRepository;
 import com.bitspilani.fooddeliverysystem.repository.DeliveryPersonnelRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantOwnerRepository;
-import java.util.ArrayList;
+import com.bitspilani.fooddeliverysystem.repository.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -34,27 +31,36 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private DeliveryPersonnelRepository deliveryPersonnelRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Administrator admin = administratorRepository.findByUsername(username);
-        if (admin != null) {
-            return new User(admin.getUsername(), admin.getPassword(), new ArrayList<>());
+
+        com.bitspilani.fooddeliverysystem.model.User user = userRepository.findByUsername(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
         }
 
-        Customer customer = customerRepository.findByUsername(username);
-        if (customer != null) {
+        if (user.getRole() == UserRole.ADMIN) {
+            List<GrantedAuthority> grantedAuthorities = List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
+        }
+
+        if (user.getRole() == UserRole.CUSTOMER) {
             List<GrantedAuthority> grantedAuthorities = List.of(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
-            return new User(customer.getUsername(), customer.getPassword(), grantedAuthorities);
+            return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
         }
 
-        RestaurantOwner owner = restaurantOwnerRepository.findByUsername(username);
-        if (owner != null) {
-            return new User(owner.getUsername(), owner.getPassword(), new ArrayList<>());
+        if (user.getRole() == UserRole.RESTAURANT_OWNER) {
+            List<GrantedAuthority> grantedAuthorities = List.of(new SimpleGrantedAuthority("RESTAURANT_OWNER"));
+            return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
         }
 
-        DeliveryPersonnel personnel = deliveryPersonnelRepository.findByUsername(username);
-        if (personnel != null) {
-            return new User(personnel.getUsername(), personnel.getPassword(), new ArrayList<>());
+        if (user.getRole() == UserRole.DELIVERY_PERSONNEL) {
+            List<GrantedAuthority> grantedAuthorities = List.of(new SimpleGrantedAuthority("DELIVERY_PERSONNEL"));
+            return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
         }
 
         throw new UsernameNotFoundException("User not found");

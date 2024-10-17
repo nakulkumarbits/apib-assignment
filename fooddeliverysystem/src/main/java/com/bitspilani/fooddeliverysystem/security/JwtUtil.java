@@ -1,11 +1,11 @@
 package com.bitspilani.fooddeliverysystem.security;
 
-import com.bitspilani.fooddeliverysystem.enums.UserRole;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Component;
 
@@ -15,8 +15,9 @@ public class JwtUtil {
     public static final int EXPIRATION_TIME = 1000 * 60 * 60 * 10; // 10 hours
     private final String SECRET_KEY = "IFNN1KagqlbDNeOW4Jys1CrcCp/OapVND+MMF605sng="; // Use a strong secret key
 
-    public String generateToken(String username) {
+    public String generateToken(String username, List<String> roles) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("roles", roles);
         return createToken(claims, username);
     }
 

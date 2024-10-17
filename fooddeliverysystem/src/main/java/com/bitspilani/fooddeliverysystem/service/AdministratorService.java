@@ -4,6 +4,7 @@ import com.bitspilani.fooddeliverysystem.dto.CustomerDTO;
 import com.bitspilani.fooddeliverysystem.model.Customer;
 import com.bitspilani.fooddeliverysystem.repository.AdministratorRepository;
 import com.bitspilani.fooddeliverysystem.repository.CustomerRepository;
+import com.bitspilani.fooddeliverysystem.utils.CustomerConvertor;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +22,7 @@ public class AdministratorService {
 
     public List<CustomerDTO> getCustomers() {
         List<Customer> customers = customerRepository.findAll();
-
-        return null;
+        return CustomerConvertor.toCustomerDTOList(customers);
     }
 
     // Methods to manage admin tasks

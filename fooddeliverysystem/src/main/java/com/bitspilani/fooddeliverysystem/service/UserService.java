@@ -40,28 +40,28 @@ public class UserService {
 
     public CustomerDTO registerCustomer(CustomerDTO customerDTO) {
         Customer customer = CustomerConvertor.toCustomer(customerDTO);
-        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        customer.getUser().setPassword(passwordEncoder.encode(customer.getUser().getPassword()));
         Customer savedCustomer = customerRepository.save(customer);
         return CustomerConvertor.toCustomerDTO(savedCustomer);
     }
 
     public RestaurantOwnerDTO registerRestaurantOwner(RestaurantOwnerDTO owner) {
         RestaurantOwner restaurantOwner = RestaurantOwnerConvertor.toRestaurantOwner(owner);
-        restaurantOwner.setPassword(passwordEncoder.encode(restaurantOwner.getPassword()));
+        restaurantOwner.getUser().setPassword(passwordEncoder.encode(restaurantOwner.getUser().getPassword()));
         RestaurantOwner savedOwner = restaurantOwnerRepository.save(restaurantOwner);
         return RestaurantOwnerConvertor.toRestaurantOwnerDTO(savedOwner);
     }
 
     public DeliveryPersonnelDTO registerDeliveryPersonnel(DeliveryPersonnelDTO deliveryPersonnelDTO) {
         DeliveryPersonnel personnel = DeliveryPersonnelConvertor.toDeliveryPersonnel(deliveryPersonnelDTO);
-        personnel.setPassword(passwordEncoder.encode(personnel.getPassword()));
+        personnel.getUser().setPassword(passwordEncoder.encode(personnel.getUser().getPassword()));
         DeliveryPersonnel deliveryPersonnel = deliveryPersonnelRepository.save(personnel);
         return DeliveryPersonnelConvertor.toDeliveryPersonnelDTO(deliveryPersonnel);
     }
 
     public AdministratorDTO registerAdministrator(AdministratorDTO admin) {
         Administrator administrator = AdminConvertor.toAdmin(admin);
-        administrator.setPassword(passwordEncoder.encode(administrator.getPassword()));
+        administrator.getUser().setPassword(passwordEncoder.encode(administrator.getUser().getPassword()));
         Administrator savedAdmin = administratorRepository.save(administrator);
         return AdminConvertor.toAdminDTO(savedAdmin);
     }

@@ -1,14 +1,15 @@
 package com.bitspilani.fooddeliverysystem.utils;
 
 import com.bitspilani.fooddeliverysystem.dto.DeliveryPersonnelDTO;
+import com.bitspilani.fooddeliverysystem.enums.UserRole;
 import com.bitspilani.fooddeliverysystem.model.DeliveryPersonnel;
+import com.bitspilani.fooddeliverysystem.model.User;
 
 public class DeliveryPersonnelConvertor {
 
     public static DeliveryPersonnelDTO toDeliveryPersonnelDTO(DeliveryPersonnel deliveryPersonnel) {
         DeliveryPersonnelDTO deliveryPersonnelDTO = new DeliveryPersonnelDTO();
-        deliveryPersonnelDTO.setUsername(deliveryPersonnel.getUsername());
-//        deliveryPersonnelDTO.setPassword(deliveryPersonnel.getPassword());
+        deliveryPersonnelDTO.setUsername(deliveryPersonnel.getUser().getUsername());
         deliveryPersonnelDTO.setVehicleType(deliveryPersonnel.getVehicleType());
         deliveryPersonnelDTO.setAddress(AddressConvertor.toAddressDTO(deliveryPersonnel.getVehicleAddress()));
         return deliveryPersonnelDTO;
@@ -16,10 +17,14 @@ public class DeliveryPersonnelConvertor {
 
     public static DeliveryPersonnel toDeliveryPersonnel(DeliveryPersonnelDTO deliveryPersonnelDTO) {
         DeliveryPersonnel deliveryPersonnel = new DeliveryPersonnel();
-        deliveryPersonnel.setUsername(deliveryPersonnelDTO.getUsername());
-        deliveryPersonnel.setPassword(deliveryPersonnelDTO.getPassword());
         deliveryPersonnel.setVehicleType(deliveryPersonnelDTO.getVehicleType());
         deliveryPersonnel.setVehicleAddress(AddressConvertor.toAddress(deliveryPersonnelDTO.getAddress()));
+
+        User user = new User();
+        user.setUsername(deliveryPersonnelDTO.getUsername());
+        user.setPassword(deliveryPersonnelDTO.getPassword());
+        user.setRole(UserRole.DELIVERY_PERSONNEL);
+        deliveryPersonnel.setUser(user);
         return deliveryPersonnel;
     }
 }
