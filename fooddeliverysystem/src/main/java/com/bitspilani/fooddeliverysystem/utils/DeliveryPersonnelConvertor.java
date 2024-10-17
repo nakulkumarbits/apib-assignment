@@ -4,6 +4,8 @@ import com.bitspilani.fooddeliverysystem.dto.DeliveryPersonnelDTO;
 import com.bitspilani.fooddeliverysystem.enums.UserRole;
 import com.bitspilani.fooddeliverysystem.model.DeliveryPersonnel;
 import com.bitspilani.fooddeliverysystem.model.User;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DeliveryPersonnelConvertor {
 
@@ -26,5 +28,11 @@ public class DeliveryPersonnelConvertor {
         user.setRole(UserRole.DELIVERY_PERSONNEL);
         deliveryPersonnel.setUser(user);
         return deliveryPersonnel;
+    }
+
+    public static List<DeliveryPersonnelDTO> toDeliveryPersonnelList(List<DeliveryPersonnel> deliveryPersonnels) {
+        List<DeliveryPersonnelDTO> deliveryPersonnelDTOS = new ArrayList<>();
+        deliveryPersonnels.forEach(deliveryPersonnel -> deliveryPersonnelDTOS.add(toDeliveryPersonnelDTO(deliveryPersonnel)));
+        return deliveryPersonnelDTOS;
     }
 }

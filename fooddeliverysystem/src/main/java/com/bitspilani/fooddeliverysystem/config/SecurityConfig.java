@@ -18,6 +18,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * Following class is used to secure the endpoints of the application
+ * and defines which endpoints require what kind of roles to access them.
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true) // Enable method-level security
@@ -49,15 +53,15 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/auth/**").permitAll() // Allow access to registration and login endpoints
+                    .requestMatchers("/auth/**").permitAll() // Allow access to registration and login endpoints
 //                .requestMatchers("/api-docs/**").permitAll() // Allow access to API docs
 //                .requestMatchers("/swagger-ui/**").permitAll() // Allow access to Swagger UI
-                .requestMatchers("/swagger-resources/**", "/swagger-resources", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                .requestMatchers("/users/customers/**").hasAnyRole(UserRole.CUSTOMER.name(), UserRole.ADMIN.name())
-                .requestMatchers("/users/restaurants/**").hasAnyRole(UserRole.RESTAURANT_OWNER.name(), UserRole.ADMIN.name())
-                .requestMatchers("/users/delivery/**").hasAnyRole(UserRole.DELIVERY_PERSONNEL.name(), UserRole.ADMIN.name())
-                .requestMatchers("/admin/**").hasRole(UserRole.ADMIN.name())
-                .anyRequest().authenticated() // All other requests require authentication
+                    .requestMatchers("/swagger-resources/**", "/swagger-resources", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                    .requestMatchers("/users/customers/**").hasAnyRole(UserRole.CUSTOMER.name(), UserRole.ADMIN.name())
+                    .requestMatchers("/users/restaurants/**").hasAnyRole(UserRole.RESTAURANT_OWNER.name(), UserRole.ADMIN.name())
+                    .requestMatchers("/users/delivery/**").hasAnyRole(UserRole.DELIVERY_PERSONNEL.name(), UserRole.ADMIN.name())
+                    .requestMatchers("/admin/**").hasRole(UserRole.ADMIN.name())
+                    .anyRequest().authenticated() // All other requests require authentication
             )
             .exceptionHandling(exceptions -> exceptions
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint)

@@ -1,6 +1,8 @@
 package com.bitspilani.fooddeliverysystem.advices;
 
 import com.bitspilani.fooddeliverysystem.dto.ValidationErrorResponse;
+import com.bitspilani.fooddeliverysystem.exceptions.UserNotFoundException;
+import com.bitspilani.fooddeliverysystem.exceptions.UsernameMismatchException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -10,7 +12,6 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.context.request.WebRequest;
 
 @RestControllerAdvice
 public class FoodDeliveryExceptionHandler {
@@ -27,7 +28,19 @@ public class FoodDeliveryExceptionHandler {
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public ResponseEntity<String> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, WebRequest request) {
+    public ResponseEntity<String> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex) {
         return new ResponseEntity<>("Method not allowed", HttpStatus.METHOD_NOT_ALLOWED);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ValidationErrorResponse> handleCustomerNotFound(UserNotFoundException ex) {
+        ValidationErrorResponse errorResponse = new ValidationErrorResponse(ex.getMessage(), null);
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UsernameMismatchException.class)
+    public ResponseEntity<ValidationErrorResponse> handleUsernameMismatchException(UsernameMismatchException ex) {
+        ValidationErrorResponse errorResponse = new ValidationErrorResponse(ex.getMessage(), null);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 }

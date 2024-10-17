@@ -32,8 +32,6 @@ public class DeliveryPersonnel {
     @Enumerated(EnumType.STRING)
     private VehicleType vehicleType;
 
-    private boolean active;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;

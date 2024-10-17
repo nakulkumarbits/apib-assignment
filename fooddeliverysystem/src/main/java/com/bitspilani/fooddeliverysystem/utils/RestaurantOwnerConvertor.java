@@ -4,6 +4,8 @@ import com.bitspilani.fooddeliverysystem.dto.RestaurantOwnerDTO;
 import com.bitspilani.fooddeliverysystem.enums.UserRole;
 import com.bitspilani.fooddeliverysystem.model.RestaurantOwner;
 import com.bitspilani.fooddeliverysystem.model.User;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RestaurantOwnerConvertor {
 
@@ -30,4 +32,9 @@ public class RestaurantOwnerConvertor {
         return restaurantOwnerDTO;
     }
 
+    public static List<RestaurantOwnerDTO> toRestaurantOwnerDTOList(List<RestaurantOwner> restaurantOwners) {
+        List<RestaurantOwnerDTO> restaurantOwnerDTOList = new ArrayList<>();
+        restaurantOwners.forEach(restaurantOwner -> restaurantOwnerDTOList.add(toRestaurantOwnerDTO(restaurantOwner)));
+        return restaurantOwnerDTOList;
+    }
 }

@@ -1,6 +1,7 @@
 package com.bitspilani.fooddeliverysystem.model;
 
 import com.bitspilani.fooddeliverysystem.enums.UserRole;
+import com.bitspilani.fooddeliverysystem.enums.UserStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -32,6 +33,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private UserRole role;
+
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private UserStatus status = UserStatus.ACTIVATED;
 
     @CreatedDate
     private LocalDateTime createdDate;

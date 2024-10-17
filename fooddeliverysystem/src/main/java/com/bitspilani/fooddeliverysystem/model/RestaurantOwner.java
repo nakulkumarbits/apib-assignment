@@ -33,8 +33,6 @@ public class RestaurantOwner {
     @Column(nullable = false)
     private String hoursOfOperation;
 
-    private boolean active;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;

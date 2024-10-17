@@ -39,8 +39,6 @@ public class Customer {
 
     private String paymentDetails;
 
-    private boolean active = true;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
