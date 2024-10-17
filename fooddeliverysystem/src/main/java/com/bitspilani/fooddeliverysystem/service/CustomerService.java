@@ -10,6 +10,7 @@ import com.bitspilani.fooddeliverysystem.repository.CustomerRepository;
 import com.bitspilani.fooddeliverysystem.repository.UserRepository;
 import com.bitspilani.fooddeliverysystem.utils.AddressConvertor;
 import com.bitspilani.fooddeliverysystem.utils.CustomerConvertor;
+import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,7 +34,7 @@ public class CustomerService {
             Customer customer = customerRepository.findByUser(user);
             return CustomerConvertor.toCustomerDTO(customer);
         }
-        throw new UserNotFoundException("Customer does not exist.");
+        throw new UserNotFoundException(FoodDeliveryConstants.CUSTOMER_NOT_PRESENT);
     }
 
     public List<CustomerDTO> getCustomers() {
@@ -43,7 +44,7 @@ public class CustomerService {
 
     public CustomerDTO updateCustomer(CustomerDTO customerDTO, String username) {
         if (!username.equals(customerDTO.getUsername())) {
-            throw new UsernameMismatchException("Username mismatch in request and body.");
+            throw new UsernameMismatchException(FoodDeliveryConstants.USERNAME_MISMATCH);
         }
         User user = userRepository.findByUsernameAndRole(username, UserRole.CUSTOMER);
         if (user != null) {
@@ -52,7 +53,7 @@ public class CustomerService {
             Customer savedCustomer = customerRepository.save(customer);
             return CustomerConvertor.toCustomerDTO(savedCustomer);
         }
-        throw new UserNotFoundException("Customer does not exist.");
+        throw new UserNotFoundException(FoodDeliveryConstants.CUSTOMER_NOT_PRESENT);
     }
 
     private void copyFields(Customer customer, CustomerDTO customerDTO) {
@@ -63,6 +64,4 @@ public class CustomerService {
         customer.setDeliveryAddress(AddressConvertor.toAddress(customerDTO.getAddress()));
         customer.getUser().setPassword(passwordEncoder.encode(customerDTO.getPassword()));
     }
-
-    // Methods to manage customers
 }
