@@ -20,7 +20,7 @@ public class MenuItemConvertor {
 
     public static MenuItemDTO toDTO(MenuItem menuItem) {
         MenuItemDTO menuItemDTO = new MenuItemDTO();
-        menuItemDTO.setItemId(menuItemDTO.getItemId());
+        menuItemDTO.setItemId(menuItem.getId());
         menuItemDTO.setName(menuItem.getName());
         menuItemDTO.setDescription(menuItem.getDescription());
         menuItemDTO.setPrice(menuItem.getPrice());

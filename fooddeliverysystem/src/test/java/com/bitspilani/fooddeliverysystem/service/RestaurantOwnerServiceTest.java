@@ -1,6 +1,8 @@
 package com.bitspilani.fooddeliverysystem.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyString;
@@ -19,6 +21,7 @@ import com.bitspilani.fooddeliverysystem.repository.RestaurantOwnerRepository;
 import com.bitspilani.fooddeliverysystem.repository.UserRepository;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -91,6 +94,35 @@ class RestaurantOwnerServiceTest {
         UserNotFoundException exception = assertThrows(UserNotFoundException.class,
             () -> restaurantOwnerService.updateRestaurantOwner(getRestaurantOwnerDTO(), "username"));
         assertEquals(FoodDeliveryConstants.RESTAURANT_NOT_PRESENT, exception.getMessage());
+    }
+
+    @Test
+    void testGetRestaurantOwnerByUsername() {
+        when(userRepository.findByUsernameAndRole(anyString(), any())).thenReturn(new User());
+        when(restaurantOwnerRepository.findByUser(any())).thenReturn(getRestaurantOwner());
+        RestaurantOwner restaurantOwner = restaurantOwnerService.getRestaurantOwnerByUsername("username");
+        assertNotNull(restaurantOwner);
+    }
+
+    @Test
+    void testGetRestaurantOwnerByUsernameCanReturnNull() {
+        when(userRepository.findByUsernameAndRole(anyString(), any())).thenReturn(null);
+        RestaurantOwner restaurantOwner = restaurantOwnerService.getRestaurantOwnerByUsername("username");
+        assertNull(restaurantOwner);
+    }
+
+    @Test
+    void testGetRestaurantById() {
+        when(restaurantOwnerRepository.findById(any())).thenReturn(Optional.of(new RestaurantOwner()));
+        RestaurantOwner restaurantOwner = restaurantOwnerService.getRestaurantById(10L);
+        assertNotNull(restaurantOwner);
+    }
+
+    @Test
+    void testGetRestaurantByIdCanReturnNull() {
+        when(restaurantOwnerRepository.findById(any())).thenReturn(Optional.empty());
+        RestaurantOwner restaurantOwner = restaurantOwnerService.getRestaurantById(10L);
+        assertNull(restaurantOwner);
     }
 
     private RestaurantOwner getRestaurantOwner() {
