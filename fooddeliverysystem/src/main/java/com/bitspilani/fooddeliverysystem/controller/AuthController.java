@@ -5,13 +5,13 @@ import com.bitspilani.fooddeliverysystem.dto.AuthRequest;
 import com.bitspilani.fooddeliverysystem.dto.AuthResponse;
 import com.bitspilani.fooddeliverysystem.dto.CustomerDTO;
 import com.bitspilani.fooddeliverysystem.dto.DeliveryPersonnelDTO;
-import com.bitspilani.fooddeliverysystem.dto.RestaurantOwnerDTO;
+import com.bitspilani.fooddeliverysystem.dto.RestaurantDTO;
 import com.bitspilani.fooddeliverysystem.dto.ValidationErrorResponse;
 import com.bitspilani.fooddeliverysystem.model.BlacklistedToken;
-import com.bitspilani.fooddeliverysystem.model.RestaurantOwner;
+import com.bitspilani.fooddeliverysystem.model.Restaurant;
 import com.bitspilani.fooddeliverysystem.repository.BlacklistedTokenRepository;
 import com.bitspilani.fooddeliverysystem.security.JwtUtil;
-import com.bitspilani.fooddeliverysystem.service.RestaurantOwnerService;
+import com.bitspilani.fooddeliverysystem.service.RestaurantService;
 import com.bitspilani.fooddeliverysystem.service.UserService;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import io.swagger.v3.oas.annotations.Operation;
@@ -56,7 +56,7 @@ public class AuthController {
     private BlacklistedTokenRepository blacklistedTokenRepository;
 
     @Autowired
-    private RestaurantOwnerService restaurantOwnerService;
+    private RestaurantService restaurantService;
 
     @Operation(summary = "Register a customer to the Food Delivery System.")
     @ApiResponses(value = {
@@ -75,14 +75,14 @@ public class AuthController {
     @Operation(summary = "Restaurant owner can register a restaurant to the Food Delivery System.")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Restaurant was successfully registered.", content =
-        @Content(mediaType = "application/json", schema = @Schema(implementation = RestaurantOwnerDTO.class))),
+        @Content(mediaType = "application/json", schema = @Schema(implementation = RestaurantDTO.class))),
         @ApiResponse(responseCode = "400", description = "The error can be any of those: the provided username is not supported, " +
             "the request is missing a required parameter, the provided password is invalid." +
             "See the API spec for further details.",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))),
     })
     @PostMapping("/register/restaurant")
-    public ResponseEntity<RestaurantOwnerDTO> registerRestaurantOwner(@Parameter(description = "Request to register restaurant owner.") @RequestBody @Valid RestaurantOwnerDTO owner) {
+    public ResponseEntity<RestaurantDTO> registerRestaurantOwner(@Parameter(description = "Request to register a restaurant and owner credentials.") @RequestBody @Valid RestaurantDTO owner) {
         return ResponseEntity.ok(userService.registerRestaurantOwner(owner));
     }
 
@@ -141,8 +141,8 @@ public class AuthController {
 
             Long ownerId = null;
             if (roles.contains(FoodDeliveryConstants.ROLE_RESTAURANT_OWNER)) {
-                RestaurantOwner restaurantOwner = restaurantOwnerService.getRestaurantOwnerByUsername(authRequest.getUsername());
-                ownerId = restaurantOwner.getId();
+                Restaurant restaurant = restaurantService.getRestaurantByUsername(authRequest.getUsername());
+                ownerId = restaurant.getId();
             }
 
             // Generate JWT token

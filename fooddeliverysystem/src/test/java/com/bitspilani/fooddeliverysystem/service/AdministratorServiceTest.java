@@ -11,7 +11,7 @@ import static org.mockito.Mockito.when;
 import com.bitspilani.fooddeliverysystem.dto.CustomerDTO;
 import com.bitspilani.fooddeliverysystem.dto.DeactivateUserDTO;
 import com.bitspilani.fooddeliverysystem.dto.DeliveryPersonnelDTO;
-import com.bitspilani.fooddeliverysystem.dto.RestaurantOwnerDTO;
+import com.bitspilani.fooddeliverysystem.dto.RestaurantDTO;
 import com.bitspilani.fooddeliverysystem.enums.UserRole;
 import com.bitspilani.fooddeliverysystem.exceptions.UserNotFoundException;
 import com.bitspilani.fooddeliverysystem.model.User;
@@ -28,7 +28,7 @@ import org.mockito.MockitoAnnotations;
 class AdministratorServiceTest {
 
     @Mock
-    RestaurantOwnerService restaurantOwnerService;
+    RestaurantService restaurantService;
     @Mock
     AdministratorRepository administratorRepository;
     @Mock
@@ -62,11 +62,11 @@ class AdministratorServiceTest {
     }
 
     @Test
-    void testGetRestaurantOwners() {
-        when(restaurantOwnerService.getRestaurantOwners()).thenReturn(List.of(new RestaurantOwnerDTO()));
+    void testGetRestaurants() {
+        when(restaurantService.getRestaurants()).thenReturn(List.of(new RestaurantDTO()));
 
-        List<RestaurantOwnerDTO> result = administratorService.getRestaurantOwners();
-        assertEquals(List.of(new RestaurantOwnerDTO()), result);
+        List<RestaurantDTO> result = administratorService.getRestaurants();
+        assertEquals(List.of(new RestaurantDTO()), result);
     }
 
     @Test

@@ -3,7 +3,7 @@ package com.bitspilani.fooddeliverysystem.controller;
 import com.bitspilani.fooddeliverysystem.dto.CustomerDTO;
 import com.bitspilani.fooddeliverysystem.dto.DeactivateUserDTO;
 import com.bitspilani.fooddeliverysystem.dto.DeliveryPersonnelDTO;
-import com.bitspilani.fooddeliverysystem.dto.RestaurantOwnerDTO;
+import com.bitspilani.fooddeliverysystem.dto.RestaurantDTO;
 import com.bitspilani.fooddeliverysystem.dto.ValidationErrorResponse;
 import com.bitspilani.fooddeliverysystem.service.AdministratorService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -73,11 +73,11 @@ public class AdministratorController {
     @Operation(summary = "Fetches all the restaurants from the Food Delivery System.", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Restaurants were successfully fetched.", content =
-        @Content(mediaType = "application/json", schema = @Schema(implementation = RestaurantOwnerDTO.class))),
+        @Content(mediaType = "application/json", schema = @Schema(implementation = RestaurantDTO.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized")
     })
     @GetMapping("/restaurants")
-    public ResponseEntity<List<RestaurantOwnerDTO>> getRestaurantOwners() {
-        return new ResponseEntity<>(administratorService.getRestaurantOwners(), HttpStatus.OK);
+    public ResponseEntity<List<RestaurantDTO>> getRestaurants() {
+        return new ResponseEntity<>(administratorService.getRestaurants(), HttpStatus.OK);
     }
 }

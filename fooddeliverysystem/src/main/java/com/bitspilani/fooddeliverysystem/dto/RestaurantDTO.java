@@ -7,7 +7,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class RestaurantOwnerDTO {
+public class RestaurantDTO {
 
     @Schema(description = "The username of the user trying to register.")
     @NotBlank(message = "username is mandatory")

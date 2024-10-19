@@ -3,7 +3,7 @@ package com.bitspilani.fooddeliverysystem.service;
 import com.bitspilani.fooddeliverysystem.dto.CustomerDTO;
 import com.bitspilani.fooddeliverysystem.dto.DeactivateUserDTO;
 import com.bitspilani.fooddeliverysystem.dto.DeliveryPersonnelDTO;
-import com.bitspilani.fooddeliverysystem.dto.RestaurantOwnerDTO;
+import com.bitspilani.fooddeliverysystem.dto.RestaurantDTO;
 import com.bitspilani.fooddeliverysystem.enums.UserStatus;
 import com.bitspilani.fooddeliverysystem.exceptions.UserNotFoundException;
 import com.bitspilani.fooddeliverysystem.model.User;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdministratorService {
 
-    private final RestaurantOwnerService restaurantOwnerService;
+    private final RestaurantService restaurantService;
     private AdministratorRepository administratorRepository;
     private CustomerService customerService;
     private DeliveryPersonnelService deliveryPersonnelService;
@@ -24,12 +24,12 @@ public class AdministratorService {
     AdministratorService(AdministratorRepository administratorRepository,
         CustomerService customerService,
         DeliveryPersonnelService deliveryPersonnelService,
-        UserRepository userRepository, RestaurantOwnerService restaurantOwnerService) {
+        UserRepository userRepository, RestaurantService restaurantService) {
         this.administratorRepository = administratorRepository;
         this.customerService = customerService;
         this.deliveryPersonnelService = deliveryPersonnelService;
         this.userRepository = userRepository;
-        this.restaurantOwnerService = restaurantOwnerService;
+        this.restaurantService = restaurantService;
     }
 
     public List<CustomerDTO> getCustomers() {
@@ -40,8 +40,8 @@ public class AdministratorService {
         return deliveryPersonnelService.getDeliveryPersonnels();
     }
 
-    public List<RestaurantOwnerDTO> getRestaurantOwners() {
-        return restaurantOwnerService.getRestaurantOwners();
+    public List<RestaurantDTO> getRestaurants() {
+        return restaurantService.getRestaurants();
     }
 
     public DeactivateUserDTO deactivateUser(DeactivateUserDTO deactivateUserDTO) {

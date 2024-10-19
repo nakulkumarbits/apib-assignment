@@ -23,7 +23,7 @@ public class RestaurantOpeningDetail {
 
     @ManyToOne
     @JoinColumn(name = "restaurant_owner_id", nullable = false)
-    private RestaurantOwner restaurantOwner; // Link to the restaurant owner
+    private Restaurant restaurant; // Link to the restaurant owner
 
 
     private String day; // e.g., "Monday", "Tuesday"

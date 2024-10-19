@@ -11,21 +11,21 @@ import com.bitspilani.fooddeliverysystem.dto.CustomerDTO;
 import com.bitspilani.fooddeliverysystem.dto.DeliveryPersonnelDTO;
 import com.bitspilani.fooddeliverysystem.dto.DeliveryZoneDTO;
 import com.bitspilani.fooddeliverysystem.dto.OpeningHourDTO;
-import com.bitspilani.fooddeliverysystem.dto.RestaurantOwnerDTO;
+import com.bitspilani.fooddeliverysystem.dto.RestaurantDTO;
 import com.bitspilani.fooddeliverysystem.model.Address;
 import com.bitspilani.fooddeliverysystem.model.Administrator;
 import com.bitspilani.fooddeliverysystem.model.Customer;
 import com.bitspilani.fooddeliverysystem.model.DeliveryPersonnel;
 import com.bitspilani.fooddeliverysystem.model.RestaurantDeliveryZone;
 import com.bitspilani.fooddeliverysystem.model.RestaurantOpeningDetail;
-import com.bitspilani.fooddeliverysystem.model.RestaurantOwner;
+import com.bitspilani.fooddeliverysystem.model.Restaurant;
 import com.bitspilani.fooddeliverysystem.model.User;
 import com.bitspilani.fooddeliverysystem.repository.AdministratorRepository;
 import com.bitspilani.fooddeliverysystem.repository.CustomerRepository;
 import com.bitspilani.fooddeliverysystem.repository.DeliveryPersonnelRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantDeliveryZoneRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantOpeningDetailRepository;
-import com.bitspilani.fooddeliverysystem.repository.RestaurantOwnerRepository;
+import com.bitspilani.fooddeliverysystem.repository.RestaurantRepository;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,7 +39,7 @@ class UserServiceTest {
     @Mock
     CustomerRepository customerRepository;
     @Mock
-    RestaurantOwnerRepository restaurantOwnerRepository;
+    RestaurantRepository restaurantRepository;
     @Mock
     DeliveryPersonnelRepository deliveryPersonnelRepository;
     @Mock
@@ -72,16 +72,16 @@ class UserServiceTest {
     }
 
     @Test
-    void testRegisterRestaurantOwner() {
-        RestaurantOwner restaurantOwner = new RestaurantOwner();
-        restaurantOwner.setUser(new User());
-        when(restaurantOwnerRepository.save(any(RestaurantOwner.class))).thenReturn(restaurantOwner);
+    void testRegisterRestaurant() {
+        Restaurant restaurant = new Restaurant();
+        restaurant.setUser(new User());
+        when(restaurantRepository.save(any(Restaurant.class))).thenReturn(restaurant);
         when(restaurantOpeningDetailRepository.saveAll(any())).thenReturn(List.of(new RestaurantOpeningDetail()));
         when(restaurantDeliveryZoneRepository.saveAll(any())).thenReturn(List.of(new RestaurantDeliveryZone()));
-        RestaurantOwnerDTO owner = new RestaurantOwnerDTO();
+        RestaurantDTO owner = new RestaurantDTO();
         owner.setOpeningHours(List.of(new OpeningHourDTO()));
         owner.setDeliveryZones(List.of(new DeliveryZoneDTO()));
-        RestaurantOwnerDTO result = userService.registerRestaurantOwner(owner);
+        RestaurantDTO result = userService.registerRestaurantOwner(owner);
         assertNotNull(result);
     }
 

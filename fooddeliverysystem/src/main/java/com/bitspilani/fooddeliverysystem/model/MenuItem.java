@@ -49,7 +49,7 @@ public class MenuItem {
 
     @ManyToOne
     @JoinColumn(name = "restaurant_owner_id", nullable = false)
-    private RestaurantOwner restaurantOwner;
+    private Restaurant restaurant;
 
     @CreatedDate
     private LocalDateTime createdDate;

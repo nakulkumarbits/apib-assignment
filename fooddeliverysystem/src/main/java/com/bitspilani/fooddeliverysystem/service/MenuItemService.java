@@ -4,7 +4,7 @@ import com.bitspilani.fooddeliverysystem.dto.MenuItemDTO;
 import com.bitspilani.fooddeliverysystem.exceptions.ItemNotFoundException;
 import com.bitspilani.fooddeliverysystem.exceptions.MenuItemMismatchException;
 import com.bitspilani.fooddeliverysystem.model.MenuItem;
-import com.bitspilani.fooddeliverysystem.model.RestaurantOwner;
+import com.bitspilani.fooddeliverysystem.model.Restaurant;
 import com.bitspilani.fooddeliverysystem.repository.MenuItemRepository;
 import com.bitspilani.fooddeliverysystem.security.JwtUtil;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
@@ -22,18 +22,18 @@ public class MenuItemService {
     private MenuItemRepository menuItemRepository;
 
     @Autowired
-    private RestaurantOwnerService restaurantOwnerService;
+    private RestaurantService restaurantService;
 
     @Autowired
     private JwtUtil jwtUtil;
 
     public MenuItemDTO addMenuItem(MenuItemDTO menuItemDTO, String token) {
 
-        Long ownerId = jwtUtil.extractOwnerId(token.substring(7));
-        RestaurantOwner restaurantOwner = restaurantOwnerService.getRestaurantById(ownerId);
+        Long ownerId = jwtUtil.extractOwnerIdFromToken(token);
+        Restaurant restaurant = restaurantService.getRestaurantById(ownerId);
 
         MenuItem menuItem = MenuItemConvertor.toEntity(menuItemDTO);
-        menuItem.setRestaurantOwner(restaurantOwner);
+        menuItem.setRestaurant(restaurant);
         menuItem = menuItemRepository.save(menuItem);
         return MenuItemConvertor.toDTO(menuItem);
     }
@@ -43,12 +43,12 @@ public class MenuItemService {
             throw new MenuItemMismatchException(FoodDeliveryConstants.MENU_ITEM_MISMATCH);
         }
 
-        Long ownerId = jwtUtil.extractOwnerId(token.substring(7));
-        RestaurantOwner restaurantOwner = restaurantOwnerService.getRestaurantById(ownerId);
+        Long ownerId = jwtUtil.extractOwnerIdFromToken(token);
+        Restaurant restaurant = restaurantService.getRestaurantById(ownerId);
 
         Optional<MenuItem> menuItemOptional = menuItemRepository.findById(id);
         if (menuItemOptional.isPresent()
-            && Objects.equals(menuItemOptional.get().getRestaurantOwner().getId(), restaurantOwner.getId())) {
+            && Objects.equals(menuItemOptional.get().getRestaurant().getId(), restaurant.getId())) {
             MenuItem menuItem = menuItemOptional.get();
             copyFields(menuItem, menuItemDTO);
             menuItem = menuItemRepository.save(menuItem);
@@ -65,16 +65,16 @@ public class MenuItemService {
         }
 
         MenuItem menuItem = menuItemOptional.get();
-        Long ownerId = jwtUtil.extractOwnerId(token.substring(7));
-        RestaurantOwner restaurantOwner = restaurantOwnerService.getRestaurantById(ownerId);
-        if (Objects.equals(ownerId, restaurantOwner.getId())) {
+        Long ownerId = jwtUtil.extractOwnerIdFromToken(token);
+        Restaurant restaurant = restaurantService.getRestaurantById(ownerId);
+        if (Objects.equals(ownerId, restaurant.getId())) {
             menuItemRepository.delete(menuItem);
         }
     }
 
     public List<MenuItemDTO> getMenuItemsByOwner(String token) {
-        Long ownerId = jwtUtil.extractOwnerId(token.substring(7));
-        List<MenuItem> menuItems = menuItemRepository.findByRestaurantOwnerId(ownerId);
+        Long ownerId = jwtUtil.extractOwnerIdFromToken(token);
+        List<MenuItem> menuItems = menuItemRepository.findByRestaurantId(ownerId);
         return MenuItemConvertor.toDTOList(menuItems);
     }
 

@@ -51,7 +51,11 @@ public class JwtUtil {
         return (extractedUsername.equals(username) && !isTokenExpired(token));
     }
 
-    public Long extractOwnerId(String token) {
+    public Long extractOwnerIdFromToken(String token) {
+        return extractOwnerId(token.substring(7));
+    }
+
+    private Long extractOwnerId(String token) {
         Claims claims = extractAllClaims(token);
         return (Long) claims.get("ownerId"); // Cast to Long
     }

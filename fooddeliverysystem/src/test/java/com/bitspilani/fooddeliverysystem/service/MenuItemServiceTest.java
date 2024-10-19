@@ -13,7 +13,7 @@ import com.bitspilani.fooddeliverysystem.dto.MenuItemDTO;
 import com.bitspilani.fooddeliverysystem.exceptions.ItemNotFoundException;
 import com.bitspilani.fooddeliverysystem.exceptions.MenuItemMismatchException;
 import com.bitspilani.fooddeliverysystem.model.MenuItem;
-import com.bitspilani.fooddeliverysystem.model.RestaurantOwner;
+import com.bitspilani.fooddeliverysystem.model.Restaurant;
 import com.bitspilani.fooddeliverysystem.repository.MenuItemRepository;
 import com.bitspilani.fooddeliverysystem.security.JwtUtil;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
@@ -30,7 +30,7 @@ class MenuItemServiceTest {
     @Mock
     MenuItemRepository menuItemRepository;
     @Mock
-    RestaurantOwnerService restaurantOwnerService;
+    RestaurantService restaurantService;
     @Mock
     JwtUtil jwtUtil;
     @InjectMocks
@@ -42,13 +42,13 @@ class MenuItemServiceTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        when(jwtUtil.extractOwnerId(anyString())).thenReturn(OWNER_ID);
+        when(jwtUtil.extractOwnerIdFromToken(anyString())).thenReturn(OWNER_ID);
     }
 
     @Test
     void testAddMenuItem() {
         when(menuItemRepository.save(any())).thenReturn(new MenuItem());
-        when(restaurantOwnerService.getRestaurantById(anyLong())).thenReturn(new RestaurantOwner());
+        when(restaurantService.getRestaurantById(anyLong())).thenReturn(new Restaurant());
 
         MenuItemDTO result = menuItemService.addMenuItem(new MenuItemDTO(), TOKEN);
         assertEquals(new MenuItemDTO(), result);
@@ -56,12 +56,12 @@ class MenuItemServiceTest {
 
     @Test
     void testUpdateMenuItem() {
-        RestaurantOwner restaurantOwner = new RestaurantOwner();
-        restaurantOwner.setId(1L);
+        Restaurant restaurant = new Restaurant();
+        restaurant.setId(1L);
         MenuItem menuItem = new MenuItem();
-        menuItem.setRestaurantOwner(restaurantOwner);
+        menuItem.setRestaurant(restaurant);
         when(menuItemRepository.findById(any())).thenReturn(Optional.of(menuItem));
-        when(restaurantOwnerService.getRestaurantById(anyLong())).thenReturn(restaurantOwner);
+        when(restaurantService.getRestaurantById(anyLong())).thenReturn(restaurant);
         when(menuItemRepository.save(any())).thenReturn(menuItem);
         MenuItemDTO menuItemDTO = new MenuItemDTO();
         menuItemDTO.setItemId(1L);
@@ -90,10 +90,10 @@ class MenuItemServiceTest {
 
     @Test
     void testRemoveMenuItem() {
-        RestaurantOwner restaurantOwner = new RestaurantOwner();
-        restaurantOwner.setId(OWNER_ID);
+        Restaurant restaurant = new Restaurant();
+        restaurant.setId(OWNER_ID);
         when(menuItemRepository.findById(any())).thenReturn(Optional.of(new MenuItem()));
-        when(restaurantOwnerService.getRestaurantById(anyLong())).thenReturn(restaurantOwner);
+        when(restaurantService.getRestaurantById(anyLong())).thenReturn(restaurant);
 
         menuItemService.removeMenuItem(1L, TOKEN);
         verify(menuItemRepository).delete(any());
@@ -109,7 +109,7 @@ class MenuItemServiceTest {
 
     @Test
     void testGetMenuItemsByOwner() {
-        when(menuItemRepository.findByRestaurantOwnerId(anyLong())).thenReturn(List.of(new MenuItem()));
+        when(menuItemRepository.findByRestaurantId(anyLong())).thenReturn(List.of(new MenuItem()));
 
         List<MenuItemDTO> result = menuItemService.getMenuItemsByOwner(TOKEN);
         assertEquals(List.of(new MenuItemDTO()), result);
