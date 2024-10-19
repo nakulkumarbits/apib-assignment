@@ -8,9 +8,12 @@ import com.bitspilani.fooddeliverysystem.dto.DeliveryPersonnelDTO;
 import com.bitspilani.fooddeliverysystem.dto.RestaurantOwnerDTO;
 import com.bitspilani.fooddeliverysystem.dto.ValidationErrorResponse;
 import com.bitspilani.fooddeliverysystem.model.BlacklistedToken;
+import com.bitspilani.fooddeliverysystem.model.RestaurantOwner;
 import com.bitspilani.fooddeliverysystem.repository.BlacklistedTokenRepository;
 import com.bitspilani.fooddeliverysystem.security.JwtUtil;
+import com.bitspilani.fooddeliverysystem.service.RestaurantOwnerService;
 import com.bitspilani.fooddeliverysystem.service.UserService;
+import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -51,6 +54,9 @@ public class AuthController {
 
     @Autowired
     private BlacklistedTokenRepository blacklistedTokenRepository;
+
+    @Autowired
+    private RestaurantOwnerService restaurantOwnerService;
 
     @Operation(summary = "Register a customer to the Food Delivery System.")
     @ApiResponses(value = {
@@ -133,8 +139,14 @@ public class AuthController {
                 .map(GrantedAuthority::getAuthority)
                 .toList();
 
+            Long ownerId = null;
+            if (roles.contains(FoodDeliveryConstants.ROLE_RESTAURANT_OWNER)) {
+                RestaurantOwner restaurantOwner = restaurantOwnerService.getRestaurantOwnerByUsername(authRequest.getUsername());
+                ownerId = restaurantOwner.getId();
+            }
+
             // Generate JWT token
-            String token = jwtUtil.generateToken(authRequest.getUsername(), roles);
+            String token = jwtUtil.generateToken(authRequest.getUsername(), roles, ownerId);
 
             return ResponseEntity.ok(new AuthResponse(token));
         } catch (Exception e) {

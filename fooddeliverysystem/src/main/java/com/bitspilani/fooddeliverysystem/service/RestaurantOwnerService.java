@@ -9,6 +9,7 @@ import com.bitspilani.fooddeliverysystem.model.User;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantOwnerRepository;
 import com.bitspilani.fooddeliverysystem.repository.UserRepository;
 import com.bitspilani.fooddeliverysystem.utils.AddressConvertor;
+import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import com.bitspilani.fooddeliverysystem.utils.RestaurantOwnerConvertor;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class RestaurantOwnerService {
             RestaurantOwner restaurantOwner = restaurantOwnerRepository.findByUser(user);
             return RestaurantOwnerConvertor.toRestaurantOwnerDTO(restaurantOwner);
         }
-        throw new UserNotFoundException("Restaurant does not exist.");
+        throw new UserNotFoundException(FoodDeliveryConstants.RESTAURANT_NOT_PRESENT);
     }
 
     public List<RestaurantOwnerDTO> getRestaurantOwners() {
@@ -43,7 +44,7 @@ public class RestaurantOwnerService {
 
     public RestaurantOwnerDTO updateRestaurantOwner(RestaurantOwnerDTO restaurantOwnerDTO, String username) {
         if (!username.equals(restaurantOwnerDTO.getUsername())) {
-            throw new UsernameMismatchException("Username mismatch in request and body.");
+            throw new UsernameMismatchException(FoodDeliveryConstants.USERNAME_MISMATCH);
         }
         User user = userRepository.findByUsernameAndRole(username, UserRole.RESTAURANT_OWNER);
         if (user != null) {
@@ -52,7 +53,19 @@ public class RestaurantOwnerService {
             RestaurantOwner savedRestaurantOwner = restaurantOwnerRepository.save(restaurantOwner);
             return RestaurantOwnerConvertor.toRestaurantOwnerDTO(savedRestaurantOwner);
         }
-        throw new UserNotFoundException("Restaurant does not exist.");
+        throw new UserNotFoundException(FoodDeliveryConstants.RESTAURANT_NOT_PRESENT);
+    }
+
+    public RestaurantOwner getRestaurantOwnerByUsername(String username) {
+        User user = userRepository.findByUsernameAndRole(username, UserRole.RESTAURANT_OWNER);
+        if (user != null) {
+            return restaurantOwnerRepository.findByUser(user);
+        }
+        return null;
+    }
+
+    public RestaurantOwner getRestaurantById(Long id) {
+        return restaurantOwnerRepository.findById(id).orElse(null);
     }
 
     private void copyFields(RestaurantOwner restaurantOwner, RestaurantOwnerDTO restaurantOwnerDTO) {
