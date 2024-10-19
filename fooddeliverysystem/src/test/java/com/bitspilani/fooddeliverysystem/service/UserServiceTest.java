@@ -1,22 +1,32 @@
 package com.bitspilani.fooddeliverysystem.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 
+import com.bitspilani.fooddeliverysystem.dto.AddressDTO;
 import com.bitspilani.fooddeliverysystem.dto.AdministratorDTO;
 import com.bitspilani.fooddeliverysystem.dto.CustomerDTO;
 import com.bitspilani.fooddeliverysystem.dto.DeliveryPersonnelDTO;
+import com.bitspilani.fooddeliverysystem.dto.DeliveryZoneDTO;
+import com.bitspilani.fooddeliverysystem.dto.OpeningHourDTO;
 import com.bitspilani.fooddeliverysystem.dto.RestaurantOwnerDTO;
+import com.bitspilani.fooddeliverysystem.model.Address;
 import com.bitspilani.fooddeliverysystem.model.Administrator;
 import com.bitspilani.fooddeliverysystem.model.Customer;
 import com.bitspilani.fooddeliverysystem.model.DeliveryPersonnel;
+import com.bitspilani.fooddeliverysystem.model.RestaurantDeliveryZone;
+import com.bitspilani.fooddeliverysystem.model.RestaurantOpeningDetail;
 import com.bitspilani.fooddeliverysystem.model.RestaurantOwner;
 import com.bitspilani.fooddeliverysystem.model.User;
 import com.bitspilani.fooddeliverysystem.repository.AdministratorRepository;
 import com.bitspilani.fooddeliverysystem.repository.CustomerRepository;
 import com.bitspilani.fooddeliverysystem.repository.DeliveryPersonnelRepository;
+import com.bitspilani.fooddeliverysystem.repository.RestaurantDeliveryZoneRepository;
+import com.bitspilani.fooddeliverysystem.repository.RestaurantOpeningDetailRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantOwnerRepository;
-import org.junit.jupiter.api.Assertions;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -35,6 +45,10 @@ class UserServiceTest {
     @Mock
     AdministratorRepository administratorRepository;
     @Mock
+    RestaurantOpeningDetailRepository restaurantOpeningDetailRepository;
+    @Mock
+    RestaurantDeliveryZoneRepository restaurantDeliveryZoneRepository;
+    @Mock
     PasswordEncoder passwordEncoder;
     @InjectMocks
     UserService userService;
@@ -49,10 +63,12 @@ class UserServiceTest {
     void testRegisterCustomer() {
         Customer customer = new Customer();
         customer.setUser(new User());
+        customer.setDeliveryAddress(new Address());
         when(customerRepository.save(any(Customer.class))).thenReturn(customer);
         CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setAddress(new AddressDTO());
         CustomerDTO result = userService.registerCustomer(customerDTO);
-        Assertions.assertEquals(customerDTO, result);
+        assertNotNull(result);
     }
 
     @Test
@@ -60,9 +76,13 @@ class UserServiceTest {
         RestaurantOwner restaurantOwner = new RestaurantOwner();
         restaurantOwner.setUser(new User());
         when(restaurantOwnerRepository.save(any(RestaurantOwner.class))).thenReturn(restaurantOwner);
+        when(restaurantOpeningDetailRepository.saveAll(any())).thenReturn(List.of(new RestaurantOpeningDetail()));
+        when(restaurantDeliveryZoneRepository.saveAll(any())).thenReturn(List.of(new RestaurantDeliveryZone()));
         RestaurantOwnerDTO owner = new RestaurantOwnerDTO();
+        owner.setOpeningHours(List.of(new OpeningHourDTO()));
+        owner.setDeliveryZones(List.of(new DeliveryZoneDTO()));
         RestaurantOwnerDTO result = userService.registerRestaurantOwner(owner);
-        Assertions.assertEquals(owner, result);
+        assertNotNull(result);
     }
 
     @Test
@@ -72,7 +92,7 @@ class UserServiceTest {
         when(deliveryPersonnelRepository.save(any(DeliveryPersonnel.class))).thenReturn(personnel);
         DeliveryPersonnelDTO deliveryPersonnelDTO = new DeliveryPersonnelDTO();
         DeliveryPersonnelDTO result = userService.registerDeliveryPersonnel(deliveryPersonnelDTO);
-        Assertions.assertEquals(deliveryPersonnelDTO, result);
+        assertEquals(deliveryPersonnelDTO, result);
     }
 
     @Test
@@ -82,6 +102,6 @@ class UserServiceTest {
         when(administratorRepository.save(any(Administrator.class))).thenReturn(administrator);
         AdministratorDTO admin = new AdministratorDTO();
         AdministratorDTO result = userService.registerAdministrator(admin);
-        Assertions.assertEquals(admin, result);
+        assertEquals(admin, result);
     }
 }

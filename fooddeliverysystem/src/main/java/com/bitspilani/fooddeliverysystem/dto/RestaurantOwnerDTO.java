@@ -3,6 +3,7 @@ package com.bitspilani.fooddeliverysystem.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import java.util.List;
 import lombok.Data;
 
 @Data
@@ -29,4 +30,12 @@ public class RestaurantOwnerDTO {
     @Schema(description = "hours of operation for the restaurant.")
     @JsonProperty("hours_of_operation")
     private String hoursOfOperation;
+
+    @Schema(description = "Opening hours for the restaurant.")
+    @JsonProperty("opening_hours")
+    private List<OpeningHourDTO> openingHours;
+
+    @Schema(description = "Delivery zones for the restaurant.")
+    @JsonProperty("delivery_zones")
+    private List<DeliveryZoneDTO> deliveryZones;
 }
