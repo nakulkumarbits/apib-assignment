@@ -5,6 +5,7 @@ import com.bitspilani.fooddeliverysystem.enums.ItemAvailable;
 import com.bitspilani.fooddeliverysystem.enums.ItemType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -22,7 +23,7 @@ public class MenuItemDTO {
     private String description;
 
     @Schema(description = "Price of the dish.")
-    @NotBlank(message = "price is mandatory")
+    @Min(value = 0L, message = "Cannot be negative.")
     private Double price;
 
     @Schema(description = "Availability of the dish.")

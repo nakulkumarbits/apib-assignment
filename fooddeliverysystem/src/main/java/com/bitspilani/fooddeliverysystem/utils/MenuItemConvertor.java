@@ -31,6 +31,9 @@ public class MenuItemConvertor {
     }
 
     public static List<MenuItemDTO> toDTOList(List<MenuItem> menuItems) {
+        if (menuItems == null) {
+            return null;
+        }
         List<MenuItemDTO> menuItemDTOList = new ArrayList<>();
         menuItems.forEach(menuItem -> menuItemDTOList.add(toDTO(menuItem)));
         return menuItemDTOList;

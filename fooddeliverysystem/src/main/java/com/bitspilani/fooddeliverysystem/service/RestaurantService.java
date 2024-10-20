@@ -51,7 +51,7 @@ public class RestaurantService {
         return RestaurantConvertor.toDTOList(restaurants);
     }
 
-    public List<RestaurantItemDTO> getRestaurantsForCustomers() {
+    public List<RestaurantItemDTO> getRestaurantsForCustomers(String cuisineType, String itemType, String itemAvailable) {
         List<Restaurant> restaurants = restaurantRepository.findAll();
         List<Long> restaurantIds = restaurants.stream().map(Restaurant::getId).toList();
         List<MenuItem> allMenuItems = menuItemRepository.findByRestaurantIdIn(restaurantIds);
