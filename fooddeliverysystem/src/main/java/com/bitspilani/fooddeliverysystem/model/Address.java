@@ -21,7 +21,6 @@ public class Address {
     private String state;
     private String pinCode;
 
-    // Optionally, you can add a user reference if needed
     // @ManyToOne
     // private User user;
 

@@ -96,7 +96,7 @@ class MenuItemServiceTest {
         when(restaurantService.getRestaurantById(anyLong())).thenReturn(restaurant);
 
         menuItemService.removeMenuItem(1L, TOKEN);
-        verify(menuItemRepository).delete(any());
+        verify(menuItemRepository).delete(any(MenuItem.class));
     }
 
     @Test

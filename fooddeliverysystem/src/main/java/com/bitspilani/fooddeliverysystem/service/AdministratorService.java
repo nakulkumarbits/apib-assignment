@@ -55,6 +55,4 @@ public class AdministratorService {
         }
         throw new UserNotFoundException("User not found.");
     }
-
-    // Methods to manage admin tasks
 }

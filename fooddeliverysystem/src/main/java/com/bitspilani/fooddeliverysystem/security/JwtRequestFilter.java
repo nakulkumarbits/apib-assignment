@@ -33,7 +33,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         throws ServletException, IOException {
 
         final String requestURI = request.getRequestURI();
-//        if (requestURI.startsWith("/auth/") || requestURI.startsWith("/v3/api-docs") || requestURI.startsWith("/swagger-ui/")) {
         if (requestURI.startsWith("/auth/")) {
             chain.doFilter(request, response); // Skip JWT validation for auth endpoints
             return;
@@ -47,11 +46,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
             username = jwtUtil.extractUsername(jwt);
-//            try {
-//                username = jwtUtil.extractUsername(jwt);
-//            } catch (ExpiredJwtException | SignatureException e) {
-//                // Handle the exceptions
-//            }
 
             // Check if the token is blacklisted
             if (blacklistedTokenRepository.existsByToken(jwt)) {

@@ -23,7 +23,7 @@ public class RestaurantDeliveryZone {
 
     @ManyToOne
     @JoinColumn(name = "restaurant_owner_id", nullable = false)
-    private Restaurant restaurant; // Link to the restaurant owner
+    private Restaurant restaurant;
 
     private String zoneName; // e.g., "Downtown"
     private String pinCode; // e.g., "12345"
