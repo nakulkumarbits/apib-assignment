@@ -1,6 +1,5 @@
 package com.bitspilani.fooddeliverysystem.service;
 
-import com.bitspilani.fooddeliverysystem.dto.OrderItemResponseDTO;
 import com.bitspilani.fooddeliverysystem.dto.OrderRequestDTO;
 import com.bitspilani.fooddeliverysystem.dto.OrderResponseDTO;
 import com.bitspilani.fooddeliverysystem.enums.OrderStatus;
@@ -16,7 +15,7 @@ import com.bitspilani.fooddeliverysystem.repository.OrderDetailRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantRepository;
 import com.bitspilani.fooddeliverysystem.security.JwtUtil;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
-import java.util.ArrayList;
+import com.bitspilani.fooddeliverysystem.utils.OrderConvertor;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.stereotype.Service;
@@ -80,29 +79,7 @@ public class OrderService {
 
     // Save the order
     OrderDetail savedOrder = orderDetailRepository.save(orderDetail);
-
-    // Prepare response DTO
-    List<OrderItemResponseDTO> orderItemResponseDTOs = savedOrder.getOrderItems().stream()
-        .map(orderItem -> {
-          OrderItemResponseDTO itemResponse = new OrderItemResponseDTO();
-          itemResponse.setItemName(orderItem.getMenuItem().getName());
-          itemResponse.setQuantity(orderItem.getQuantity());
-          itemResponse.setPrice(orderItem.getPrice());
-          itemResponse.setTotalPrice(orderItem.getTotalPrice());
-          return itemResponse;
-        }).toList();
-
-    // Return response DTO
-    OrderResponseDTO response = new OrderResponseDTO();
-    response.setOrderId(savedOrder.getId());
-    response.setCustomerName(customer.getFirstName() + " " + customer.getLastName());
-    response.setRestaurantName(restaurant.getRestaurantName());
-    response.setOrderedItems(orderItemResponseDTOs);
-    response.setTotalAmount(savedOrder.getTotalAmount());
-    response.setOrderStatus(savedOrder.getOrderStatus());
-    response.setOrderDate(savedOrder.getCreatedDate());
-
-    return response;
+    return OrderConvertor.toDTO(savedOrder);
   }
 
   public OrderResponseDTO updateOrderStatus(Long orderId, OrderStatus newStatus) {
@@ -112,84 +89,32 @@ public class OrderService {
     orderDetail.setOrderStatus(newStatus);
     orderDetailRepository.save(orderDetail);
 
-    // Prepare response DTO
-    List<OrderItemResponseDTO> orderItemResponseDTOs = orderDetail.getOrderItems().stream()
-        .map(orderItem -> {
-          OrderItemResponseDTO itemResponse = new OrderItemResponseDTO();
-          itemResponse.setItemName(orderItem.getMenuItem().getName());
-          itemResponse.setQuantity(orderItem.getQuantity());
-          itemResponse.setPrice(orderItem.getPrice());
-          itemResponse.setTotalPrice(orderItem.getTotalPrice());
-          return itemResponse;
-        }).toList();
-
     // Return response DTO
-    OrderResponseDTO response = new OrderResponseDTO();
-    response.setOrderId(orderId);
-    response.setCustomerName(orderDetail.getCustomer().getFirstName() + " " + orderDetail.getCustomer().getLastName());
-    response.setRestaurantName(orderDetail.getRestaurant().getRestaurantName());
-    response.setOrderedItems(orderItemResponseDTOs);
-    response.setTotalAmount(orderDetail.getTotalAmount());
-    response.setOrderStatus(newStatus);
-    response.setOrderDate(orderDetail.getCreatedDate());
-    return response;
+    OrderResponseDTO orderResponseDTO = OrderConvertor.toDTO(orderDetail);
+    orderResponseDTO.setOrderStatus(newStatus);
+    return orderResponseDTO;
   }
 
   public OrderResponseDTO getOrder(Long orderId) {
     OrderDetail orderDetail = orderDetailRepository.findById(orderId)
         .orElseThrow(() -> new InvalidRequestException("Order not found"));
-    // Prepare response DTO
-    List<OrderItemResponseDTO> orderItemResponseDTOs = orderDetail.getOrderItems().stream()
-        .map(orderItem -> {
-          OrderItemResponseDTO itemResponse = new OrderItemResponseDTO();
-          itemResponse.setItemName(orderItem.getMenuItem().getName());
-          itemResponse.setQuantity(orderItem.getQuantity());
-          itemResponse.setPrice(orderItem.getPrice());
-          itemResponse.setTotalPrice(orderItem.getTotalPrice());
-          return itemResponse;
-        }).toList();
-
     // Return response DTO
-    OrderResponseDTO response = new OrderResponseDTO();
-    response.setOrderId(orderId);
-    response.setCustomerName(orderDetail.getCustomer().getFirstName() + " " + orderDetail.getCustomer().getLastName());
-    response.setRestaurantName(orderDetail.getRestaurant().getRestaurantName());
-    response.setOrderedItems(orderItemResponseDTOs);
-    response.setTotalAmount(orderDetail.getTotalAmount());
-    response.setOrderStatus(orderDetail.getOrderStatus());
-    response.setOrderDate(orderDetail.getCreatedDate());
-    return response;
+    return OrderConvertor.toDTO(orderDetail);
   }
 
   public List<OrderResponseDTO> getOrders(String token) {
     Long customerIdFromToken = jwtUtil.extractCustomerIdFromToken(token);
     List<OrderDetail> orderDetails = orderDetailRepository.findByCustomerIdOrderByCreatedDateDesc(customerIdFromToken);
 
-    List<OrderResponseDTO> orderResponseDTOS = new ArrayList<>();
-    for (OrderDetail orderDetail : orderDetails) {
+    return OrderConvertor.toDTOList(orderDetails);
+  }
 
-      List<OrderItemResponseDTO> orderItemResponseDTOs = orderDetail.getOrderItems().stream()
-          .map(orderItem -> {
-            OrderItemResponseDTO itemResponse = new OrderItemResponseDTO();
-            itemResponse.setItemName(orderItem.getMenuItem().getName());
-            itemResponse.setQuantity(orderItem.getQuantity());
-            itemResponse.setPrice(orderItem.getPrice());
-            itemResponse.setTotalPrice(orderItem.getTotalPrice());
-            return itemResponse;
-          }).toList();
+  public List<OrderResponseDTO> getIncomingOrders(String token) {
+    Long ownerIdFromToken = jwtUtil.extractOwnerIdFromToken(token);
 
-      OrderResponseDTO response = new OrderResponseDTO();
-      response.setOrderId(orderDetail.getId());
-      response.setCustomerName(
-          orderDetail.getCustomer().getFirstName() + " " + orderDetail.getCustomer().getLastName());
-      response.setRestaurantName(orderDetail.getRestaurant().getRestaurantName());
-      response.setOrderedItems(orderItemResponseDTOs);
-      response.setTotalAmount(orderDetail.getTotalAmount());
-      response.setOrderStatus(orderDetail.getOrderStatus());
-      response.setOrderDate(orderDetail.getCreatedDate());
+    List<OrderDetail> orderDetails = orderDetailRepository.findByRestaurantIdAndOrderStatusIn(
+        ownerIdFromToken, FoodDeliveryConstants.RESTAURANT_ORDER_STATUSES);
 
-      orderResponseDTOS.add(response);
-    }
-    return orderResponseDTOS;
+    return OrderConvertor.toDTOList(orderDetails);
   }
 }

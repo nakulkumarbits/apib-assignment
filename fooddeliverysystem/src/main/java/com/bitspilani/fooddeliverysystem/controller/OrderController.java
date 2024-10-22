@@ -95,4 +95,10 @@ public class OrderController {
   public ResponseEntity<List<OrderResponseDTO>> getOrders(@RequestHeader("Authorization") String token) {
     return ResponseEntity.ok(orderService.getOrders(token));
   }
+
+  @PreAuthorize("hasRole('RESTAURANT_OWNER')")
+  @GetMapping("/incoming")
+  public ResponseEntity<List<OrderResponseDTO>> getIncomingOrders(@RequestHeader("Authorization") String token) {
+    return ResponseEntity.ok(orderService.getIncomingOrders(token));
+  }
 }
