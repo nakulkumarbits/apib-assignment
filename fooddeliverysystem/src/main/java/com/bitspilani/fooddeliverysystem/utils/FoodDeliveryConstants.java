@@ -25,5 +25,10 @@ public interface FoodDeliveryConstants {
 
   List<OrderStatus> DELIVERY_ORDER_STATUSES = List.of(OrderStatus.READY_FOR_DELIVERY, OrderStatus.OUT_FOR_DELIVERY);
 
+  List<OrderStatus> RESTAURANT_ALLOWED_ORDER_STATUSES = List.of(OrderStatus.AWAITING_CONFIRMATION, OrderStatus.REJECTED,
+      OrderStatus.READY_FOR_DELIVERY, OrderStatus.ACCEPTED, OrderStatus.IN_PREPARATION);
+
+  List<OrderStatus> DELIVERY_ALLOWED_ORDER_STATUSES = List.of(OrderStatus.OUT_FOR_DELIVERY, OrderStatus.DELIVERED, OrderStatus.CANCELLED);
+
 
 }

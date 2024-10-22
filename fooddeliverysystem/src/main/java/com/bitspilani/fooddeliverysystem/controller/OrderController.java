@@ -79,8 +79,8 @@ public class OrderController {
   @PutMapping("/{orderId}/status")
   @PreAuthorize("hasAnyRole('RESTAURANT_OWNER', 'ADMIN')")
   public ResponseEntity<OrderResponseDTO> updateOrderStatus(@PathVariable Long orderId,
-      @RequestParam OrderStatus newStatus) {
-    return ResponseEntity.ok(orderService.updateOrderStatus(orderId, newStatus));
+      @RequestParam OrderStatus newStatus, @RequestHeader("Authorization") String token) {
+    return ResponseEntity.ok(orderService.updateOrderStatus(orderId, newStatus, token));
   }
 
   @Operation(summary = "Fetches all orders placed by the customer from the Food Delivery System.")
