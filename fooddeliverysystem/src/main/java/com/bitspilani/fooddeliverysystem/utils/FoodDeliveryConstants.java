@@ -9,6 +9,8 @@ public interface FoodDeliveryConstants {
     String MENU_ITEM_MISMATCH = "Menu item mismatch in request and body.";
     String USER_NOT_PRESENT = "User not found";
     String MENU_ITEM_NOT_PRESENT = "Menu item not found";
+    String CUSTOMER_ID_INCORRECT = "Customer ID incorrect";
+    String RESTAURANT_ID_INCORRECT = "Restaurant ID incorrect";
 
     String ROLE_ADMIN = "ROLE_ADMIN";
     String ROLE_CUSTOMER = "ROLE_CUSTOMER";

@@ -64,4 +64,12 @@ public class CustomerService {
         customer.setDeliveryAddress(AddressConvertor.toAddress(customerDTO.getAddress()));
         customer.getUser().setPassword(passwordEncoder.encode(customerDTO.getPassword()));
     }
+
+    public Customer getCustomerByUsername(String username) {
+        User user = userRepository.findByUsernameAndRole(username, UserRole.CUSTOMER);
+        if (user != null) {
+            return customerRepository.findByUser(user);
+        }
+        return null;
+    }
 }

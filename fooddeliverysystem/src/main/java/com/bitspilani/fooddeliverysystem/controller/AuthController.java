@@ -8,9 +8,11 @@ import com.bitspilani.fooddeliverysystem.dto.DeliveryPersonnelDTO;
 import com.bitspilani.fooddeliverysystem.dto.RestaurantDTO;
 import com.bitspilani.fooddeliverysystem.dto.ValidationErrorResponse;
 import com.bitspilani.fooddeliverysystem.model.BlacklistedToken;
+import com.bitspilani.fooddeliverysystem.model.Customer;
 import com.bitspilani.fooddeliverysystem.model.Restaurant;
 import com.bitspilani.fooddeliverysystem.repository.BlacklistedTokenRepository;
 import com.bitspilani.fooddeliverysystem.security.JwtUtil;
+import com.bitspilani.fooddeliverysystem.service.CustomerService;
 import com.bitspilani.fooddeliverysystem.service.RestaurantService;
 import com.bitspilani.fooddeliverysystem.service.UserService;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
@@ -57,6 +59,8 @@ public class AuthController {
 
     @Autowired
     private RestaurantService restaurantService;
+  @Autowired
+  private CustomerService customerService;
 
     @Operation(summary = "Register a customer to the Food Delivery System.")
     @ApiResponses(value = {
@@ -144,9 +148,14 @@ public class AuthController {
                 Restaurant restaurant = restaurantService.getRestaurantByUsername(authRequest.getUsername());
                 ownerId = restaurant.getId();
             }
+            Long customerId = null;
+            if (roles.contains(FoodDeliveryConstants.ROLE_CUSTOMER)) {
+              Customer customer = customerService.getCustomerByUsername(authRequest.getUsername());
+              customerId =  customer.getId();
+            }
 
             // Generate JWT token
-            String token = jwtUtil.generateToken(authRequest.getUsername(), roles, ownerId);
+            String token = jwtUtil.generateToken(authRequest.getUsername(), roles, ownerId, customerId);
 
             return ResponseEntity.ok(new AuthResponse(token));
         } catch (Exception e) {
