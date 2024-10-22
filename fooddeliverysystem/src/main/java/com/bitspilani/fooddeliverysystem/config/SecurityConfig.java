@@ -5,10 +5,13 @@ import com.bitspilani.fooddeliverysystem.security.JwtAuthenticationEntryPoint;
 import com.bitspilani.fooddeliverysystem.security.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -24,7 +27,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true) // Enable method-level security
+@EnableMethodSecurity // Enable method-level security
 public class SecurityConfig {
 
     @Autowired
@@ -57,7 +60,7 @@ public class SecurityConfig {
                     .requestMatchers("/swagger-resources/**", "/swagger-resources", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                     .requestMatchers("/users/customers/**").hasAnyRole(UserRole.CUSTOMER.name(), UserRole.ADMIN.name())
                     .requestMatchers("/restaurants/**").hasAnyRole(UserRole.CUSTOMER.name(), UserRole.ADMIN.name())
-                    .requestMatchers("/orders/**").hasAnyRole(UserRole.CUSTOMER.name())
+//                    .requestMatchers("/orders/**").hasAnyRole(UserRole.CUSTOMER.name())
                     .requestMatchers("/users/restaurants/**").hasAnyRole(UserRole.RESTAURANT_OWNER.name(), UserRole.ADMIN.name())
                     .requestMatchers("/menu/**").hasAnyRole(UserRole.RESTAURANT_OWNER.name())
                     .requestMatchers("/users/delivery/**").hasAnyRole(UserRole.DELIVERY_PERSONNEL.name(), UserRole.ADMIN.name())

@@ -103,4 +103,60 @@ public class OrderService {
 
     return response;
   }
+
+  public OrderResponseDTO updateOrderStatus(Long orderId, OrderStatus newStatus) {
+    OrderDetail orderDetail = orderDetailRepository.findById(orderId)
+        .orElseThrow(() -> new InvalidRequestException("Order not found"));
+
+    orderDetail.setOrderStatus(newStatus);
+    orderDetailRepository.save(orderDetail);
+
+    // Prepare response DTO
+    List<OrderItemResponseDTO> orderItemResponseDTOs = orderDetail.getOrderItems().stream()
+        .map(orderItem -> {
+          OrderItemResponseDTO itemResponse = new OrderItemResponseDTO();
+          itemResponse.setItemName(orderItem.getMenuItem().getName());
+          itemResponse.setQuantity(orderItem.getQuantity());
+          itemResponse.setPrice(orderItem.getPrice());
+          itemResponse.setTotalPrice(orderItem.getTotalPrice());
+          return itemResponse;
+        }).toList();
+
+    // Return response DTO
+    OrderResponseDTO response = new OrderResponseDTO();
+    response.setOrderId(orderId);
+    response.setCustomerName(orderDetail.getCustomer().getFirstName() + " " + orderDetail.getCustomer().getLastName());
+    response.setRestaurantName(orderDetail.getRestaurant().getRestaurantName());
+    response.setOrderedItems(orderItemResponseDTOs);
+    response.setTotalAmount(orderDetail.getTotalAmount());
+    response.setOrderStatus(newStatus);
+    response.setOrderDate(orderDetail.getCreatedDate());
+    return response;
+  }
+
+  public OrderResponseDTO getOrder(Long orderId) {
+    OrderDetail orderDetail = orderDetailRepository.findById(orderId)
+        .orElseThrow(() -> new InvalidRequestException("Order not found"));
+    // Prepare response DTO
+    List<OrderItemResponseDTO> orderItemResponseDTOs = orderDetail.getOrderItems().stream()
+        .map(orderItem -> {
+          OrderItemResponseDTO itemResponse = new OrderItemResponseDTO();
+          itemResponse.setItemName(orderItem.getMenuItem().getName());
+          itemResponse.setQuantity(orderItem.getQuantity());
+          itemResponse.setPrice(orderItem.getPrice());
+          itemResponse.setTotalPrice(orderItem.getTotalPrice());
+          return itemResponse;
+        }).toList();
+
+    // Return response DTO
+    OrderResponseDTO response = new OrderResponseDTO();
+    response.setOrderId(orderId);
+    response.setCustomerName(orderDetail.getCustomer().getFirstName() + " " + orderDetail.getCustomer().getLastName());
+    response.setRestaurantName(orderDetail.getRestaurant().getRestaurantName());
+    response.setOrderedItems(orderItemResponseDTOs);
+    response.setTotalAmount(orderDetail.getTotalAmount());
+    response.setOrderStatus(orderDetail.getOrderStatus());
+    response.setOrderDate(orderDetail.getCreatedDate());
+    return response;
+  }
 }
