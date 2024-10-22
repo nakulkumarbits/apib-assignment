@@ -16,6 +16,7 @@ import com.bitspilani.fooddeliverysystem.repository.OrderDetailRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantRepository;
 import com.bitspilani.fooddeliverysystem.security.JwtUtil;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.stereotype.Service;
@@ -158,5 +159,37 @@ public class OrderService {
     response.setOrderStatus(orderDetail.getOrderStatus());
     response.setOrderDate(orderDetail.getCreatedDate());
     return response;
+  }
+
+  public List<OrderResponseDTO> getOrders(String token) {
+    Long customerIdFromToken = jwtUtil.extractCustomerIdFromToken(token);
+    List<OrderDetail> orderDetails = orderDetailRepository.findByCustomerIdOrderByCreatedDateDesc(customerIdFromToken);
+
+    List<OrderResponseDTO> orderResponseDTOS = new ArrayList<>();
+    for (OrderDetail orderDetail : orderDetails) {
+
+      List<OrderItemResponseDTO> orderItemResponseDTOs = orderDetail.getOrderItems().stream()
+          .map(orderItem -> {
+            OrderItemResponseDTO itemResponse = new OrderItemResponseDTO();
+            itemResponse.setItemName(orderItem.getMenuItem().getName());
+            itemResponse.setQuantity(orderItem.getQuantity());
+            itemResponse.setPrice(orderItem.getPrice());
+            itemResponse.setTotalPrice(orderItem.getTotalPrice());
+            return itemResponse;
+          }).toList();
+
+      OrderResponseDTO response = new OrderResponseDTO();
+      response.setOrderId(orderDetail.getId());
+      response.setCustomerName(
+          orderDetail.getCustomer().getFirstName() + " " + orderDetail.getCustomer().getLastName());
+      response.setRestaurantName(orderDetail.getRestaurant().getRestaurantName());
+      response.setOrderedItems(orderItemResponseDTOs);
+      response.setTotalAmount(orderDetail.getTotalAmount());
+      response.setOrderStatus(orderDetail.getOrderStatus());
+      response.setOrderDate(orderDetail.getCreatedDate());
+
+      orderResponseDTOS.add(response);
+    }
+    return orderResponseDTOS;
   }
 }

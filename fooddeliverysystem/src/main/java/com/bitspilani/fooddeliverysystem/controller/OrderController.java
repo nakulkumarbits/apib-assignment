@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -79,5 +80,19 @@ public class OrderController {
   public ResponseEntity<OrderResponseDTO> updateOrderStatus(@PathVariable Long orderId,
       @RequestParam OrderStatus newStatus) {
     return ResponseEntity.ok(orderService.updateOrderStatus(orderId, newStatus));
+  }
+
+  @Operation(summary = "Fetches all orders placed by the customer from the Food Delivery System.")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "List of orders were successfully retrieved.", content =
+      @Content(mediaType = "application/json", schema = @Schema(implementation = OrderResponseDTO.class))),
+      @ApiResponse(responseCode = "401", description = "Unauthorized"),
+      @ApiResponse(responseCode = "400", description = "See the API spec for further details.",
+          content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))),
+  })
+  @PreAuthorize("hasAnyRole('CUSTOMER','ADMIN')")
+  @GetMapping
+  public ResponseEntity<List<OrderResponseDTO>> getOrders(@RequestHeader("Authorization") String token) {
+    return ResponseEntity.ok(orderService.getOrders(token));
   }
 }
