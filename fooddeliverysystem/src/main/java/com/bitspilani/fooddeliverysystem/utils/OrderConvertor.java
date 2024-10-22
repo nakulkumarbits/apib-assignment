@@ -22,6 +22,7 @@ public class OrderConvertor {
     response.setOrderId(orderDetail.getId());
     response.setCustomerName(
         orderDetail.getCustomer().getFirstName() + " " + orderDetail.getCustomer().getLastName());
+    response.setCustomerMobileNo(orderDetail.getCustomer().getMobileNo());
     response.setRestaurantName(orderDetail.getRestaurant().getRestaurantName());
     response.setOrderedItems(orderItemResponseDTOs);
     response.setTotalAmount(orderDetail.getTotalAmount());
@@ -30,7 +31,7 @@ public class OrderConvertor {
     return response;
   }
 
-  private static List<OrderItemResponseDTO> getOrderItemResponseDTOs(OrderDetail orderDetail) {
+  public static List<OrderItemResponseDTO> getOrderItemResponseDTOs(OrderDetail orderDetail) {
     return orderDetail.getOrderItems().stream()
         .map(orderItem -> {
           OrderItemResponseDTO itemResponse = new OrderItemResponseDTO();

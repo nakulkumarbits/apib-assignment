@@ -1,5 +1,6 @@
 package com.bitspilani.fooddeliverysystem.controller;
 
+import com.bitspilani.fooddeliverysystem.dto.DeliveryResponseDTO;
 import com.bitspilani.fooddeliverysystem.dto.OrderRequestDTO;
 import com.bitspilani.fooddeliverysystem.dto.OrderResponseDTO;
 import com.bitspilani.fooddeliverysystem.dto.ValidationErrorResponse;
@@ -96,9 +97,27 @@ public class OrderController {
     return ResponseEntity.ok(orderService.getOrders(token));
   }
 
+  @Operation(summary = "Fetches all incoming orders placed by the customer for the restaurant on the Food Delivery System.")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "List of orders successfully placed were retrieved for the restaurant.", content =
+      @Content(mediaType = "application/json", schema = @Schema(implementation = OrderResponseDTO.class))),
+      @ApiResponse(responseCode = "401", description = "Unauthorized")
+  })
   @PreAuthorize("hasRole('RESTAURANT_OWNER')")
   @GetMapping("/incoming")
   public ResponseEntity<List<OrderResponseDTO>> getIncomingOrders(@RequestHeader("Authorization") String token) {
     return ResponseEntity.ok(orderService.getIncomingOrders(token));
+  }
+
+  @Operation(summary = "Fetches all orders available to be picked up for delivery or out for delivery.")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "List of orders available to be picked up for delivery or out for delivery.", content =
+      @Content(mediaType = "application/json", schema = @Schema(implementation = DeliveryResponseDTO.class))),
+      @ApiResponse(responseCode = "401", description = "Unauthorized")
+  })
+  @PreAuthorize("hasAnyRole('DELIVERY_PERSONNEL','ADMIN')")
+  @GetMapping("/deliverables")
+  public ResponseEntity<List<DeliveryResponseDTO>> getDeliverables(@RequestHeader("Authorization") String token) {
+    return ResponseEntity.ok(orderService.getDeliverables(token));
   }
 }

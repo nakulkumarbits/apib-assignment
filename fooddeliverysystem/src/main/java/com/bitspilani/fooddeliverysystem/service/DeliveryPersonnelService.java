@@ -61,4 +61,12 @@ public class DeliveryPersonnelService {
         deliveryPersonnel.setVehicleType(deliveryPersonnelDTO.getVehicleType());
         deliveryPersonnel.getUser().setPassword(passwordEncoder.encode(deliveryPersonnelDTO.getPassword()));
     }
+
+    public DeliveryPersonnel getDeliveryPersonnelByUsername(String username) {
+        User user = userRepository.findByUsername(username);
+        if (user != null) {
+            return deliveryPersonnelRepository.findByUser(user);
+        }
+        return null;
+    }
 }

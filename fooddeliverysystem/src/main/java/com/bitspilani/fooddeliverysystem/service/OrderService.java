@@ -1,5 +1,6 @@
 package com.bitspilani.fooddeliverysystem.service;
 
+import com.bitspilani.fooddeliverysystem.dto.DeliveryResponseDTO;
 import com.bitspilani.fooddeliverysystem.dto.OrderRequestDTO;
 import com.bitspilani.fooddeliverysystem.dto.OrderResponseDTO;
 import com.bitspilani.fooddeliverysystem.enums.OrderStatus;
@@ -14,6 +15,7 @@ import com.bitspilani.fooddeliverysystem.repository.MenuItemRepository;
 import com.bitspilani.fooddeliverysystem.repository.OrderDetailRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantRepository;
 import com.bitspilani.fooddeliverysystem.security.JwtUtil;
+import com.bitspilani.fooddeliverysystem.utils.DeliveryResponseConvertor;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import com.bitspilani.fooddeliverysystem.utils.OrderConvertor;
 import java.util.List;
@@ -116,5 +118,12 @@ public class OrderService {
         ownerIdFromToken, FoodDeliveryConstants.RESTAURANT_ORDER_STATUSES);
 
     return OrderConvertor.toDTOList(orderDetails);
+  }
+
+  public List<DeliveryResponseDTO> getDeliverables(String token) {
+    List<OrderDetail> orderDetails = orderDetailRepository.findByOrderStatusIn(
+        FoodDeliveryConstants.DELIVERY_ORDER_STATUSES);
+
+    return DeliveryResponseConvertor.toDTOList(orderDetails);
   }
 }

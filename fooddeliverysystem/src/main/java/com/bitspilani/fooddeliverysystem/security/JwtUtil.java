@@ -15,13 +15,17 @@ public class JwtUtil {
     public static final int EXPIRATION_TIME = 1000 * 60 * 60 * 10; // 10 hours
     private final String SECRET_KEY = "IFNN1KagqlbDNeOW4Jys1CrcCp/OapVND+MMF605sng="; // Use a strong secret key
 
-    public String generateToken(String username, List<String> roles, Long ownerId, Long customerId) {
+    public String generateToken(String username, List<String> roles, Long ownerId, Long customerId,
+        Long deliveryPersonnelId) {
         Map<String, Object> claims = new HashMap<>();
         if (ownerId != null) {
             claims.put("ownerId", ownerId);
         }
         if (customerId != null) {
             claims.put("customerId", customerId);
+        }
+        if (deliveryPersonnelId != null) {
+            claims.put("deliveryPersonnelId", deliveryPersonnelId);
         }
         claims.put("roles", roles);
         return createToken(claims, username);
@@ -62,6 +66,15 @@ public class JwtUtil {
     public Long extractCustomerIdFromToken(String token) {
         Claims claims = extractAllClaims(token.substring(7));
         return ((Number) claims.get("customerId")).longValue();
+    }
+
+    public Long extractDeliveryPersonnelIdFromToken(String token) {
+        Claims claims = extractAllClaims(token.substring(7));
+        return getClaimByKey(claims, "deliveryPersonnelId");
+    }
+
+    private Long getClaimByKey(Claims claims, String key) {
+        return ((Number) claims.get(key)).longValue();
     }
 
     private boolean isTokenExpired(String token) {
