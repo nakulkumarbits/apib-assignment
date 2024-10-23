@@ -15,6 +15,15 @@ public interface FoodDeliveryConstants {
   String CUSTOMER_ID_INCORRECT = "Customer ID incorrect";
   String RESTAURANT_ID_INCORRECT = "Restaurant ID incorrect";
 
+  String MOST_POPULAR_RESTAURANTS = "Most Popular Restaurants";
+  String RESTAURANT_ORDERS = "Restaurant Orders";
+  String AVERAGE_DELIVERY_TIME = "Average Delivery Time";
+  String AVERAGE_DELIVERY_TIME_MINUTES = "Average Delivery Time (minutes)";
+  String DAILY = "daily";
+  String WEEKLY = "weekly";
+  String MONTHLY = "monthly";
+  String ORDER_TRENDS = "Order Trends";
+
   String ROLE_ADMIN = "ROLE_ADMIN";
   String ROLE_CUSTOMER = "ROLE_CUSTOMER";
   String ROLE_RESTAURANT_OWNER = "ROLE_RESTAURANT_OWNER";
