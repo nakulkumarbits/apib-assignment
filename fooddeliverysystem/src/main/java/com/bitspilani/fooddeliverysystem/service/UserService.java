@@ -10,18 +10,21 @@ import com.bitspilani.fooddeliverysystem.model.DeliveryPersonnel;
 import com.bitspilani.fooddeliverysystem.model.RestaurantDeliveryZone;
 import com.bitspilani.fooddeliverysystem.model.RestaurantOpeningDetail;
 import com.bitspilani.fooddeliverysystem.model.Restaurant;
+import com.bitspilani.fooddeliverysystem.model.User;
 import com.bitspilani.fooddeliverysystem.repository.AdministratorRepository;
 import com.bitspilani.fooddeliverysystem.repository.CustomerRepository;
 import com.bitspilani.fooddeliverysystem.repository.DeliveryPersonnelRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantDeliveryZoneRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantOpeningDetailRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantRepository;
+import com.bitspilani.fooddeliverysystem.repository.UserRepository;
 import com.bitspilani.fooddeliverysystem.utils.AdminConvertor;
 import com.bitspilani.fooddeliverysystem.utils.CustomerConvertor;
 import com.bitspilani.fooddeliverysystem.utils.DeliveryPersonnelConvertor;
 import com.bitspilani.fooddeliverysystem.utils.DeliveryZoneConvertor;
 import com.bitspilani.fooddeliverysystem.utils.OpeningHourConvertor;
 import com.bitspilani.fooddeliverysystem.utils.RestaurantConvertor;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,26 +34,28 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserService {
 
-    @Autowired
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
+    private final RestaurantRepository restaurantRepository;
+    private final DeliveryPersonnelRepository deliveryPersonnelRepository;
+    private final AdministratorRepository administratorRepository;
+    private final RestaurantOpeningDetailRepository restaurantOpeningDetailRepository;
+    private final RestaurantDeliveryZoneRepository restaurantDeliveryZoneRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private RestaurantRepository restaurantRepository;
-
-    @Autowired
-    private DeliveryPersonnelRepository deliveryPersonnelRepository;
-
-    @Autowired
-    private AdministratorRepository administratorRepository;
-
-    @Autowired
-    private RestaurantOpeningDetailRepository restaurantOpeningDetailRepository;
-
-    @Autowired
-    private RestaurantDeliveryZoneRepository restaurantDeliveryZoneRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    public UserService(CustomerRepository customerRepository, RestaurantRepository restaurantRepository,
+        DeliveryPersonnelRepository deliveryPersonnelRepository, AdministratorRepository administratorRepository,
+        RestaurantOpeningDetailRepository restaurantOpeningDetailRepository,
+        RestaurantDeliveryZoneRepository restaurantDeliveryZoneRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.customerRepository = customerRepository;
+        this.restaurantRepository = restaurantRepository;
+        this.deliveryPersonnelRepository = deliveryPersonnelRepository;
+        this.administratorRepository = administratorRepository;
+        this.restaurantOpeningDetailRepository = restaurantOpeningDetailRepository;
+        this.restaurantDeliveryZoneRepository = restaurantDeliveryZoneRepository;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public CustomerDTO registerCustomer(CustomerDTO customerDTO) {
         Customer customer = CustomerConvertor.toCustomer(customerDTO);
@@ -93,5 +98,10 @@ public class UserService {
         administrator.getUser().setPassword(passwordEncoder.encode(administrator.getUser().getPassword()));
         Administrator savedAdmin = administratorRepository.save(administrator);
         return AdminConvertor.toAdminDTO(savedAdmin);
+    }
+
+    public List<User> findActiveUsersWithinLastMinutes(int minutes) {
+        LocalDateTime timeThreshold = LocalDateTime.now().minusMinutes(minutes);
+        return userRepository.findActiveUsersWithinLastMinutes(timeThreshold);
     }
 }

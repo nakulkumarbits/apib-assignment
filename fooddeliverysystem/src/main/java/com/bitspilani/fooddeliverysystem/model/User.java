@@ -38,6 +38,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserStatus status = UserStatus.ACTIVATED;
 
+    private LocalDateTime lastLogin;
+
     @CreatedDate
     private LocalDateTime createdDate;
     @LastModifiedDate

@@ -13,6 +13,7 @@ import com.bitspilani.fooddeliverysystem.model.DeliveryPersonnel;
 import com.bitspilani.fooddeliverysystem.model.Restaurant;
 import com.bitspilani.fooddeliverysystem.repository.BlacklistedTokenRepository;
 import com.bitspilani.fooddeliverysystem.security.JwtUtil;
+import com.bitspilani.fooddeliverysystem.service.CustomUserDetailsService;
 import com.bitspilani.fooddeliverysystem.service.CustomerService;
 import com.bitspilani.fooddeliverysystem.service.DeliveryPersonnelService;
 import com.bitspilani.fooddeliverysystem.service.RestaurantService;
@@ -53,18 +54,21 @@ public class AuthController {
     private final BlacklistedTokenRepository blacklistedTokenRepository;
     private final RestaurantService restaurantService;
     private final CustomerService customerService;
-  private final DeliveryPersonnelService deliveryPersonnelService;
+    private final DeliveryPersonnelService deliveryPersonnelService;
+    private final CustomUserDetailsService customUserDetailsService;
 
   public AuthController(AuthenticationManager authenticationManager, UserService userService, JwtUtil jwtUtil,
         BlacklistedTokenRepository blacklistedTokenRepository, RestaurantService restaurantService,
-        CustomerService customerService, DeliveryPersonnelService deliveryPersonnelService) {
+        CustomerService customerService, DeliveryPersonnelService deliveryPersonnelService,
+      CustomUserDetailsService customUserDetailsService) {
       this.authenticationManager = authenticationManager;
       this.userService = userService;
       this.jwtUtil = jwtUtil;
       this.blacklistedTokenRepository = blacklistedTokenRepository;
       this.restaurantService = restaurantService;
       this.customerService = customerService;
-    this.deliveryPersonnelService = deliveryPersonnelService;
+      this.deliveryPersonnelService = deliveryPersonnelService;
+      this.customUserDetailsService = customUserDetailsService;
   }
 
   @Operation(summary = "Register a customer to the Food Delivery System.")
@@ -160,11 +164,12 @@ public class AuthController {
             }
 
             Long deliveryPersonnelId = null;
-          if (roles.contains(FoodDeliveryConstants.ROLE_DELIVERY_PERSONNEL)) {
-            DeliveryPersonnel deliveryPersonnel = deliveryPersonnelService.getDeliveryPersonnelByUsername(
-                authRequest.getUsername());
-            deliveryPersonnelId = deliveryPersonnel.getId();
-          }
+            if (roles.contains(FoodDeliveryConstants.ROLE_DELIVERY_PERSONNEL)) {
+              DeliveryPersonnel deliveryPersonnel = deliveryPersonnelService.getDeliveryPersonnelByUsername(
+                  authRequest.getUsername());
+              deliveryPersonnelId = deliveryPersonnel.getId();
+            }
+            customUserDetailsService.updateLastLogin(authRequest.getUsername());
 
             // Generate JWT token
             String token = jwtUtil.generateToken(authRequest.getUsername(), roles, ownerId, customerId, deliveryPersonnelId);
