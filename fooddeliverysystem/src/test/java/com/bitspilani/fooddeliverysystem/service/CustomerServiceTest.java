@@ -1,6 +1,8 @@
 package com.bitspilani.fooddeliverysystem.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyString;
@@ -94,6 +96,21 @@ class CustomerServiceTest {
         UserNotFoundException exception = assertThrows(UserNotFoundException.class,
             () -> customerService.updateCustomer(customerDTO, "username"));
         assertEquals(FoodDeliveryConstants.CUSTOMER_NOT_PRESENT, exception.getMessage());
+    }
+
+    @Test
+    void testGetCustomerByUsername() {
+        when(userRepository.findByUsernameAndRole(anyString(), any(UserRole.class))).thenReturn(new User());
+        when(customerRepository.findByUser(any(User.class))).thenReturn(getCustomer());
+        Customer customer = customerService.getCustomerByUsername("username");
+        assertNotNull(customer);
+    }
+
+    @Test
+    void testGetCustomerByUsernameCanReturnNull() {
+        when(userRepository.findByUsernameAndRole(anyString(), any(UserRole.class))).thenReturn(null);
+        Customer customer = customerService.getCustomerByUsername("username");
+        assertNull(customer);
     }
 
     private Customer getCustomer() {

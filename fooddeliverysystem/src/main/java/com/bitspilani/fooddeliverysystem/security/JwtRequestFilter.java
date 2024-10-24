@@ -1,6 +1,7 @@
 package com.bitspilani.fooddeliverysystem.security;
 
 import com.bitspilani.fooddeliverysystem.repository.BlacklistedTokenRepository;
+import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -38,18 +39,18 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             return;
         }
 
-        final String authorizationHeader = request.getHeader("Authorization");
+        final String authorizationHeader = request.getHeader(FoodDeliveryConstants.AUTHORIZATION);
 
         String username = null;
         String jwt = null;
 
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+        if (authorizationHeader != null && authorizationHeader.startsWith(FoodDeliveryConstants.BEARER)) {
             jwt = authorizationHeader.substring(7);
             username = jwtUtil.extractUsername(jwt);
 
             // Check if the token is blacklisted
             if (blacklistedTokenRepository.existsByToken(jwt)) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token has been logged out");
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, FoodDeliveryConstants.TOKEN_LOGOUT_MSG);
                 return;
             }
         }

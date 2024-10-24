@@ -9,6 +9,7 @@ import com.bitspilani.fooddeliverysystem.exceptions.UserNotFoundException;
 import com.bitspilani.fooddeliverysystem.model.User;
 import com.bitspilani.fooddeliverysystem.repository.AdministratorRepository;
 import com.bitspilani.fooddeliverysystem.repository.UserRepository;
+import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +17,14 @@ import org.springframework.stereotype.Service;
 public class AdministratorService {
 
     private final RestaurantService restaurantService;
-    private AdministratorRepository administratorRepository;
-    private CustomerService customerService;
-    private DeliveryPersonnelService deliveryPersonnelService;
-    private UserRepository userRepository;
+    private final CustomerService customerService;
+    private final DeliveryPersonnelService deliveryPersonnelService;
+    private final UserRepository userRepository;
 
     AdministratorService(AdministratorRepository administratorRepository,
         CustomerService customerService,
         DeliveryPersonnelService deliveryPersonnelService,
         UserRepository userRepository, RestaurantService restaurantService) {
-        this.administratorRepository = administratorRepository;
         this.customerService = customerService;
         this.deliveryPersonnelService = deliveryPersonnelService;
         this.userRepository = userRepository;
@@ -53,6 +52,6 @@ public class AdministratorService {
             deactivateUserDTO.setDeactivated(true);
             return deactivateUserDTO;
         }
-        throw new UserNotFoundException("User not found.");
+        throw new UserNotFoundException(FoodDeliveryConstants.USER_NOT_PRESENT);
     }
 }

@@ -2,6 +2,7 @@ package com.bitspilani.fooddeliverysystem.service;
 
 import com.bitspilani.fooddeliverysystem.dto.ReportDTO;
 import com.bitspilani.fooddeliverysystem.enums.OrderStatus;
+import com.bitspilani.fooddeliverysystem.exceptions.InvalidRequestException;
 import com.bitspilani.fooddeliverysystem.model.OrderDetail;
 import com.bitspilani.fooddeliverysystem.repository.OrderDetailRepository;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
@@ -78,7 +79,7 @@ public class ReportService {
         startDate = LocalDateTime.now().minusMonths(1);
         break;
       default:
-        throw new IllegalArgumentException("Invalid period: " + period);
+        throw new InvalidRequestException(FoodDeliveryConstants.PERIOD_ERROR + period);
     }
 
     List<OrderDetail> orderDetails = orderDetailRepository.findByCreatedDateAfter(startDate);

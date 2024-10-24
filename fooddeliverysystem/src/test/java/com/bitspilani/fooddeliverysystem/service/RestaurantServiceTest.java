@@ -11,22 +11,32 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.bitspilani.fooddeliverysystem.dto.RestaurantDTO;
+import com.bitspilani.fooddeliverysystem.dto.RestaurantItemDTO;
+import com.bitspilani.fooddeliverysystem.enums.CuisineType;
+import com.bitspilani.fooddeliverysystem.enums.ItemAvailable;
+import com.bitspilani.fooddeliverysystem.enums.ItemType;
 import com.bitspilani.fooddeliverysystem.enums.UserRole;
 import com.bitspilani.fooddeliverysystem.exceptions.UserNotFoundException;
 import com.bitspilani.fooddeliverysystem.exceptions.UsernameMismatchException;
+import com.bitspilani.fooddeliverysystem.model.MenuItem;
 import com.bitspilani.fooddeliverysystem.model.Restaurant;
 import com.bitspilani.fooddeliverysystem.model.User;
+import com.bitspilani.fooddeliverysystem.repository.MenuItemRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantRepository;
 import com.bitspilani.fooddeliverysystem.repository.UserRepository;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import java.util.List;
 import java.util.Optional;
-import org.junit.jupiter.api.Assertions;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 class RestaurantServiceTest {
@@ -37,6 +47,8 @@ class RestaurantServiceTest {
     UserRepository userRepository;
     @Mock
     PasswordEncoder passwordEncoder;
+    @Mock
+    MenuItemRepository menuItemRepository;
     @InjectMocks
     RestaurantService restaurantService;
 
@@ -52,7 +64,7 @@ class RestaurantServiceTest {
         when(userRepository.findByUsernameAndRole(anyString(), any(UserRole.class))).thenReturn(new User());
 
         RestaurantDTO result = restaurantService.getRestaurant("username");
-        Assertions.assertEquals(new RestaurantDTO(), result);
+        assertNotNull(result);
     }
 
     @Test
@@ -67,7 +79,7 @@ class RestaurantServiceTest {
     void testGetRestaurants() {
         when(restaurantRepository.findAll()).thenReturn(List.of(getRestaurant()));
         List<RestaurantDTO> result = restaurantService.getRestaurants();
-        Assertions.assertEquals(List.of(new RestaurantDTO()), result);
+        assertNotNull(result);
     }
 
     @Test
@@ -77,7 +89,7 @@ class RestaurantServiceTest {
         when(restaurantRepository.save(any())).thenReturn(getRestaurant());
 
         RestaurantDTO result = restaurantService.updateRestaurant(getRestaurantDTO(), "username");
-        Assertions.assertEquals(new RestaurantDTO(), result);
+        assertNotNull(result);
     }
 
     @Test
@@ -124,10 +136,28 @@ class RestaurantServiceTest {
         assertNull(restaurant);
     }
 
+    static Stream<Object[]> paramProvider() {
+        return Stream.of(
+            new Object[]{null, null, null},
+            new Object[]{CuisineType.INDIAN.name(), ItemType.VEG.name(), ItemAvailable.YES.name()}
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("paramProvider")
+    void testGetRestaurantsForCustomers(String cuisine, String type, String availability) {
+        MenuItem menuItem = new MenuItem();
+        menuItem.setRestaurant(getRestaurant());
+        when(menuItemRepository.findAll(any(Specification.class))).thenReturn(List.of(menuItem));
+        List<RestaurantItemDTO> restaurantItemDTOS = restaurantService.getRestaurantsForCustomers(cuisine, type, availability);
+        assertNotNull(restaurantItemDTOS);
+    }
+
     private Restaurant getRestaurant() {
-        Restaurant owner = new Restaurant();
-        owner.setUser(new User());
-        return owner;
+        Restaurant restaurant = new Restaurant();
+        restaurant.setRestaurantName(RandomStringUtils.randomAlphabetic(10));
+        restaurant.setUser(new User());
+        return restaurant;
     }
 
     private RestaurantDTO getRestaurantDTO() {

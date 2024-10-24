@@ -15,12 +15,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class MonitoringService {
 
-  private final UserRepository userRepository;
   private final UserService userService;
   private final OrderDetailRepository orderDetailRepository;
 
   public MonitoringService(UserRepository userRepository, UserService userService, OrderDetailRepository orderDetailRepository) {
-    this.userRepository = userRepository;
     this.userService = userService;
     this.orderDetailRepository = orderDetailRepository;
   }

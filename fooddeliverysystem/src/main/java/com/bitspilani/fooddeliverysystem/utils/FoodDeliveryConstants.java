@@ -14,6 +14,11 @@ public interface FoodDeliveryConstants {
   String MENU_ITEM_NOT_PRESENT = "Menu item not found";
   String CUSTOMER_ID_INCORRECT = "Customer ID incorrect";
   String RESTAURANT_ID_INCORRECT = "Restaurant ID incorrect";
+  String ORDER_NOT_FOUND = "Order not found";
+  String ORDER_SAME_STATUS_ERROR = "Order status cannot be changed to same status";
+  String RESTAURANT_STATUS_ERROR = "Restaurant not allowed to update status to : ";
+  String DELIVERY_STATUS_ERROR = "Delivery personnel not allowed to update status to : ";
+  String PERIOD_ERROR = "Invalid period: ";
 
   String MOST_POPULAR_RESTAURANTS = "Most Popular Restaurants";
   String RESTAURANT_ORDERS = "Restaurant Orders";
@@ -28,6 +33,11 @@ public interface FoodDeliveryConstants {
   String ROLE_CUSTOMER = "ROLE_CUSTOMER";
   String ROLE_RESTAURANT_OWNER = "ROLE_RESTAURANT_OWNER";
   String ROLE_DELIVERY_PERSONNEL = "ROLE_DELIVERY_PERSONNEL";
+
+  String LOGOUT_MSG = "Logout successful";
+  String TOKEN_LOGOUT_MSG = "Token has been logged out";
+  String AUTHORIZATION ="Authorization";
+  String BEARER = "Bearer ";
 
   List<OrderStatus> RESTAURANT_ORDER_STATUSES = List.of(OrderStatus.AWAITING_CONFIRMATION, OrderStatus.ACCEPTED,
       OrderStatus.IN_PREPARATION, OrderStatus.READY_FOR_DELIVERY);

@@ -195,7 +195,7 @@ public class AuthController {
             blacklistedToken.setExpiration(new Date(System.currentTimeMillis() + 86400000)); // Set expiration time
             blacklistedTokenRepository.save(blacklistedToken);
         }
-        return ResponseEntity.ok("Logout successful");
+        return ResponseEntity.ok(FoodDeliveryConstants.LOGOUT_MSG);
     }
 
 

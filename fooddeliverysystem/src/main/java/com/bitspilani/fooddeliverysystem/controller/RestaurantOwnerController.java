@@ -32,8 +32,9 @@ public class RestaurantOwnerController {
         @ApiResponse(responseCode = "200", description = "Restaurant was successfully fetched.", content =
         @Content(mediaType = "application/json", schema = @Schema(implementation = RestaurantDTO.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized"),
-        @ApiResponse(responseCode = "400", description = "The error can be any of those: the provided username is not supported. " +
-            "See the API spec for further details.",
+        @ApiResponse(responseCode = "400", description =
+            "The error can be any of those: the provided username is not supported. " +
+                "See the API spec for further details.",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))),
     })
     @GetMapping("/{username}")
@@ -46,13 +47,15 @@ public class RestaurantOwnerController {
         @ApiResponse(responseCode = "200", description = "Restaurant was successfully updated.", content =
         @Content(mediaType = "application/json", schema = @Schema(implementation = RestaurantDTO.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized"),
-        @ApiResponse(responseCode = "400", description = "The error can be any of those: the provided username is not supported. " +
-            "Invalid input provided." +
-            "See the API spec for further details.",
+        @ApiResponse(responseCode = "400", description =
+            "The error can be any of those: the provided username is not supported. " +
+                "Invalid input provided." +
+                "See the API spec for further details.",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))),
     })
     @PutMapping("/{username}")
-    public ResponseEntity<RestaurantDTO> updateRestaurant(@PathVariable("username") String username, @Valid @RequestBody RestaurantDTO restaurantDTO) {
+    public ResponseEntity<RestaurantDTO> updateRestaurant(@PathVariable("username") String username,
+        @Valid @RequestBody RestaurantDTO restaurantDTO) {
         return ResponseEntity.ok(restaurantService.updateRestaurant(restaurantDTO, username));
     }
 }

@@ -1,6 +1,8 @@
 package com.bitspilani.fooddeliverysystem.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyString;
@@ -50,7 +52,7 @@ class DeliveryPersonnelServiceTest {
         when(userRepository.findByUsernameAndRole(anyString(), any(UserRole.class))).thenReturn(new User());
 
         DeliveryPersonnelDTO result = deliveryPersonnelService.getDeliveryPersonnel("username");
-        Assertions.assertEquals(new DeliveryPersonnelDTO(), result);
+        assertEquals(new DeliveryPersonnelDTO(), result);
     }
 
     @Test
@@ -65,7 +67,7 @@ class DeliveryPersonnelServiceTest {
     void testGetDeliveryPersonnels() {
         when(deliveryPersonnelRepository.findAll()).thenReturn(List.of(getDeliveryPersonnel()));
         List<DeliveryPersonnelDTO> result = deliveryPersonnelService.getDeliveryPersonnels();
-        Assertions.assertEquals(List.of(new DeliveryPersonnelDTO()), result);
+        assertEquals(List.of(new DeliveryPersonnelDTO()), result);
     }
 
     @Test
@@ -77,7 +79,7 @@ class DeliveryPersonnelServiceTest {
         DeliveryPersonnelDTO deliveryPersonnelDTO = new DeliveryPersonnelDTO();
         deliveryPersonnelDTO.setUsername("username");
         DeliveryPersonnelDTO result = deliveryPersonnelService.updateDeliveryPersonnel(deliveryPersonnelDTO, "username");
-        Assertions.assertEquals(new DeliveryPersonnelDTO(), result);
+        assertEquals(new DeliveryPersonnelDTO(), result);
     }
 
     @Test
@@ -95,6 +97,21 @@ class DeliveryPersonnelServiceTest {
         UserNotFoundException exception = assertThrows(UserNotFoundException.class,
             () -> deliveryPersonnelService.updateDeliveryPersonnel(deliveryPersonnelDTO, "username"));
         assertEquals(FoodDeliveryConstants.DELIVERY_PERSONNEL_NOT_PRESENT, exception.getMessage());
+    }
+
+    @Test
+    void testGetDeliveryPersonnelByUsername() {
+        when(userRepository.findByUsername("username")).thenReturn(new User());
+        when(deliveryPersonnelRepository.findByUser(any(User.class))).thenReturn(getDeliveryPersonnel());
+        DeliveryPersonnel deliveryPersonnel = deliveryPersonnelService.getDeliveryPersonnelByUsername("username");
+        assertNotNull(deliveryPersonnel);
+    }
+
+    @Test
+    void testGetDeliveryPersonnelByUsernameReturnsNull() {
+        when(userRepository.findByUsername("username")).thenReturn(null);
+        DeliveryPersonnel deliveryPersonnel = deliveryPersonnelService.getDeliveryPersonnelByUsername("username");
+        assertNull(deliveryPersonnel);
     }
 
     private DeliveryPersonnel getDeliveryPersonnel() {

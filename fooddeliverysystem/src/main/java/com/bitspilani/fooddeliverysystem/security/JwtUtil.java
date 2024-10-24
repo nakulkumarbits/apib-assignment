@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class JwtUtil {
 
     public static final int EXPIRATION_TIME = 1000 * 60 * 60 * 10; // 10 hours
-    private final String SECRET_KEY = "IFNN1KagqlbDNeOW4Jys1CrcCp/OapVND+MMF605sng="; // Use a strong secret key
+    private static final String SECRET_KEY = "IFNN1KagqlbDNeOW4Jys1CrcCp/OapVND+MMF605sng="; // Use a strong secret key
 
     public String generateToken(String username, List<String> roles, Long ownerId, Long customerId,
         Long deliveryPersonnelId) {

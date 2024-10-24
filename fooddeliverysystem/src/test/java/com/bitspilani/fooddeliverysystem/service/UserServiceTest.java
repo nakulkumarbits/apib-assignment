@@ -26,6 +26,7 @@ import com.bitspilani.fooddeliverysystem.repository.DeliveryPersonnelRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantDeliveryZoneRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantOpeningDetailRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantRepository;
+import com.bitspilani.fooddeliverysystem.repository.UserRepository;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,6 +51,8 @@ class UserServiceTest {
     RestaurantDeliveryZoneRepository restaurantDeliveryZoneRepository;
     @Mock
     PasswordEncoder passwordEncoder;
+    @Mock
+    UserRepository userRepository;
     @InjectMocks
     UserService userService;
 
@@ -103,5 +106,12 @@ class UserServiceTest {
         AdministratorDTO admin = new AdministratorDTO();
         AdministratorDTO result = userService.registerAdministrator(admin);
         assertEquals(admin, result);
+    }
+
+    @Test
+    void testFindActiveUsersWithinLastMinutes() {
+        when(userRepository.findActiveUsersWithinLastMinutes(any())).thenReturn(List.of(new User()));
+        List<User> users = userService.findActiveUsersWithinLastMinutes(30);
+        assertEquals(1, users.size());
     }
 }

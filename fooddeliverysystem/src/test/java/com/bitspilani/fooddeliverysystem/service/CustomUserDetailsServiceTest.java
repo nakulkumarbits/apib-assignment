@@ -2,14 +2,17 @@ package com.bitspilani.fooddeliverysystem.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.bitspilani.fooddeliverysystem.enums.UserRole;
-import com.bitspilani.fooddeliverysystem.exceptions.UserNotFoundException;
 import com.bitspilani.fooddeliverysystem.model.User;
 import com.bitspilani.fooddeliverysystem.repository.UserRepository;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
+import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryTestConstants;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,30 +51,29 @@ class CustomUserDetailsServiceTest {
     @MethodSource("userRoleProvider")
     void testLoadUserByUsername(UserRole userRole, String role) {
         when(userRepository.findByUsername(anyString())).thenReturn(getUser(userRole));
-        UserDetails result = customUserDetailsService.loadUserByUsername("username");
+        UserDetails result = customUserDetailsService.loadUserByUsername(FoodDeliveryTestConstants.USERNAME);
         GrantedAuthority grantedAuthority = result.getAuthorities().stream().findFirst().get();
         Assertions.assertEquals(role, grantedAuthority.getAuthority());
     }
 
-    static Stream<Object[]> invalidUserProvider() {
-        return Stream.of(
-            new Object[]{null},
-            new Object[]{new User()}
-            );
+    @Test
+    void testUserNotFound() {
+        when(userRepository.findByUsername(anyString())).thenReturn(null);
+        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class,
+            () -> customUserDetailsService.loadUserByUsername(FoodDeliveryTestConstants.USERNAME));
+        assertEquals(FoodDeliveryConstants.USER_NOT_PRESENT, exception.getMessage());
     }
 
-//    @ParameterizedTest
-//    @MethodSource("invalidUserProvider")
-//    void testUserNotFound(User user) {
-//        when(userRepository.findByUsername(anyString())).thenReturn(user);
-//        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class,
-//            () -> customUserDetailsService.loadUserByUsername("username"));
-//        assertEquals(FoodDeliveryConstants.USER_NOT_PRESENT, exception.getMessage());
-//    }
+    @Test
+    void testUpdateLastLogin() {
+        when(userRepository.findByUsername(FoodDeliveryTestConstants.USERNAME)).thenReturn(getUser(UserRole.CUSTOMER));
+        customUserDetailsService.updateLastLogin(FoodDeliveryTestConstants.USERNAME);
+        verify(userRepository, times(1)).save(any());
+    }
 
     private User getUser(UserRole userRole) {
         User user = new User();
-        user.setUsername("username");
+        user.setUsername(FoodDeliveryTestConstants.USERNAME);
         user.setPassword("password");
         user.setRole(userRole);
         return user;

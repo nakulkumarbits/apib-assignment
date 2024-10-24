@@ -86,20 +86,20 @@ public class OrderService {
 
   public OrderResponseDTO updateOrderStatus(Long orderId, OrderStatus newStatus, String token) {
     OrderDetail orderDetail = orderDetailRepository.findById(orderId)
-        .orElseThrow(() -> new InvalidRequestException("Order not found"));
+        .orElseThrow(() -> new InvalidRequestException(FoodDeliveryConstants.ORDER_NOT_FOUND));
 
     if (Objects.equals(orderDetail.getOrderStatus(), newStatus)) {
-      throw new InvalidRequestException("Order status cannot be changed to same status");
+      throw new InvalidRequestException(FoodDeliveryConstants.ORDER_SAME_STATUS_ERROR);
     }
 
-    if (jwtUtil.extractOwnerIdFromToken(token) != null
+    if (jwtUtil.extractOwnerIdFromToken(token) != 0
         && !FoodDeliveryConstants.RESTAURANT_ALLOWED_ORDER_STATUSES.contains(newStatus)) {
-      throw new InvalidRequestException("Restaurant not allowed to update status to : " + newStatus);
+      throw new InvalidRequestException(FoodDeliveryConstants.RESTAURANT_STATUS_ERROR + newStatus);
     }
 
-    if (jwtUtil.extractDeliveryPersonnelIdFromToken(token) != null
+    if (jwtUtil.extractDeliveryPersonnelIdFromToken(token) != 0
         && !FoodDeliveryConstants.DELIVERY_ALLOWED_ORDER_STATUSES.contains(newStatus)) {
-      throw new InvalidRequestException("Delivery personnel not allowed to update status to : " + newStatus);
+      throw new InvalidRequestException(FoodDeliveryConstants.DELIVERY_STATUS_ERROR + newStatus);
     }
 
     orderDetail.setOrderStatus(newStatus);
@@ -113,7 +113,7 @@ public class OrderService {
 
   public OrderResponseDTO getOrder(Long orderId) {
     OrderDetail orderDetail = orderDetailRepository.findById(orderId)
-        .orElseThrow(() -> new InvalidRequestException("Order not found"));
+        .orElseThrow(() -> new InvalidRequestException(FoodDeliveryConstants.ORDER_NOT_FOUND));
     // Return response DTO
     return OrderConvertor.toDTO(orderDetail);
   }

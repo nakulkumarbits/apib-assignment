@@ -1,5 +1,6 @@
 package com.bitspilani.fooddeliverysystem.service;
 
+import static com.bitspilani.fooddeliverysystem.utils.FoodDeliveryTestConstants.RESTAURANT_TOKEN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -36,7 +37,6 @@ class MenuItemServiceTest {
     @InjectMocks
     MenuItemService menuItemService;
 
-    private static final String TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1JFU1RBVVJBTlRfT1dORVIiXSwib3duZXJJZCI6NSwic3ViIjoicmVzMTAiLCJpYXQiOjE3MjkzMjU4NjgsImV4cCI6MTcyOTM2MTg2OH0.g5gkrYT0_oYSjD_KBNfVJr-8_6imUcGVhlHaPBuwdJQ";
     private final long OWNER_ID = 5L;
 
     @BeforeEach
@@ -50,7 +50,7 @@ class MenuItemServiceTest {
         when(menuItemRepository.save(any())).thenReturn(new MenuItem());
         when(restaurantService.getRestaurantById(anyLong())).thenReturn(new Restaurant());
 
-        MenuItemDTO result = menuItemService.addMenuItem(new MenuItemDTO(), TOKEN);
+        MenuItemDTO result = menuItemService.addMenuItem(new MenuItemDTO(), RESTAURANT_TOKEN);
         assertEquals(new MenuItemDTO(), result);
     }
 
@@ -65,7 +65,7 @@ class MenuItemServiceTest {
         when(menuItemRepository.save(any())).thenReturn(menuItem);
         MenuItemDTO menuItemDTO = new MenuItemDTO();
         menuItemDTO.setItemId(1L);
-        MenuItemDTO result = menuItemService.updateMenuItem(Long.valueOf(1), menuItemDTO, TOKEN);
+        MenuItemDTO result = menuItemService.updateMenuItem(Long.valueOf(1), menuItemDTO, RESTAURANT_TOKEN);
         assertNotNull(result);
     }
 
@@ -74,7 +74,7 @@ class MenuItemServiceTest {
         MenuItemDTO menuItemDTO = new MenuItemDTO();
         menuItemDTO.setItemId(10L);
         MenuItemMismatchException exception = assertThrows(MenuItemMismatchException.class,
-            () -> menuItemService.updateMenuItem(1L, menuItemDTO, TOKEN));
+            () -> menuItemService.updateMenuItem(1L, menuItemDTO, RESTAURANT_TOKEN));
         assertEquals(FoodDeliveryConstants.MENU_ITEM_MISMATCH, exception.getMessage());
     }
 
@@ -84,7 +84,7 @@ class MenuItemServiceTest {
         MenuItemDTO menuItemDTO = new MenuItemDTO();
         menuItemDTO.setItemId(10L);
         ItemNotFoundException exception = assertThrows(ItemNotFoundException.class,
-            () -> menuItemService.updateMenuItem(10L, menuItemDTO, TOKEN));
+            () -> menuItemService.updateMenuItem(10L, menuItemDTO, RESTAURANT_TOKEN));
         assertEquals(FoodDeliveryConstants.MENU_ITEM_NOT_PRESENT, exception.getMessage());
     }
 
@@ -95,7 +95,7 @@ class MenuItemServiceTest {
         when(menuItemRepository.findById(any())).thenReturn(Optional.of(new MenuItem()));
         when(restaurantService.getRestaurantById(anyLong())).thenReturn(restaurant);
 
-        menuItemService.removeMenuItem(1L, TOKEN);
+        menuItemService.removeMenuItem(1L, RESTAURANT_TOKEN);
         verify(menuItemRepository).delete(any(MenuItem.class));
     }
 
@@ -103,7 +103,7 @@ class MenuItemServiceTest {
     void testRemoveMenuItemWhenItemNotPresent() {
         when(menuItemRepository.findById(any())).thenReturn(Optional.empty());
         ItemNotFoundException exception =
-            assertThrows(ItemNotFoundException.class, () -> menuItemService.removeMenuItem(1L, TOKEN));
+            assertThrows(ItemNotFoundException.class, () -> menuItemService.removeMenuItem(1L, RESTAURANT_TOKEN));
         assertEquals(FoodDeliveryConstants.MENU_ITEM_NOT_PRESENT, exception.getMessage());
     }
 
@@ -111,7 +111,7 @@ class MenuItemServiceTest {
     void testGetMenuItemsByOwner() {
         when(menuItemRepository.findByRestaurantId(anyLong())).thenReturn(List.of(new MenuItem()));
 
-        List<MenuItemDTO> result = menuItemService.getMenuItemsByOwner(TOKEN);
+        List<MenuItemDTO> result = menuItemService.getMenuItemsByOwner(RESTAURANT_TOKEN);
         assertEquals(List.of(new MenuItemDTO()), result);
     }
 }
