@@ -1,0 +1,4636 @@
+{
+	"info": {
+		"_postman_id": "9570db04-4d2e-4a65-b2c0-2965630e5a92",
+		"name": "Food Delivery API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10059275"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "restaurants",
+					"item": [
+						{
+							"name": "{username}",
+							"item": [
+								{
+									"name": "Fetches a Restaurant from the Food Delivery System.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users/restaurants/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"restaurants",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Restaurant was successfully fetched.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/users/restaurants/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"restaurants",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "The error can be any of those: the provided username is not supported. See the API spec for further details.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/users/restaurants/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"restaurants",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/users/restaurants/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"restaurants",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Updates a Restaurant from the Food Delivery System.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/users/restaurants/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"restaurants",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Restaurant was successfully updated.",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/users/restaurants/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"restaurants",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "The error can be any of those: the provided username is not supported. Invalid input provided.See the API spec for further details.",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/users/restaurants/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"restaurants",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/users/restaurants/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"restaurants",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "delivery",
+					"item": [
+						{
+							"name": "{username}",
+							"item": [
+								{
+									"name": "Fetches a delivery personnel from the Food Delivery System.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users/delivery/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"delivery",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Delivery personnel was successfully fetched.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/users/delivery/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"delivery",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+										},
+										{
+											"name": "The error can be any of those: the provided username is not supported. See the API spec for further details.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/users/delivery/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"delivery",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/users/delivery/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"delivery",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Updates a delivery personnel from the Food Delivery System.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/users/delivery/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"delivery",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Delivery personnel was successfully updated.",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/users/delivery/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"delivery",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+										},
+										{
+											"name": "The error can be any of those: the provided username is not supported. Invalid input provided.See the API spec for further details.",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/users/delivery/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"delivery",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/users/delivery/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"delivery",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "customers",
+					"item": [
+						{
+							"name": "{username}",
+							"item": [
+								{
+									"name": "Fetches a customer from the Food Delivery System.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users/customers/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"customers",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Customer was successfully fetched.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/users/customers/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"customers",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+										},
+										{
+											"name": "The error can be any of those: the provided username is not supported. See the API spec for further details.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/users/customers/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"customers",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/users/customers/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"customers",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Updates a customer from the Food Delivery System.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/users/customers/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"customers",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Customer was successfully updated.",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/users/customers/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"customers",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+										},
+										{
+											"name": "The error can be any of those: the provided username is not supported. Invalid input provided.See the API spec for further details.",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/users/customers/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"customers",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/users/customers/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														"customers",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "{orderId}",
+					"item": [
+						{
+							"name": "status",
+							"item": [
+								{
+									"name": "Updates the order status of an order on the Food Delivery System.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/orders/:orderId/status?newStatus=IN_PREPARATION",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												":orderId",
+												"status"
+											],
+											"query": [
+												{
+													"key": "newStatus",
+													"value": "IN_PREPARATION",
+													"description": "(Required) "
+												}
+											],
+											"variable": [
+												{
+													"key": "orderId",
+													"value": "<long>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Order status was successfully updated.",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/orders/:orderId/status?newStatus=IN_PREPARATION",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"orders",
+														":orderId",
+														"status"
+													],
+													"query": [
+														{
+															"key": "newStatus",
+															"value": "IN_PREPARATION",
+															"description": "(Required) "
+														}
+													],
+													"variable": [
+														{
+															"key": "orderId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"orderId\": \"<long>\",\n  \"customerName\": \"<string>\",\n  \"customerMobileNo\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"ordered_items\": [\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    },\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    }\n  ],\n  \"total_amount\": \"<double>\",\n  \"order_status\": \"REJECTED\",\n  \"order_date\": \"<dateTime>\"\n}"
+										},
+										{
+											"name": "The error can be any of those: the provided input is not supported. See the API spec for further details.",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/orders/:orderId/status?newStatus=IN_PREPARATION",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"orders",
+														":orderId",
+														"status"
+													],
+													"query": [
+														{
+															"key": "newStatus",
+															"value": "IN_PREPARATION",
+															"description": "(Required) "
+														}
+													],
+													"variable": [
+														{
+															"key": "orderId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/orders/:orderId/status?newStatus=IN_PREPARATION",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"orders",
+														":orderId",
+														"status"
+													],
+													"query": [
+														{
+															"key": "newStatus",
+															"value": "IN_PREPARATION",
+															"description": "(Required) "
+														}
+													],
+													"variable": [
+														{
+															"key": "orderId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"orderId\": \"<long>\",\n  \"customerName\": \"<string>\",\n  \"customerMobileNo\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"ordered_items\": [\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    },\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    }\n  ],\n  \"total_amount\": \"<double>\",\n  \"order_status\": \"REJECTED\",\n  \"order_date\": \"<dateTime>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Fetches an order from the Food Delivery System.",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Order was successfully retrieved.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/orders/:orderId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												":orderId"
+											],
+											"variable": [
+												{
+													"key": "orderId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"orderId\": \"<long>\",\n  \"customerName\": \"<string>\",\n  \"customerMobileNo\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"ordered_items\": [\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    },\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    }\n  ],\n  \"total_amount\": \"<double>\",\n  \"order_status\": \"REJECTED\",\n  \"order_date\": \"<dateTime>\"\n}"
+								},
+								{
+									"name": "See the API spec for further details.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/orders/:orderId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												":orderId"
+											],
+											"variable": [
+												{
+													"key": "orderId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/orders/:orderId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												":orderId"
+											],
+											"variable": [
+												{
+													"key": "orderId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"orderId\": \"<long>\",\n  \"customerName\": \"<string>\",\n  \"customerMobileNo\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"ordered_items\": [\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    },\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    }\n  ],\n  \"total_amount\": \"<double>\",\n  \"order_status\": \"REJECTED\",\n  \"order_date\": \"<dateTime>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "incoming",
+					"item": [
+						{
+							"name": "Fetches all incoming orders placed by the customer for the restaurant on the Food Delivery System.",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/orders/incoming",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"incoming"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List of orders successfully placed were retrieved for the restaurant.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/orders/incoming",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"incoming"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"orderId\": \"<long>\",\n  \"customerName\": \"<string>\",\n  \"customerMobileNo\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"ordered_items\": [\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    },\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    }\n  ],\n  \"total_amount\": \"<double>\",\n  \"order_status\": \"REJECTED\",\n  \"order_date\": \"<dateTime>\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/orders/incoming",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"incoming"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"ACCEPTED\",\n    \"order_date\": \"<dateTime>\"\n  },\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"OUT_FOR_DELIVERY\",\n    \"order_date\": \"<dateTime>\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "deliverables",
+					"item": [
+						{
+							"name": "Fetches all orders available to be picked up for delivery or out for delivery.",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/orders/deliverables",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"deliverables"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List of orders available to be picked up for delivery or out for delivery.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/orders/deliverables",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"deliverables"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"orderId\": \"<long>\",\n  \"customerName\": \"<string>\",\n  \"customerMobileNo\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"restaurant_name\": \"<string>\",\n  \"total_amount\": \"<double>\",\n  \"order_date\": \"<dateTime>\",\n  \"ordered_items\": [\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    },\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/orders/deliverables",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"deliverables"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"restaurant_name\": \"<string>\",\n    \"total_amount\": \"<double>\",\n    \"order_date\": \"<dateTime>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ]\n  },\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"restaurant_name\": \"<string>\",\n    \"total_amount\": \"<double>\",\n    \"order_date\": \"<dateTime>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ]\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Fetches all orders placed by the customer from the Food Delivery System.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List of orders were successfully retrieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"orderId\": \"<long>\",\n  \"customerName\": \"<string>\",\n  \"customerMobileNo\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"ordered_items\": [\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    },\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    }\n  ],\n  \"total_amount\": \"<double>\",\n  \"order_status\": \"REJECTED\",\n  \"order_date\": \"<dateTime>\"\n}"
+						},
+						{
+							"name": "See the API spec for further details.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"ACCEPTED\",\n    \"order_date\": \"<dateTime>\"\n  },\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"OUT_FOR_DELIVERY\",\n    \"order_date\": \"<dateTime>\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Place an order on the Food Delivery System.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer_id\": \"<long>\",\n  \"restaurant_id\": \"<long>\",\n  \"order_items\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"menu_item_id\": \"<long>\"\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"menu_item_id\": \"<long>\"\n    }\n  ],\n  \"payment_method\": \"UPI\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Order was successfully placed.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customer_id\": \"<long>\",\n  \"restaurant_id\": \"<long>\",\n  \"order_items\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"menu_item_id\": \"<long>\"\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"menu_item_id\": \"<long>\"\n    }\n  ],\n  \"payment_method\": \"UPI\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"orderId\": \"<long>\",\n  \"customerName\": \"<string>\",\n  \"customerMobileNo\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"ordered_items\": [\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    },\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    }\n  ],\n  \"total_amount\": \"<double>\",\n  \"order_status\": \"REJECTED\",\n  \"order_date\": \"<dateTime>\"\n}"
+						},
+						{
+							"name": "The error can be any of those: the provided input is not supported. See the API spec for further details.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customer_id\": \"<long>\",\n  \"restaurant_id\": \"<long>\",\n  \"order_items\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"menu_item_id\": \"<long>\"\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"menu_item_id\": \"<long>\"\n    }\n  ],\n  \"payment_method\": \"UPI\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customer_id\": \"<long>\",\n  \"restaurant_id\": \"<long>\",\n  \"order_items\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"menu_item_id\": \"<long>\"\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"menu_item_id\": \"<long>\"\n    }\n  ],\n  \"payment_method\": \"UPI\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"orderId\": \"<long>\",\n  \"customerName\": \"<string>\",\n  \"customerMobileNo\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"ordered_items\": [\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    },\n    {\n      \"item_name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"price\": \"<double>\",\n      \"total_price\": \"<double>\"\n    }\n  ],\n  \"total_amount\": \"<double>\",\n  \"order_status\": \"REJECTED\",\n  \"order_date\": \"<dateTime>\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "menu",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Updates a menu item for the logged in restaurant owner.",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/menu/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"menu",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Menu item updated.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/menu/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"menu",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}"
+								},
+								{
+									"name": "The error can be any of those: the provided input is not supported. See the API spec for further details.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/menu/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"menu",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/menu/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"menu",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Deletes a menu item for the logged in restaurant owner.",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/menu/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"menu",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Menu item deleted.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/menu/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"menu",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unauthorized.",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/menu/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"menu",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "items",
+					"item": [
+						{
+							"name": "Fetches menu items for a restaurant from the Food Delivery System.",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/menu/items",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"menu",
+										"items"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Menu items were successfully fetched.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/menu/items",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"menu",
+												"items"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/menu/items",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"menu",
+												"items"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"price\": \"<double>\",\n    \"cuisine\": \"MUGHLAI\",\n    \"item_id\": \"<long>\",\n    \"item_available\": \"YES\",\n    \"item_type\": \"NON_VEG\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"price\": \"<double>\",\n    \"cuisine\": \"CHINESE\",\n    \"item_id\": \"<long>\",\n    \"item_available\": \"YES\",\n    \"item_type\": \"VEG\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Add a menu item and associate to the logged in restaurant owner.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/menu",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"menu"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Menu item added.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/menu",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"menu"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}"
+						},
+						{
+							"name": "The error can be any of those: the provided input is not supported. See the API spec for further details.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/menu",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"menu"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Unauthorized.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/menu",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"menu"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"item": [
+						{
+							"name": "restaurant",
+							"item": [
+								{
+									"name": "Restaurant owner can register a restaurant to the Food Delivery System.",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/register/restaurant",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"register",
+												"restaurant"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Restaurant was successfully registered.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/auth/register/restaurant",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"auth",
+														"register",
+														"restaurant"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/auth/register/restaurant",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"auth",
+														"register",
+														"restaurant"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "delivery",
+							"item": [
+								{
+									"name": "Register a delivery personnel to the Food Delivery System.",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/register/delivery",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"register",
+												"delivery"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Delivery Personnel was successfully registered.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/auth/register/delivery",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"auth",
+														"register",
+														"delivery"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+										},
+										{
+											"name": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/auth/register/delivery",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"auth",
+														"register",
+														"delivery"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "customer",
+							"item": [
+								{
+									"name": "Register a customer to the Food Delivery System.",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/register/customer",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"register",
+												"customer"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Customer was successfully registered.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/auth/register/customer",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"auth",
+														"register",
+														"customer"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+										},
+										{
+											"name": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/auth/register/customer",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"auth",
+														"register",
+														"customer"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "admin",
+							"item": [
+								{
+									"name": "Register a administrator to the Food Delivery System.",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/register/admin",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"register",
+												"admin"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Administrator was successfully registered.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/auth/register/admin",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"auth",
+														"register",
+														"admin"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}"
+										},
+										{
+											"name": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/auth/register/admin",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"auth",
+														"register",
+														"admin"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "<string>"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"item": [
+						{
+							"name": "Logs out a user from Food Delivery System.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/auth/logout",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Logout is successful.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/auth/logout",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"logout"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Missing/Invalid Authorization header.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/auth/logout",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"logout"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "login",
+					"item": [
+						{
+							"name": "Logs in a user to Food Delivery System.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Successful login and token is issued.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"token\": \"<string>\"\n}"
+								},
+								{
+									"name": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "<string>"
+								},
+								{
+									"name": "Login is not authorized.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "<string>"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "deactivate",
+					"item": [
+						{
+							"name": "Deactivates a user from the Food Delivery System.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"DELIVERY_PERSONNEL\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/deactivate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"deactivate"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "User was successfully fetched.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"DELIVERY_PERSONNEL\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/admin/deactivate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"deactivate"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"DELIVERY_PERSONNEL\"\n}"
+								},
+								{
+									"name": "The error can be any of those: the provided username is not supported. See the API spec for further details.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"DELIVERY_PERSONNEL\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/admin/deactivate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"deactivate"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"DELIVERY_PERSONNEL\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/admin/deactivate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"deactivate"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "restaurants",
+					"item": [
+						{
+							"name": "Fetches all the restaurants from the Food Delivery System.",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/restaurants",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"restaurants"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Restaurants were successfully fetched.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/admin/restaurants",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"restaurants"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/admin/restaurants",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"restaurants"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"password\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"hours_of_operation\": \"<string>\",\n    \"opening_hours\": [\n      {\n        \"day\": \"<string>\",\n        \"openingTime\": \"<string>\",\n        \"closingTime\": \"<string>\"\n      },\n      {\n        \"day\": \"<string>\",\n        \"openingTime\": \"<string>\",\n        \"closingTime\": \"<string>\"\n      }\n    ],\n    \"delivery_zones\": [\n      {\n        \"zoneName\": \"<string>\",\n        \"pinCode\": \"<string>\"\n      },\n      {\n        \"zoneName\": \"<string>\",\n        \"pinCode\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"password\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"username\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"hours_of_operation\": \"<string>\",\n    \"opening_hours\": [\n      {\n        \"day\": \"<string>\",\n        \"openingTime\": \"<string>\",\n        \"closingTime\": \"<string>\"\n      },\n      {\n        \"day\": \"<string>\",\n        \"openingTime\": \"<string>\",\n        \"closingTime\": \"<string>\"\n      }\n    ],\n    \"delivery_zones\": [\n      {\n        \"zoneName\": \"<string>\",\n        \"pinCode\": \"<string>\"\n      },\n      {\n        \"zoneName\": \"<string>\",\n        \"pinCode\": \"<string>\"\n      }\n    ]\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "reports",
+					"item": [
+						{
+							"name": "popular-restaurants",
+							"item": [
+								{
+									"name": "generate Popular Restaurants Report",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/admin/reports/popular-restaurants",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"reports",
+												"popular-restaurants"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/admin/reports/popular-restaurants",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"admin",
+														"reports",
+														"popular-restaurants"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"report_type\": \"<string>\",\n  \"generated_date\": \"<dateTime>\",\n  \"report_data\": {\n    \"aliquip_e\": {}\n  }\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "order-trends",
+							"item": [
+								{
+									"name": "generate Order Trends Report",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/admin/reports/order-trends?period=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"reports",
+												"order-trends"
+											],
+											"query": [
+												{
+													"key": "period",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/admin/reports/order-trends?period=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"admin",
+														"reports",
+														"order-trends"
+													],
+													"query": [
+														{
+															"key": "period",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"report_type\": \"<string>\",\n  \"generated_date\": \"<dateTime>\",\n  \"report_data\": {\n    \"aliquip_e\": {}\n  }\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "average-delivery-time",
+							"item": [
+								{
+									"name": "generate Average Delivery Time Report",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/admin/reports/average-delivery-time",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"reports",
+												"average-delivery-time"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/admin/reports/average-delivery-time",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"admin",
+														"reports",
+														"average-delivery-time"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"report_type\": \"<string>\",\n  \"generated_date\": \"<dateTime>\",\n  \"report_data\": {\n    \"aliquip_e\": {}\n  }\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "monitoring",
+					"item": [
+						{
+							"name": "platform-activity",
+							"item": [
+								{
+									"name": "get Platform Activity",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/admin/monitoring/platform-activity",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"monitoring",
+												"platform-activity"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/admin/monitoring/platform-activity",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"admin",
+														"monitoring",
+														"platform-activity"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"report_generated_at\": \"<dateTime>\",\n  \"active_users\": \"<integer>\",\n  \"delivery_activity\": {\n    \"culpaa72\": \"<long>\",\n    \"ex_8\": \"<long>\",\n    \"sint_75\": \"<long>\"\n  },\n  \"order_status_count\": {\n    \"ad9\": \"<long>\",\n    \"ad8\": \"<long>\"\n  }\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "delivery",
+					"item": [
+						{
+							"name": "Fetches all the delivery personnel from the Food Delivery System.",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/delivery",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"delivery"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delivery personnel were successfully fetched.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/admin/delivery",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"delivery"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/admin/delivery",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"delivery"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"vehicleType\": \"TWO_WHEELER\"\n  },\n  {\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"vehicleType\": \"FOUR_WHEELER\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "customers",
+					"item": [
+						{
+							"name": "Fetches all the customers from the Food Delivery System.",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/customers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"customers"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Customers were successfully fetched.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/admin/customers",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"customers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/admin/customers",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"admin",
+												"customers"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"firstname\": \"<string>\",\n    \"mobile_no\": \"<string>\",\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"paymentDetails\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"lastname\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  {\n    \"firstname\": \"<string>\",\n    \"mobile_no\": \"<string>\",\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"paymentDetails\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"lastname\": \"<string>\",\n    \"email\": \"<string>\"\n  }\n]"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "restaurants",
+			"item": [
+				{
+					"name": "Fetches all the restaurants along with their menu items from the Food Delivery System.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/restaurants?cuisineType=<string>&itemType=<string>&itemAvailable=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"restaurants"
+							],
+							"query": [
+								{
+									"key": "cuisineType",
+									"value": "<string>"
+								},
+								{
+									"key": "itemType",
+									"value": "<string>"
+								},
+								{
+									"key": "itemAvailable",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Restaurants and menu items were successfully fetched.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/restaurants?cuisineType=<string>&itemType=<string>&itemAvailable=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurants"
+									],
+									"query": [
+										{
+											"key": "cuisineType",
+											"value": "<string>"
+										},
+										{
+											"key": "itemType",
+											"value": "<string>"
+										},
+										{
+											"key": "itemAvailable",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"menuItems\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\",\n      \"cuisine\": \"MEXICAN\",\n      \"item_id\": \"<long>\",\n      \"item_available\": \"YES\",\n      \"item_type\": \"NON_VEG\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\",\n      \"cuisine\": \"MUGHLAI\",\n      \"item_id\": \"<long>\",\n      \"item_available\": \"NO\",\n      \"item_type\": \"NON_VEG\"\n    }\n  ],\n  \"restaurant_name\": \"<string>\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/restaurants?cuisineType=<string>&itemType=<string>&itemAvailable=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurants"
+									],
+									"query": [
+										{
+											"key": "cuisineType",
+											"value": "<string>"
+										},
+										{
+											"key": "itemType",
+											"value": "<string>"
+										},
+										{
+											"key": "itemAvailable",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"menuItems\": [\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"INDIAN\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"YES\",\n        \"item_type\": \"VEG\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"KOREAN\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"NO\",\n        \"item_type\": \"NON_VEG\"\n      }\n    ],\n    \"restaurant_name\": \"<string>\"\n  },\n  {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"menuItems\": [\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"ITALIAN\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"NO\",\n        \"item_type\": \"NON_VEG\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"MUGHLAI\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"NO\",\n        \"item_type\": \"NON_VEG\"\n      }\n    ],\n    \"restaurant_name\": \"<string>\"\n  }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8085"
+		}
+	]
+}
