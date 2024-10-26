@@ -21,6 +21,196 @@ Swagger
 
 Postman Collection
 -
-- Postman collection can be imported using `<collection_json>`
+- Postman collection can be imported using `Food Delivery API.postman_collection.json`
 
+Database schema 
+-
+- Address 
+```
+CREATE TABLE `Address` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `addressLine1` varchar(255) DEFAULT NULL,
+  `addressLine2` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `createdDate` datetime(6) DEFAULT NULL,
+  `modifiedDate` datetime(6) DEFAULT NULL,
+  `pinCode` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `version` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+```
 
+- Administrator
+```
+CREATE TABLE `Administrator` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UKcsfxiaqnaple91nkb0fa3p5s0` (`user_id`),
+  CONSTRAINT `FK8hau117bg0amv9oi6hfvauptc` FOREIGN KEY (`user_id`) REFERENCES `User` (`id`)
+);
+```
+
+- BlacklistedToken
+```
+CREATE TABLE `BlacklistedToken` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `expiration` datetime(6) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+```
+
+- Customer
+```
+CREATE TABLE `Customer` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `firstName` varchar(255) NOT NULL,
+  `lastName` varchar(255) NOT NULL,
+  `mobileNo` varchar(255) NOT NULL,
+  `paymentDetails` varchar(255) DEFAULT NULL,
+  `address_id` bigint DEFAULT NULL,
+  `user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK3qgg01qojcmbdp47dkaom9x45` (`email`),
+  UNIQUE KEY `UKi7f12t1rqxjnufl1k69g1887v` (`address_id`),
+  UNIQUE KEY `UK8mymjl93593fro12fetnugjxr` (`user_id`),
+  CONSTRAINT `FK6y0rqloalxi6r6lpoqtfohp9i` FOREIGN KEY (`user_id`) REFERENCES `User` (`id`),
+  CONSTRAINT `FKfok4ytcqy7lovuiilldbebpd9` FOREIGN KEY (`address_id`) REFERENCES `Address` (`id`)
+);
+```
+
+- DeliveryPersonnel
+```
+CREATE TABLE `DeliveryPersonnel` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `vehicleType` enum('FOUR_WHEELER','TWO_WHEELER') DEFAULT NULL,
+  `user_id` bigint DEFAULT NULL,
+  `address_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK3kg10lc6v68heiwtes2aaqjkx` (`user_id`),
+  UNIQUE KEY `UKk7lt86tncb8trb16ry7if05mi` (`address_id`),
+  CONSTRAINT `FKe2p5fmq53r6w8o3x0srnjhiu2` FOREIGN KEY (`user_id`) REFERENCES `User` (`id`),
+  CONSTRAINT `FKl78iipn6rri5odq2sypst2xjq` FOREIGN KEY (`address_id`) REFERENCES `Address` (`id`)
+);
+```
+
+- MenuItem
+```
+CREATE TABLE `MenuItem` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `createdDate` datetime(6) DEFAULT NULL,
+  `cuisine` enum('CHINESE','INDIAN','ITALIAN','KOREAN','MEXICAN','MUGHLAI') DEFAULT NULL,
+  `description` varchar(255) NOT NULL,
+  `itemAvailable` enum('NO','YES') DEFAULT NULL,
+  `itemType` enum('NON_VEG','VEG') DEFAULT NULL,
+  `modifiedDate` datetime(6) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  `version` bigint DEFAULT NULL,
+  `restaurant_owner_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKeuojx6ppdp8f387uj2thbssig` (`restaurant_owner_id`),
+  CONSTRAINT `FKeuojx6ppdp8f387uj2thbssig` FOREIGN KEY (`restaurant_owner_id`) REFERENCES `Restaurant` (`id`)
+);
+```
+
+- OrderDetail
+```
+CREATE TABLE `OrderDetail` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `createdDate` datetime(6) DEFAULT NULL,
+  `modifiedDate` datetime(6) DEFAULT NULL,
+  `orderStatus` enum('ACCEPTED','AWAITING_CONFIRMATION','CANCELLED','DELIVERED','IN_PREPARATION','OUT_FOR_DELIVERY','READY_FOR_DELIVERY','REJECTED') NOT NULL,
+  `paymentMethod` enum('CASH','CREDIT_CARD','DEBIT_CARD','UPI') NOT NULL,
+  `totalAmount` double NOT NULL,
+  `version` bigint DEFAULT NULL,
+  `customer_id` bigint NOT NULL,
+  `restaurant_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK3u354ci12f8qgq55qvec32xku` (`restaurant_id`),
+  KEY `FKlwylj1qrsxh84g8d7er0f5585` (`customer_id`),
+  CONSTRAINT `FK2vnd6yad4877v3soxcqk937u1` FOREIGN KEY (`restaurant_id`) REFERENCES `Restaurant` (`id`),
+  CONSTRAINT `FKlwylj1qrsxh84g8d7er0f5585` FOREIGN KEY (`customer_id`) REFERENCES `Customer` (`id`)
+);
+```
+
+- OrderItem
+```
+CREATE TABLE `OrderItem` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `price` double NOT NULL,
+  `quantity` int NOT NULL,
+  `totalPrice` double NOT NULL,
+  `menu_item_id` bigint NOT NULL,
+  `order_detail_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKaqqkf7tjdpqcuohm2g7uww24q` (`menu_item_id`),
+  KEY `FK7cmys9vguhxa89fd095xyeyje` (`order_detail_id`),
+  CONSTRAINT `FK7cmys9vguhxa89fd095xyeyje` FOREIGN KEY (`order_detail_id`) REFERENCES `OrderDetail` (`id`),
+  CONSTRAINT `FKaqqkf7tjdpqcuohm2g7uww24q` FOREIGN KEY (`menu_item_id`) REFERENCES `MenuItem` (`id`)
+);
+```
+
+- Restaurant
+
+```
+CREATE TABLE `Restaurant` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `hoursOfOperation` varchar(255) NOT NULL,
+  `restaurantName` varchar(255) NOT NULL,
+  `address_id` bigint DEFAULT NULL,
+  `user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UKqv32m3urxsfjse6opfhwumq4v` (`address_id`),
+  UNIQUE KEY `UK22c22gdvl7ytyrp7blgbx50hn` (`user_id`),
+  CONSTRAINT `FK8i5m1l2w0etkuaeh6l3c6926w` FOREIGN KEY (`user_id`) REFERENCES `User` (`id`),
+  CONSTRAINT `FKggm3momemeke04br3yroi9dbg` FOREIGN KEY (`address_id`) REFERENCES `Address` (`id`)
+);
+```
+
+- RestaurantDeliveryZone
+```
+CREATE TABLE `RestaurantDeliveryZone` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `pinCode` varchar(255) DEFAULT NULL,
+  `zoneName` varchar(255) DEFAULT NULL,
+  `restaurant_owner_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKp8exwsjyt2fg829brviuljgmv` (`restaurant_owner_id`),
+  CONSTRAINT `FKp8exwsjyt2fg829brviuljgmv` FOREIGN KEY (`restaurant_owner_id`) REFERENCES `Restaurant` (`id`)
+);
+```
+
+- RestaurantOpeningDetail
+```
+CREATE TABLE `RestaurantOpeningDetail` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `closingTime` varchar(255) DEFAULT NULL,
+  `day` varchar(255) DEFAULT NULL,
+  `openingTime` varchar(255) DEFAULT NULL,
+  `restaurant_owner_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKbgr41gh89agchdtlrj7uanr0v` (`restaurant_owner_id`),
+  CONSTRAINT `FKbgr41gh89agchdtlrj7uanr0v` FOREIGN KEY (`restaurant_owner_id`) REFERENCES `Restaurant` (`id`)
+);
+```
+
+- User
+```
+CREATE TABLE `User` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `createdDate` datetime(6) DEFAULT NULL,
+  `modifiedDate` datetime(6) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('ADMIN','CUSTOMER','DELIVERY_PERSONNEL','RESTAURANT_OWNER') NOT NULL,
+  `status` enum('ACTIVATED','DEACTIVATED') NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `version` bigint DEFAULT NULL,
+  `lastLogin` datetime(6) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UKjreodf78a7pl5qidfh43axdfb` (`username`)
+);
+```
