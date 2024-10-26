@@ -60,7 +60,6 @@ public class SecurityConfig {
                     .requestMatchers("/swagger-resources/**", "/swagger-resources", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                     .requestMatchers("/users/customers/**").hasAnyRole(UserRole.CUSTOMER.name(), UserRole.ADMIN.name())
                     .requestMatchers("/restaurants/**").hasAnyRole(UserRole.CUSTOMER.name(), UserRole.ADMIN.name())
-//                    .requestMatchers("/orders/**").hasAnyRole(UserRole.CUSTOMER.name())
                     .requestMatchers("/users/restaurants/**").hasAnyRole(UserRole.RESTAURANT_OWNER.name(), UserRole.ADMIN.name())
                     .requestMatchers("/menu/**").hasAnyRole(UserRole.RESTAURANT_OWNER.name())
                     .requestMatchers("/users/delivery/**").hasAnyRole(UserRole.DELIVERY_PERSONNEL.name(), UserRole.ADMIN.name())

@@ -21,9 +21,6 @@ public class Address {
     private String state;
     private String pinCode;
 
-    // @ManyToOne
-    // private User user;
-
     @CreatedDate
     private LocalDateTime createdDate;
     @LastModifiedDate
