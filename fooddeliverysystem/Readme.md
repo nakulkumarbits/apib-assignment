@@ -25,8 +25,12 @@ Postman Collection
 
 Database schema 
 -
-- Address 
-```
+Expand the below collapsible sections to check the schema.
+
+<details>
+  <summary>Address</summary>
+
+  ```
 CREATE TABLE `Address` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `addressLine1` varchar(255) DEFAULT NULL,
@@ -40,8 +44,12 @@ CREATE TABLE `Address` (
   PRIMARY KEY (`id`)
 );
 ```
+  
+</details>
 
-- Administrator
+<details>
+  <summary>Administrator</summary>
+
 ```
 CREATE TABLE `Administrator` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -51,9 +59,12 @@ CREATE TABLE `Administrator` (
   CONSTRAINT `FK8hau117bg0amv9oi6hfvauptc` FOREIGN KEY (`user_id`) REFERENCES `User` (`id`)
 );
 ```
+</details>
 
-- BlacklistedToken
-```
+<details>
+  <summary>BlacklistedToken</summary>
+
+  ```
 CREATE TABLE `BlacklistedToken` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `expiration` datetime(6) DEFAULT NULL,
@@ -61,8 +72,11 @@ CREATE TABLE `BlacklistedToken` (
   PRIMARY KEY (`id`)
 );
 ```
+</details>  
 
-- Customer
+<details>
+  <summary>Customer</summary>
+
 ```
 CREATE TABLE `Customer` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -83,8 +97,12 @@ CREATE TABLE `Customer` (
   CONSTRAINT `FKfok4ytcqy7lovuiilldbebpd9` FOREIGN KEY (`address_id`) REFERENCES `Address` (`id`)
 );
 ```
+</details>
 
-- DeliveryPersonnel
+
+<details>
+  <summary>DeliveryPersonnel</summary>
+  
 ```
 CREATE TABLE `DeliveryPersonnel` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -98,8 +116,11 @@ CREATE TABLE `DeliveryPersonnel` (
   CONSTRAINT `FKl78iipn6rri5odq2sypst2xjq` FOREIGN KEY (`address_id`) REFERENCES `Address` (`id`)
 );
 ```
+</details>
 
-- MenuItem
+<details>
+  <summary>MenuItem</summary>
+  
 ```
 CREATE TABLE `MenuItem` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -118,8 +139,11 @@ CREATE TABLE `MenuItem` (
   CONSTRAINT `FKeuojx6ppdp8f387uj2thbssig` FOREIGN KEY (`restaurant_owner_id`) REFERENCES `Restaurant` (`id`)
 );
 ```
+</details>
 
-- OrderDetail
+<details>
+  <summary>OrderDetail</summary>
+  
 ```
 CREATE TABLE `OrderDetail` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -141,8 +165,11 @@ CREATE TABLE `OrderDetail` (
   CONSTRAINT `FKso7egdy3vsx02j9rh8bd2tv95` FOREIGN KEY (`payment_id`) REFERENCES `OrderPaymentDetail` (`id`)
 );
 ```
+</details>
 
-- OrderItem
+<details>
+  <summary>OrderItem</summary>
+
 ```
 CREATE TABLE `OrderItem` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -158,8 +185,11 @@ CREATE TABLE `OrderItem` (
   CONSTRAINT `FKaqqkf7tjdpqcuohm2g7uww24q` FOREIGN KEY (`menu_item_id`) REFERENCES `MenuItem` (`id`)
 );
 ```
+</details>
 
-- OrderPaymentDetail
+<details>
+  <summary>OrderPaymentDetail</summary>
+
 ```
 CREATE TABLE `OrderPaymentDetail` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -172,8 +202,11 @@ CREATE TABLE `OrderPaymentDetail` (
   PRIMARY KEY (`id`)
 );
 ```
+</details>
 
-- PaymentDetail
+<details>
+  <summary>PaymentDetail</summary>
+
 ```
 CREATE TABLE `PaymentDetail` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -186,8 +219,10 @@ CREATE TABLE `PaymentDetail` (
   PRIMARY KEY (`id`)
 );
 ```
+</details>
 
-- Restaurant
+<details>
+  <summary>Restaurant</summary>
 
 ```
 CREATE TABLE `Restaurant` (
@@ -203,8 +238,11 @@ CREATE TABLE `Restaurant` (
   CONSTRAINT `FKggm3momemeke04br3yroi9dbg` FOREIGN KEY (`address_id`) REFERENCES `Address` (`id`)
 );
 ```
+</details>
 
-- RestaurantDeliveryZone
+<details>
+  <summary>RestaurantDeliveryZone</summary>
+  
 ```
 CREATE TABLE `RestaurantDeliveryZone` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -216,8 +254,11 @@ CREATE TABLE `RestaurantDeliveryZone` (
   CONSTRAINT `FKp8exwsjyt2fg829brviuljgmv` FOREIGN KEY (`restaurant_owner_id`) REFERENCES `Restaurant` (`id`)
 );
 ```
+</details>
 
-- RestaurantOpeningDetail
+<details>
+  <summary>RestaurantOpeningDetail</summary>
+  
 ```
 CREATE TABLE `RestaurantOpeningDetail` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -230,8 +271,11 @@ CREATE TABLE `RestaurantOpeningDetail` (
   CONSTRAINT `FKbgr41gh89agchdtlrj7uanr0v` FOREIGN KEY (`restaurant_owner_id`) REFERENCES `Restaurant` (`id`)
 );
 ```
+</details>
 
-- User
+<details>
+  <summary>User</summary>
+
 ```
 CREATE TABLE `User` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -247,3 +291,4 @@ CREATE TABLE `User` (
   UNIQUE KEY `UKjreodf78a7pl5qidfh43axdfb` (`username`)
 );
 ```
+</details>
