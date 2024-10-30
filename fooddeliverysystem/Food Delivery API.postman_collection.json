@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9570db04-4d2e-4a65-b2c0-2965630e5a92",
+		"_postman_id": "8769a6e7-a3f4-4140-8d61-b4af0e964909",
 		"name": "Food Delivery API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10059275"
@@ -26,21 +26,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/users/restaurants/:username",
+											"raw": "{{baseUrl}}/users/restaurants/punjabgrill_cc",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"users",
 												"restaurants",
-												":username"
-											],
-											"variable": [
-												{
-													"key": "username",
-													"value": "<string>",
-													"description": "(Required) "
-												}
+												"punjabgrill_cc"
 											]
 										}
 									},
@@ -195,7 +188,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}",
+											"raw": "{\n    \"address\": {\n        \"addressLine1\": \"1456 Saket Complex\",\n        \"addressLine2\": \"Select City Walk, Saket\",\n        \"city\": \"New Delhi\",\n        \"state\": \"Delhi\",\n        \"pinCode\": \"110017\"\n    },\n    \"username\": \"punjabgrill_cc\",\n    \"password\": \"punjabgrill_cc\",\n    \"restaurant_name\": \"Punjab Grill\",\n    \"hours_of_operation\": \"12\",\n    \"opening_hours\": [\n        {\n            \"day\": \"MON\",\n            \"openingTime\": \"12:00 AM\",\n            \"closingTime\": \"12:00 PM\"\n        },\n        {\n            \"day\": \"TUE\",\n            \"openingTime\": \"12:00 AM\",\n            \"closingTime\": \"12:00 PM\"\n        },\n        {\n            \"day\": \"WED\",\n            \"openingTime\": \"12:00 AM\",\n            \"closingTime\": \"12:00 PM\"\n        },\n        {\n            \"day\": \"THU\",\n            \"openingTime\": \"12:00 AM\",\n            \"closingTime\": \"12:00 PM\"\n        },\n        {\n            \"day\": \"FRI\",\n            \"openingTime\": \"12:00 AM\",\n            \"closingTime\": \"12:00 PM\"\n        }\n    ],\n    \"delivery_zones\": [\n        {\n            \"zoneName\": \"SAKET\",\n            \"pinCode\": \"110017\"\n        },\n        {\n            \"zoneName\": \"MALVIYA NAGAR\",\n            \"pinCode\": \"110017\"\n        },\n        {\n            \"zoneName\": \"GK-I\",\n            \"pinCode\": \"110048\"\n        }\n    ]\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -204,21 +197,14 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/users/restaurants/:username",
+											"raw": "{{baseUrl}}/users/restaurants/punjabgrill_cc",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"users",
 												"restaurants",
-												":username"
-											],
-											"variable": [
-												{
-													"key": "username",
-													"value": "<string>",
-													"description": "(Required) "
-												}
+												"punjabgrill_cc"
 											]
 										}
 									},
@@ -420,21 +406,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/users/delivery/:username",
+											"raw": "{{baseUrl}}/users/delivery/deliveryboy-rakesh",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"users",
 												"delivery",
-												":username"
-											],
-											"variable": [
-												{
-													"key": "username",
-													"value": "<string>",
-													"description": "(Required) "
-												}
+												"deliveryboy-rakesh"
 											]
 										}
 									},
@@ -481,7 +460,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}"
 										},
 										{
 											"name": "The error can be any of those: the provided username is not supported. See the API spec for further details.",
@@ -569,7 +548,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}"
 										}
 									]
 								},
@@ -589,7 +568,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+											"raw": "{\n    \"address\": {\n        \"addressLine1\": \"C-56/1 First floor, Uttam nagar\",\n        \"addressLine2\": \"Near SBI bank\",\n        \"city\": \"New Delhi\",\n        \"state\": \"Delhi\",\n        \"pinCode\": \"110076\"\n    },\n    \"vehicleType\": \"TWO_WHEELER\",\n    \"username\": \"deliveryboy-rakesh\",\n    \"password\": \"rakesh@123\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -598,21 +577,14 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/users/delivery/:username",
+											"raw": "{{baseUrl}}/users/delivery/deliveryboy-rakesh",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"users",
 												"delivery",
-												":username"
-											],
-											"variable": [
-												{
-													"key": "username",
-													"value": "<string>",
-													"description": "(Required) "
-												}
+												"deliveryboy-rakesh"
 											]
 										}
 									},
@@ -638,7 +610,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -673,7 +645,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}"
 										},
 										{
 											"name": "The error can be any of those: the provided username is not supported. Invalid input provided.See the API spec for further details.",
@@ -696,7 +668,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -754,7 +726,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -789,7 +761,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}"
 										}
 									]
 								}
@@ -806,6 +778,16 @@
 								{
 									"name": "Fetches a customer from the Food Delivery System.",
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
+										},
 										"method": "GET",
 										"header": [
 											{
@@ -814,21 +796,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/users/customers/:username",
+											"raw": "{{baseUrl}}/users/customers/nakulk",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"users",
 												"customers",
-												":username"
-											],
-											"variable": [
-												{
-													"key": "username",
-													"value": "<string>",
-													"description": "(Required) "
-												}
+												"nakulk"
 											]
 										}
 									},
@@ -875,7 +850,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"upiId\": \"<string>\",\n  \"cardNumber\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
 										},
 										{
 											"name": "The error can be any of those: the provided username is not supported. See the API spec for further details.",
@@ -963,13 +938,23 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"upiId\": \"<string>\",\n  \"cardNumber\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
 										}
 									]
 								},
 								{
 									"name": "Updates a customer from the Food Delivery System.",
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
+										},
 										"method": "PUT",
 										"header": [
 											{
@@ -983,7 +968,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+											"raw": "{\n    \"paymentMethod\": \"UPI\",\n    \"upiId\": \"nakulk@okicici\",\n    \"cardNumber\": null,\n    \"address\": {\n        \"addressLine1\": \"14/374 First floor, DDA Flats\",\n        \"addressLine2\": \"Madangir, Dr Ambedkar Nagar\",\n        \"city\": \"New Delhi\",\n        \"state\": \"Delhi\",\n        \"pinCode\": \"110062\"\n    },\n    \"firstname\": \"Nakul\",\n    \"lastname\": \"Kumar\",\n    \"email\": \"2023mt93202@wilp.bits-pilani.ac.in\",\n    \"username\": \"nakulk\",\n    \"password\": \"customer@123\",\n    \"mobile_no\": \"9911212289\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -992,21 +977,14 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/users/customers/:username",
+											"raw": "{{baseUrl}}/users/customers/nakulk",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"users",
 												"customers",
-												":username"
-											],
-											"variable": [
-												{
-													"key": "username",
-													"value": "<string>",
-													"description": "(Required) "
-												}
+												"nakulk"
 											]
 										}
 									},
@@ -1032,7 +1010,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"upiId\": \"<string>\",\n  \"cardNumber\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1067,7 +1045,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"upiId\": \"<string>\",\n  \"cardNumber\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
 										},
 										{
 											"name": "The error can be any of those: the provided username is not supported. Invalid input provided.See the API spec for further details.",
@@ -1090,7 +1068,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"upiId\": \"<string>\",\n  \"cardNumber\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1148,7 +1126,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"upiId\": \"<string>\",\n  \"cardNumber\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1183,7 +1161,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"upiId\": \"<string>\",\n  \"cardNumber\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
 										}
 									]
 								}
@@ -1213,26 +1191,19 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/orders/:orderId/status?newStatus=IN_PREPARATION",
+											"raw": "{{baseUrl}}/orders/1/status?newStatus=OUT",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"orders",
-												":orderId",
+												"1",
 												"status"
 											],
 											"query": [
 												{
 													"key": "newStatus",
-													"value": "IN_PREPARATION",
-													"description": "(Required) "
-												}
-											],
-											"variable": [
-												{
-													"key": "orderId",
-													"value": "<long>",
+													"value": "OUT",
 													"description": "(Required) "
 												}
 											]
@@ -1255,7 +1226,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/orders/:orderId/status?newStatus=IN_PREPARATION",
+													"raw": "{{baseUrl}}/orders/:orderId/status?newStatus=OUT_FOR_DELIVERY",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -1267,7 +1238,7 @@
 													"query": [
 														{
 															"key": "newStatus",
-															"value": "IN_PREPARATION",
+															"value": "OUT_FOR_DELIVERY",
 															"description": "(Required) "
 														}
 													],
@@ -1306,7 +1277,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/orders/:orderId/status?newStatus=IN_PREPARATION",
+													"raw": "{{baseUrl}}/orders/:orderId/status?newStatus=OUT_FOR_DELIVERY",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -1318,7 +1289,7 @@
 													"query": [
 														{
 															"key": "newStatus",
-															"value": "IN_PREPARATION",
+															"value": "OUT_FOR_DELIVERY",
 															"description": "(Required) "
 														}
 													],
@@ -1357,7 +1328,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/orders/:orderId/status?newStatus=IN_PREPARATION",
+													"raw": "{{baseUrl}}/orders/:orderId/status?newStatus=OUT_FOR_DELIVERY",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -1369,7 +1340,7 @@
 													"query": [
 														{
 															"key": "newStatus",
-															"value": "IN_PREPARATION",
+															"value": "OUT_FOR_DELIVERY",
 															"description": "(Required) "
 														}
 													],
@@ -1657,7 +1628,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "[\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"ACCEPTED\",\n    \"order_date\": \"<dateTime>\"\n  },\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"OUT_FOR_DELIVERY\",\n    \"order_date\": \"<dateTime>\"\n  }\n]"
+									"body": "[\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"READY_FOR_DELIVERY\",\n    \"order_date\": \"<dateTime>\"\n  },\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"DELIVERED\",\n    \"order_date\": \"<dateTime>\"\n  }\n]"
 								}
 							]
 						}
@@ -1898,7 +1869,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"ACCEPTED\",\n    \"order_date\": \"<dateTime>\"\n  },\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"OUT_FOR_DELIVERY\",\n    \"order_date\": \"<dateTime>\"\n  }\n]"
+							"body": "[\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"READY_FOR_DELIVERY\",\n    \"order_date\": \"<dateTime>\"\n  },\n  {\n    \"orderId\": \"<long>\",\n    \"customerName\": \"<string>\",\n    \"customerMobileNo\": \"<string>\",\n    \"restaurant_name\": \"<string>\",\n    \"ordered_items\": [\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      },\n      {\n        \"item_name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"price\": \"<double>\",\n        \"total_price\": \"<double>\"\n      }\n    ],\n    \"total_amount\": \"<double>\",\n    \"order_status\": \"DELIVERED\",\n    \"order_date\": \"<dateTime>\"\n  }\n]"
 						}
 					]
 				},
@@ -2116,7 +2087,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+									"raw": "{\n        \"name\": \"Aloo Gobhi ki sabji\",\n        \"description\": \"Homely preparation of potatoes and couliflower semi dry spicy curry.\",\n        \"price\": 365.0,\n        \"cuisine\": \"INDIAN\",\n        \"item_id\": 13,\n        \"item_available\": \"YES\",\n        \"item_type\": \"VEG\"\n    }",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2125,20 +2096,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/menu/:id",
+									"raw": "{{baseUrl}}/menu/13",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"menu",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "<long>",
-											"description": "(Required) "
-										}
+										"13"
 									]
 								}
 							},
@@ -2164,7 +2128,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"CHINESE\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"NO\",\n  \"item_type\": \"NON_VEG\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2198,7 +2162,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}"
+									"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"CHINESE\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"NO\",\n  \"item_type\": \"NON_VEG\"\n}"
 								},
 								{
 									"name": "The error can be any of those: the provided input is not supported. See the API spec for further details.",
@@ -2221,7 +2185,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"CHINESE\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"NO\",\n  \"item_type\": \"NON_VEG\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2278,7 +2242,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"CHINESE\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"NO\",\n  \"item_type\": \"NON_VEG\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2312,7 +2276,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}"
+									"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"CHINESE\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"NO\",\n  \"item_type\": \"NON_VEG\"\n}"
 								}
 							]
 						},
@@ -2322,20 +2286,13 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/menu/:id",
+									"raw": "{{baseUrl}}/menu/13",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"menu",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "<long>",
-											"description": "(Required) "
-										}
+										"13"
 									]
 								}
 							},
@@ -2473,7 +2430,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}"
+									"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"CHINESE\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"NO\",\n  \"item_type\": \"NON_VEG\"\n}"
 								},
 								{
 									"name": "Unauthorized",
@@ -2511,7 +2468,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "[\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"price\": \"<double>\",\n    \"cuisine\": \"MUGHLAI\",\n    \"item_id\": \"<long>\",\n    \"item_available\": \"YES\",\n    \"item_type\": \"NON_VEG\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"price\": \"<double>\",\n    \"cuisine\": \"CHINESE\",\n    \"item_id\": \"<long>\",\n    \"item_available\": \"YES\",\n    \"item_type\": \"VEG\"\n  }\n]"
+									"body": "[\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"price\": \"<double>\",\n    \"cuisine\": \"INDIAN\",\n    \"item_id\": \"<long>\",\n    \"item_available\": \"NO\",\n    \"item_type\": \"NON_VEG\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"price\": \"<double>\",\n    \"cuisine\": \"INDIAN\",\n    \"item_id\": \"<long>\",\n    \"item_available\": \"NO\",\n    \"item_type\": \"NON_VEG\"\n  }\n]"
 								}
 							]
 						}
@@ -2533,7 +2490,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+							"raw": "{\n    \"name\": \"Aloo Gobhi ki sabji\",\n    \"description\": \"Homely preparation of potatoes and couliflower semi dry spicy curry.\",\n    \"price\": 365,\n    \"cuisine\": \"INDIAN\",\n    \"item_available\": \"YES\",\n    \"item_type\": \"VEG\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -2573,7 +2530,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"CHINESE\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"NO\",\n  \"item_type\": \"NON_VEG\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2601,7 +2558,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}"
+							"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"CHINESE\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"NO\",\n  \"item_type\": \"NON_VEG\"\n}"
 						},
 						{
 							"name": "The error can be any of those: the provided input is not supported. See the API spec for further details.",
@@ -2624,7 +2581,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"CHINESE\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"NO\",\n  \"item_type\": \"NON_VEG\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2675,7 +2632,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"CHINESE\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"NO\",\n  \"item_type\": \"NON_VEG\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2703,7 +2660,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"MUGHLAI\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"YES\",\n  \"item_type\": \"VEG\"\n}"
+							"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\",\n  \"cuisine\": \"CHINESE\",\n  \"item_id\": \"<long>\",\n  \"item_available\": \"NO\",\n  \"item_type\": \"NON_VEG\"\n}"
 						}
 					]
 				}
@@ -2734,7 +2691,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"password\": \"<string>\",\n  \"restaurant_name\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"hours_of_operation\": \"<string>\",\n  \"opening_hours\": [\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    },\n    {\n      \"day\": \"<string>\",\n      \"openingTime\": \"<string>\",\n      \"closingTime\": \"<string>\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    {\n      \"zoneName\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    }\n  ]\n}",
+											"raw": "{\n  \"password\": \"chinese@99Adda\",\n  \"restaurant_name\": \"99 Chinese Adda\",\n  \"username\": \"chinese.adda\",\n  \"address\": {\n    \"addressLine1\": \"A-44, Central Market, Sector 5\",\n    \"addressLine2\": \"Doctor Ambedkar Nagar, Madangir\",\n    \"city\": \"New Delhi\",\n    \"state\": \"Delhi\",\n    \"pinCode\": \"110062\"\n  },\n  \"hours_of_operation\": \"11\",\n  \"opening_hours\": [\n    {\n      \"day\": \"MON\",\n      \"openingTime\": \"11:00 AM\",\n      \"closingTime\": \"10:00 PM\"\n    },\n    {\n      \"day\": \"TUE\",\n      \"openingTime\": \"11:00 AM\",\n      \"closingTime\": \"10:00 PM\"\n    },\n    {\n      \"day\": \"WED\",\n      \"openingTime\": \"11:00 AM\",\n      \"closingTime\": \"10:00 PM\"\n    },\n    {\n      \"day\": \"THU\",\n      \"openingTime\": \"11:00 AM\",\n      \"closingTime\": \"10:00 PM\"\n    },\n    {\n      \"day\": \"FRI\",\n      \"openingTime\": \"11:00 AM\",\n      \"closingTime\": \"10:00 PM\"\n    },\n    {\n      \"day\": \"SAT\",\n      \"openingTime\": \"11:00 AM\",\n      \"closingTime\": \"10:00 PM\"\n    },\n    {\n      \"day\": \"SUN\",\n      \"openingTime\": \"11:00 AM\",\n      \"closingTime\": \"10:00 PM\"\n    }\n  ],\n  \"delivery_zones\": [\n    {\n      \"zoneName\": \"Sangam Vihar\",\n      \"pinCode\": \"110062\"\n    },\n    {\n      \"zoneName\": \"Khanpur\",\n      \"pinCode\": \"110044\"\n    },\n    {\n      \"zoneName\": \"Madangir\",\n      \"pinCode\": \"110062\"\n    }\n  ]\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2884,7 +2841,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+											"raw": "{\n  \"password\": \"@3$taneja\",\n  \"username\": \"deliveryboy-taneja\",\n  \"address\": {\n    \"addressLine1\": \"G-14 Block G\",\n    \"addressLine2\": \"Savitri Nagar\",\n    \"city\": \"New Delhi\",\n    \"state\": \"Delhi\",\n    \"pinCode\": \"110048\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2926,7 +2883,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -2956,7 +2913,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+											"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}"
 										},
 										{
 											"name": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
@@ -2979,7 +2936,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}",
+													"raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -3034,7 +2991,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+											"raw": "{\n  \"firstname\": \"Priyanka\",\n  \"mobile_no\": \"9856011007\",\n  \"password\": \"customer@123\",\n  \"username\": \"priyanka_98s\",\n  \"paymentMethod\": \"UPI\",\n  \"upiId\": \"9856011007@upi\",\n  \"address\": {\n    \"addressLine1\": \"B-II/407 Second floor\",\n    \"addressLine2\": \"Lodhi road\",\n    \"city\": \"New Delhi\",\n    \"state\": \"Delhi\",\n    \"pinCode\": \"110025\"\n  },\n  \"lastname\": \"Sansanwal\",\n  \"email\": \"priyanka1011@yahoo.co.in\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -3076,7 +3033,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"upiId\": \"<string>\",\n  \"cardNumber\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -3106,7 +3063,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+											"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"upiId\": \"<string>\",\n  \"cardNumber\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
 										},
 										{
 											"name": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
@@ -3129,7 +3086,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+													"raw": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"upiId\": \"<string>\",\n  \"cardNumber\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -3427,6 +3384,23 @@
 					"item": [
 						{
 							"name": "Logs in a user to Food Delivery System.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body = pm.response.text()",
+											"// console.log(body)",
+											"",
+											"var jsonData = JSON.parse(body);",
+											"pm.collectionVariables.set(\"bearerToken\", jsonData.token);",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [
@@ -3441,7 +3415,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"raw": "{\n  \"username\": \"deliveryboy-rakesh\",\n  \"password\": \"rakesh@123\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -3645,7 +3619,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"DELIVERY_PERSONNEL\"\n}",
+									"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"CUSTOMER\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -3686,7 +3660,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"DELIVERY_PERSONNEL\"\n}",
+											"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"CUSTOMER\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -3715,7 +3689,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"DELIVERY_PERSONNEL\"\n}"
+									"body": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"CUSTOMER\"\n}"
 								},
 								{
 									"name": "The error can be any of those: the provided username is not supported. See the API spec for further details.",
@@ -3738,7 +3712,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"DELIVERY_PERSONNEL\"\n}",
+											"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"CUSTOMER\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -3790,7 +3764,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"DELIVERY_PERSONNEL\"\n}",
+											"raw": "{\n  \"username\": \"<string>\",\n  \"deactivated\": \"<boolean>\",\n  \"role\": \"CUSTOMER\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -4006,7 +3980,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"report_type\": \"<string>\",\n  \"generated_date\": \"<dateTime>\",\n  \"report_data\": {\n    \"aliquip_e\": {}\n  }\n}"
+											"body": "{\n  \"report_type\": \"<string>\",\n  \"generated_date\": \"<dateTime>\",\n  \"report_data\": {\n    \"ex13_\": {}\n  }\n}"
 										}
 									]
 								}
@@ -4089,7 +4063,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"report_type\": \"<string>\",\n  \"generated_date\": \"<dateTime>\",\n  \"report_data\": {\n    \"aliquip_e\": {}\n  }\n}"
+											"body": "{\n  \"report_type\": \"<string>\",\n  \"generated_date\": \"<dateTime>\",\n  \"report_data\": {\n    \"ex13_\": {}\n  }\n}"
 										}
 									]
 								}
@@ -4158,7 +4132,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"report_type\": \"<string>\",\n  \"generated_date\": \"<dateTime>\",\n  \"report_data\": {\n    \"aliquip_e\": {}\n  }\n}"
+											"body": "{\n  \"report_type\": \"<string>\",\n  \"generated_date\": \"<dateTime>\",\n  \"report_data\": {\n    \"ex13_\": {}\n  }\n}"
 										}
 									]
 								}
@@ -4232,7 +4206,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"report_generated_at\": \"<dateTime>\",\n  \"active_users\": \"<integer>\",\n  \"delivery_activity\": {\n    \"culpaa72\": \"<long>\",\n    \"ex_8\": \"<long>\",\n    \"sint_75\": \"<long>\"\n  },\n  \"order_status_count\": {\n    \"ad9\": \"<long>\",\n    \"ad8\": \"<long>\"\n  }\n}"
+											"body": "{\n  \"report_generated_at\": \"<dateTime>\",\n  \"active_users\": \"<integer>\",\n  \"delivery_activity\": {\n    \"exdb\": \"<long>\"\n  },\n  \"order_status_count\": {\n    \"commodo_6\": \"<long>\",\n    \"dolore_351\": \"<long>\"\n  }\n}"
 										}
 									]
 								}
@@ -4311,7 +4285,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"FOUR_WHEELER\"\n}"
+									"body": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"vehicleType\": \"TWO_WHEELER\"\n}"
 								},
 								{
 									"name": "Unauthorized",
@@ -4349,7 +4323,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "[\n  {\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"vehicleType\": \"TWO_WHEELER\"\n  },\n  {\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"vehicleType\": \"FOUR_WHEELER\"\n  }\n]"
+									"body": "[\n  {\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"vehicleType\": \"TWO_WHEELER\"\n  },\n  {\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"vehicleType\": \"TWO_WHEELER\"\n  }\n]"
 								}
 							]
 						}
@@ -4416,7 +4390,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentDetails\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
+									"body": "{\n  \"firstname\": \"<string>\",\n  \"mobile_no\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"upiId\": \"<string>\",\n  \"cardNumber\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"lastname\": \"<string>\",\n  \"email\": \"<string>\"\n}"
 								},
 								{
 									"name": "Unauthorized",
@@ -4454,7 +4428,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "[\n  {\n    \"firstname\": \"<string>\",\n    \"mobile_no\": \"<string>\",\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"paymentDetails\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"lastname\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  {\n    \"firstname\": \"<string>\",\n    \"mobile_no\": \"<string>\",\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"paymentDetails\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"lastname\": \"<string>\",\n    \"email\": \"<string>\"\n  }\n]"
+									"body": "[\n  {\n    \"firstname\": \"<string>\",\n    \"mobile_no\": \"<string>\",\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"paymentMethod\": \"DEBIT_CARD\",\n    \"upiId\": \"<string>\",\n    \"cardNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"lastname\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  {\n    \"firstname\": \"<string>\",\n    \"mobile_no\": \"<string>\",\n    \"password\": \"<string>\",\n    \"username\": \"<string>\",\n    \"paymentMethod\": \"UPI\",\n    \"upiId\": \"<string>\",\n    \"cardNumber\": \"<string>\",\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"lastname\": \"<string>\",\n    \"email\": \"<string>\"\n  }\n]"
 								}
 							]
 						}
@@ -4486,7 +4460,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/restaurants?cuisineType=<string>&itemType=<string>&itemAvailable=<string>",
+							"raw": "{{baseUrl}}/restaurants?cuisineType=INDIAN&itemType=VEG&itemAvailable=YES",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -4496,15 +4470,15 @@
 							"query": [
 								{
 									"key": "cuisineType",
-									"value": "<string>"
+									"value": "INDIAN"
 								},
 								{
 									"key": "itemType",
-									"value": "<string>"
+									"value": "VEG"
 								},
 								{
 									"key": "itemAvailable",
-									"value": "<string>"
+									"value": "YES"
 								}
 							]
 						}
@@ -4559,7 +4533,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"menuItems\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\",\n      \"cuisine\": \"MEXICAN\",\n      \"item_id\": \"<long>\",\n      \"item_available\": \"YES\",\n      \"item_type\": \"NON_VEG\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\",\n      \"cuisine\": \"MUGHLAI\",\n      \"item_id\": \"<long>\",\n      \"item_available\": \"NO\",\n      \"item_type\": \"NON_VEG\"\n    }\n  ],\n  \"restaurant_name\": \"<string>\"\n}"
+							"body": "{\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"pinCode\": \"<string>\"\n  },\n  \"menuItems\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\",\n      \"cuisine\": \"INDIAN\",\n      \"item_id\": \"<long>\",\n      \"item_available\": \"NO\",\n      \"item_type\": \"NON_VEG\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\",\n      \"cuisine\": \"KOREAN\",\n      \"item_id\": \"<long>\",\n      \"item_available\": \"NO\",\n      \"item_type\": \"VEG\"\n    }\n  ],\n  \"restaurant_name\": \"<string>\"\n}"
 						},
 						{
 							"name": "Unauthorized",
@@ -4610,7 +4584,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n  {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"menuItems\": [\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"INDIAN\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"YES\",\n        \"item_type\": \"VEG\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"KOREAN\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"NO\",\n        \"item_type\": \"NON_VEG\"\n      }\n    ],\n    \"restaurant_name\": \"<string>\"\n  },\n  {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"menuItems\": [\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"ITALIAN\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"NO\",\n        \"item_type\": \"NON_VEG\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"MUGHLAI\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"NO\",\n        \"item_type\": \"NON_VEG\"\n      }\n    ],\n    \"restaurant_name\": \"<string>\"\n  }\n]"
+							"body": "[\n  {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"menuItems\": [\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"MUGHLAI\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"NO\",\n        \"item_type\": \"NON_VEG\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"CHINESE\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"NO\",\n        \"item_type\": \"NON_VEG\"\n      }\n    ],\n    \"restaurant_name\": \"<string>\"\n  },\n  {\n    \"address\": {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"pinCode\": \"<string>\"\n    },\n    \"menuItems\": [\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"MEXICAN\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"YES\",\n        \"item_type\": \"VEG\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"price\": \"<double>\",\n        \"cuisine\": \"KOREAN\",\n        \"item_id\": \"<long>\",\n        \"item_available\": \"YES\",\n        \"item_type\": \"NON_VEG\"\n      }\n    ],\n    \"restaurant_name\": \"<string>\"\n  }\n]"
 						}
 					]
 				}
@@ -4631,6 +4605,15 @@
 		{
 			"key": "baseUrl",
 			"value": "http://localhost:8085"
+		},
+		{
+			"key": "bearerToken",
+			"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0NVU1RPTUVSIl0sImN1c3RvbWVySWQiOjEsInN1YiI6Im5ha3VsayIsImlhdCI6MTczMDEyNTIyNiwiZXhwIjoxNzMwMTYxMjI2fQ.g4VJAdknxrNn_KGXRrChdoGJ_i9M-sUJoYFV0NgsI-8",
+			"type": "default"
+		},
+		{
+			"key": "bearerAuth",
+			"value": ""
 		}
 	]
 }

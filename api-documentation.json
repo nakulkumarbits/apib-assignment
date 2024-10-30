@@ -1,0 +1,2047 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Food Delivery API",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8085",
+            "description": "Generated server url"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "paths": {
+        "/users/restaurants/{username}": {
+            "get": {
+                "tags": [
+                    "restaurant-owner-controller"
+                ],
+                "summary": "Fetches a Restaurant from the Food Delivery System.",
+                "operationId": "getRestaurant",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported. See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Restaurant was successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RestaurantDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RestaurantDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "restaurant-owner-controller"
+                ],
+                "summary": "Updates a Restaurant from the Food Delivery System.",
+                "operationId": "updateRestaurant",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RestaurantDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Restaurant was successfully updated.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RestaurantDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported. Invalid input provided.See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RestaurantDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/delivery/{username}": {
+            "get": {
+                "tags": [
+                    "delivery-personnel-controller"
+                ],
+                "summary": "Fetches a delivery personnel from the Food Delivery System.",
+                "operationId": "getDeliveryPersonnel",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delivery personnel was successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeliveryPersonnelDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported. See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeliveryPersonnelDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "delivery-personnel-controller"
+                ],
+                "summary": "Updates a delivery personnel from the Food Delivery System.",
+                "operationId": "updateDeliveryPersonnel",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeliveryPersonnelDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Delivery personnel was successfully updated.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeliveryPersonnelDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported. Invalid input provided.See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeliveryPersonnelDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/customers/{username}": {
+            "get": {
+                "tags": [
+                    "customer-controller"
+                ],
+                "summary": "Fetches a customer from the Food Delivery System.",
+                "operationId": "getCustomer",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer was successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomerDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported. See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomerDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "customer-controller"
+                ],
+                "summary": "Updates a customer from the Food Delivery System.",
+                "operationId": "updateCustomer",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CustomerDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Customer was successfully updated.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomerDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported. Invalid input provided.See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomerDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/{orderId}/status": {
+            "put": {
+                "tags": [
+                    "order-controller"
+                ],
+                "summary": "Updates the order status of an order on the Food Delivery System.",
+                "operationId": "updateOrderStatus",
+                "parameters": [
+                    {
+                        "name": "orderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "newStatus",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "AWAITING_CONFIRMATION",
+                                "ACCEPTED",
+                                "IN_PREPARATION",
+                                "CANCELLED",
+                                "REJECTED",
+                                "READY_FOR_DELIVERY",
+                                "OUT_FOR_DELIVERY",
+                                "DELIVERED"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Order status was successfully updated.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided input is not supported. See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderResponseDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/menu/{id}": {
+            "put": {
+                "tags": [
+                    "menu-item-controller"
+                ],
+                "summary": "Updates a menu item for the logged in restaurant owner.",
+                "operationId": "updateMenuItem",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MenuItemDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized.",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MenuItemDTO"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Menu item updated.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MenuItemDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided input is not supported. See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "menu-item-controller"
+                ],
+                "summary": "Deletes a menu item for the logged in restaurant owner.",
+                "operationId": "removeMenuItem",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized."
+                    },
+                    "204": {
+                        "description": "Menu item deleted."
+                    }
+                }
+            }
+        },
+        "/orders": {
+            "get": {
+                "tags": [
+                    "order-controller"
+                ],
+                "summary": "Fetches all orders placed by the customer from the Food Delivery System.",
+                "operationId": "getOrders",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "List of orders were successfully retrieved.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/OrderResponseDTO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "order-controller"
+                ],
+                "summary": "Place an order on the Food Delivery System.",
+                "operationId": "createOrder",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderRequestDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Order was successfully placed.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided input is not supported. See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderResponseDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/menu": {
+            "post": {
+                "tags": [
+                    "menu-item-controller"
+                ],
+                "summary": "Add a menu item and associate to the logged in restaurant owner.",
+                "operationId": "addMenuItem",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MenuItemDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Menu item added.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MenuItemDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized.",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MenuItemDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided input is not supported. See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/register/restaurant": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "summary": "Restaurant owner can register a restaurant to the Food Delivery System.",
+                "operationId": "registerRestaurantOwner",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RestaurantDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Restaurant was successfully registered.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RestaurantDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/register/delivery": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "summary": "Register a delivery personnel to the Food Delivery System.",
+                "operationId": "registerDeliveryPersonnel",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeliveryPersonnelDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Delivery Personnel was successfully registered.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeliveryPersonnelDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/register/customer": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "summary": "Register a customer to the Food Delivery System.",
+                "operationId": "registerCustomer",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CustomerDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Customer was successfully registered.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomerDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/register/admin": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "summary": "Register a administrator to the Food Delivery System.",
+                "operationId": "registerAdministrator",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AdministratorDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Administrator was successfully registered.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AdministratorDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "summary": "Logs out a user from Food Delivery System.",
+                "operationId": "logout",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Auth header for which logout has to be done.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logout is successful.",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing/Invalid Authorization header.",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "summary": "Logs in a user to Food Delivery System.",
+                "operationId": "login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful login and token is issued.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Login is not authorized.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported, the request is missing a required parameter, the provided password is invalid.See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/deactivate": {
+            "post": {
+                "tags": [
+                    "administrator-controller"
+                ],
+                "summary": "Deactivates a user from the Food Delivery System.",
+                "operationId": "deactivateUser",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeactivateUserDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "400": {
+                        "description": "The error can be any of those: the provided username is not supported. See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "User was successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeactivateUserDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurants": {
+            "get": {
+                "tags": [
+                    "restaurant-controller"
+                ],
+                "summary": "Fetches all the restaurants along with their menu items from the Food Delivery System.",
+                "operationId": "getAllRestaurants",
+                "parameters": [
+                    {
+                        "name": "cuisineType",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "itemType",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "itemAvailable",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Restaurants and menu items were successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RestaurantItemDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/RestaurantItemDTO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/orders/{orderId}": {
+            "get": {
+                "tags": [
+                    "order-controller"
+                ],
+                "summary": "Fetches an order from the Food Delivery System.",
+                "operationId": "getOrder",
+                "parameters": [
+                    {
+                        "name": "orderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "See the API spec for further details.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Order was successfully retrieved.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderResponseDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/incoming": {
+            "get": {
+                "tags": [
+                    "order-controller"
+                ],
+                "summary": "Fetches all incoming orders placed by the customer for the restaurant on the Food Delivery System.",
+                "operationId": "getIncomingOrders",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of orders successfully placed were retrieved for the restaurant.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/OrderResponseDTO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/deliverables": {
+            "get": {
+                "tags": [
+                    "order-controller"
+                ],
+                "summary": "Fetches all orders available to be picked up for delivery or out for delivery.",
+                "operationId": "getDeliverables",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of orders available to be picked up for delivery or out for delivery.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeliveryResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DeliveryResponseDTO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/menu/items": {
+            "get": {
+                "tags": [
+                    "menu-item-controller"
+                ],
+                "summary": "Fetches menu items for a restaurant from the Food Delivery System.",
+                "operationId": "getMenuItemsByOwner",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Menu items were successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MenuItemDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/MenuItemDTO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/restaurants": {
+            "get": {
+                "tags": [
+                    "administrator-controller"
+                ],
+                "summary": "Fetches all the restaurants from the Food Delivery System.",
+                "operationId": "getRestaurants",
+                "responses": {
+                    "200": {
+                        "description": "Restaurants were successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RestaurantDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/RestaurantDTO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/admin/reports/popular-restaurants": {
+            "get": {
+                "tags": [
+                    "report-controller"
+                ],
+                "operationId": "generatePopularRestaurantsReport",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ReportDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/reports/order-trends": {
+            "get": {
+                "tags": [
+                    "report-controller"
+                ],
+                "operationId": "generateOrderTrendsReport",
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ReportDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/reports/average-delivery-time": {
+            "get": {
+                "tags": [
+                    "report-controller"
+                ],
+                "operationId": "generateAverageDeliveryTimeReport",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ReportDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/monitoring/platform-activity": {
+            "get": {
+                "tags": [
+                    "monitoring-controller"
+                ],
+                "operationId": "getPlatformActivity",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PlatformActivityDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/delivery": {
+            "get": {
+                "tags": [
+                    "administrator-controller"
+                ],
+                "summary": "Fetches all the delivery personnel from the Food Delivery System.",
+                "operationId": "getDeliveryPersonnels",
+                "responses": {
+                    "200": {
+                        "description": "Delivery personnel were successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeliveryPersonnelDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DeliveryPersonnelDTO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/admin/customers": {
+            "get": {
+                "tags": [
+                    "administrator-controller"
+                ],
+                "summary": "Fetches all the customers from the Food Delivery System.",
+                "operationId": "getCustomers",
+                "responses": {
+                    "200": {
+                        "description": "Customers were successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomerDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CustomerDTO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AddressDTO": {
+                "type": "object",
+                "properties": {
+                    "addressLine1": {
+                        "type": "string"
+                    },
+                    "addressLine2": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "pinCode": {
+                        "type": "string"
+                    }
+                },
+                "description": "The address of the user trying to register."
+            },
+            "DeliveryZoneDTO": {
+                "type": "object",
+                "properties": {
+                    "zoneName": {
+                        "type": "string"
+                    },
+                    "pinCode": {
+                        "type": "string"
+                    }
+                },
+                "description": "Delivery zones for the restaurant."
+            },
+            "OpeningHourDTO": {
+                "type": "object",
+                "properties": {
+                    "day": {
+                        "type": "string"
+                    },
+                    "openingTime": {
+                        "type": "string"
+                    },
+                    "closingTime": {
+                        "type": "string"
+                    }
+                },
+                "description": "Opening hours for the restaurant."
+            },
+            "RestaurantDTO": {
+                "required": [
+                    "password",
+                    "restaurant_name",
+                    "username"
+                ],
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressDTO"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user trying to register."
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password of the user trying to register."
+                    },
+                    "restaurant_name": {
+                        "type": "string",
+                        "description": "The restaurant name of the user trying to register."
+                    },
+                    "hours_of_operation": {
+                        "type": "string",
+                        "description": "hours of operation for the restaurant."
+                    },
+                    "opening_hours": {
+                        "type": "array",
+                        "description": "Opening hours for the restaurant.",
+                        "items": {
+                            "$ref": "#/components/schemas/OpeningHourDTO"
+                        }
+                    },
+                    "delivery_zones": {
+                        "type": "array",
+                        "description": "Delivery zones for the restaurant.",
+                        "items": {
+                            "$ref": "#/components/schemas/DeliveryZoneDTO"
+                        }
+                    }
+                }
+            },
+            "FieldError": {
+                "type": "object",
+                "properties": {
+                    "field": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ValidationErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "errors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FieldError"
+                        }
+                    }
+                }
+            },
+            "DeliveryPersonnelDTO": {
+                "required": [
+                    "password",
+                    "username"
+                ],
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressDTO"
+                    },
+                    "vehicleType": {
+                        "type": "string",
+                        "description": "The vehicle type of the user trying to register.",
+                        "enum": [
+                            "TWO_WHEELER",
+                            "FOUR_WHEELER"
+                        ]
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user trying to register.",
+                        "example": "john_doe"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password of the user trying to register."
+                    }
+                }
+            },
+            "CustomerDTO": {
+                "required": [
+                    "firstname",
+                    "mobile_no",
+                    "password",
+                    "username"
+                ],
+                "type": "object",
+                "properties": {
+                    "paymentMethod": {
+                        "type": "string",
+                        "description": "The payment method of the user trying to register.",
+                        "enum": [
+                            "UPI",
+                            "CASH",
+                            "DEBIT_CARD",
+                            "CREDIT_CARD"
+                        ]
+                    },
+                    "upiId": {
+                        "type": "string",
+                        "description": "UPI id for the user trying to register."
+                    },
+                    "cardNumber": {
+                        "type": "string",
+                        "description": "Credit/Debit card info for the user trying to register."
+                    },
+                    "address": {
+                        "$ref": "#/components/schemas/AddressDTO"
+                    },
+                    "firstname": {
+                        "type": "string",
+                        "description": "The firstname of the user trying to register."
+                    },
+                    "lastname": {
+                        "type": "string",
+                        "description": "The lastname of the user trying to register."
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the user trying to register."
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user trying to register."
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password of the user trying to register."
+                    },
+                    "mobile_no": {
+                        "type": "string",
+                        "description": "The mobile no of the user trying to register."
+                    }
+                }
+            },
+            "OrderItemResponseDTO": {
+                "type": "object",
+                "properties": {
+                    "item_name": {
+                        "type": "string",
+                        "description": "Name of the menu item."
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "description": "Quantity ordered.",
+                        "format": "int32"
+                    },
+                    "price": {
+                        "type": "number",
+                        "description": "Price per unit.",
+                        "format": "double"
+                    },
+                    "total_price": {
+                        "type": "number",
+                        "description": "Total price for this item (price * quantity).",
+                        "format": "double"
+                    }
+                },
+                "description": "List of ordered items"
+            },
+            "OrderResponseDTO": {
+                "type": "object",
+                "properties": {
+                    "orderId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "customerName": {
+                        "type": "string",
+                        "description": "First and last name of the customer"
+                    },
+                    "customerMobileNo": {
+                        "type": "string",
+                        "description": "The mobile no of the customer"
+                    },
+                    "restaurant_name": {
+                        "type": "string",
+                        "description": "Restaurant name"
+                    },
+                    "ordered_items": {
+                        "type": "array",
+                        "description": "List of ordered items",
+                        "items": {
+                            "$ref": "#/components/schemas/OrderItemResponseDTO"
+                        }
+                    },
+                    "total_amount": {
+                        "type": "number",
+                        "description": "Total order amount",
+                        "format": "double"
+                    },
+                    "order_status": {
+                        "type": "string",
+                        "description": "Status of the order",
+                        "enum": [
+                            "AWAITING_CONFIRMATION",
+                            "ACCEPTED",
+                            "IN_PREPARATION",
+                            "CANCELLED",
+                            "REJECTED",
+                            "READY_FOR_DELIVERY",
+                            "OUT_FOR_DELIVERY",
+                            "DELIVERED"
+                        ]
+                    },
+                    "order_date": {
+                        "type": "string",
+                        "description": "Date and time of the order",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "MenuItemDTO": {
+                "required": [
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the dish."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the dish."
+                    },
+                    "price": {
+                        "minimum": 0,
+                        "type": "number",
+                        "description": "Price of the dish.",
+                        "format": "double"
+                    },
+                    "cuisine": {
+                        "type": "string",
+                        "enum": [
+                            "INDIAN",
+                            "CHINESE",
+                            "ITALIAN",
+                            "MEXICAN",
+                            "MUGHLAI",
+                            "KOREAN"
+                        ]
+                    },
+                    "item_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "item_available": {
+                        "type": "string",
+                        "description": "Availability of the dish.",
+                        "enum": [
+                            "YES",
+                            "NO"
+                        ]
+                    },
+                    "item_type": {
+                        "type": "string",
+                        "enum": [
+                            "VEG",
+                            "NON_VEG"
+                        ]
+                    }
+                }
+            },
+            "OrderItemRequestDTO": {
+                "type": "object",
+                "properties": {
+                    "quantity": {
+                        "type": "integer",
+                        "description": "Quantity of the menu item.",
+                        "format": "int32",
+                        "example": 2
+                    },
+                    "menu_item_id": {
+                        "type": "integer",
+                        "description": "Id of the menu item.",
+                        "format": "int64"
+                    }
+                },
+                "description": "Items present in the order."
+            },
+            "OrderRequestDTO": {
+                "type": "object",
+                "properties": {
+                    "customer_id": {
+                        "minimum": 1,
+                        "type": "integer",
+                        "description": "Id of the customer placing the order.",
+                        "format": "int64"
+                    },
+                    "restaurant_id": {
+                        "minimum": 1,
+                        "type": "integer",
+                        "description": "Id of the restaurant from where the order is being placed.",
+                        "format": "int64"
+                    },
+                    "order_items": {
+                        "type": "array",
+                        "description": "Items present in the order.",
+                        "items": {
+                            "$ref": "#/components/schemas/OrderItemRequestDTO"
+                        }
+                    },
+                    "payment_method": {
+                        "type": "string",
+                        "description": "method how the payment will be made.",
+                        "example": "UPI",
+                        "enum": [
+                            "UPI",
+                            "CASH",
+                            "DEBIT_CARD",
+                            "CREDIT_CARD"
+                        ]
+                    }
+                }
+            },
+            "AdministratorDTO": {
+                "required": [
+                    "password",
+                    "username"
+                ],
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user trying to register.",
+                        "example": "john_doe"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password of the user trying to register."
+                    }
+                }
+            },
+            "AuthRequest": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user trying to log in",
+                        "example": "john_doe"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password of the user trying to log in"
+                    }
+                },
+                "description": "User login request containing username and password"
+            },
+            "AuthResponse": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "DeactivateUserDTO": {
+                "required": [
+                    "username"
+                ],
+                "type": "object",
+                "properties": {
+                    "deactivated": {
+                        "type": "boolean"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user which should be deactivated."
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The role of the user which should be deactivated.",
+                        "enum": [
+                            "CUSTOMER",
+                            "RESTAURANT_OWNER",
+                            "DELIVERY_PERSONNEL",
+                            "ADMIN"
+                        ]
+                    }
+                }
+            },
+            "RestaurantItemDTO": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressDTO"
+                    },
+                    "menuItems": {
+                        "type": "array",
+                        "description": "Items available at the restaurant.",
+                        "items": {
+                            "$ref": "#/components/schemas/MenuItemDTO"
+                        }
+                    },
+                    "restaurant_id": {
+                        "type": "integer",
+                        "description": "Restaurant id",
+                        "format": "int64"
+                    },
+                    "restaurant_name": {
+                        "type": "string",
+                        "description": "Name of the restaurant."
+                    }
+                }
+            },
+            "DeliveryResponseDTO": {
+                "type": "object",
+                "properties": {
+                    "orderId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "customerName": {
+                        "type": "string",
+                        "description": "First and last name of the customer"
+                    },
+                    "customerMobileNo": {
+                        "type": "string",
+                        "description": "The mobile no of the customer"
+                    },
+                    "restaurant_name": {
+                        "type": "string",
+                        "description": "Restaurant name"
+                    },
+                    "restaurant_address": {
+                        "$ref": "#/components/schemas/AddressDTO"
+                    },
+                    "total_amount": {
+                        "type": "number",
+                        "description": "Total order amount",
+                        "format": "double"
+                    },
+                    "order_date": {
+                        "type": "string",
+                        "description": "Date and time of the order",
+                        "format": "date-time"
+                    },
+                    "ordered_items": {
+                        "type": "array",
+                        "description": "List of ordered items",
+                        "items": {
+                            "$ref": "#/components/schemas/OrderItemResponseDTO"
+                        }
+                    },
+                    "customer_address": {
+                        "$ref": "#/components/schemas/AddressDTO"
+                    }
+                }
+            },
+            "ReportDTO": {
+                "type": "object",
+                "properties": {
+                    "report_type": {
+                        "type": "string",
+                        "description": "Report type",
+                        "example": "e.g., \"Most Popular Restaurants\", \"Average Delivery Time\", etc."
+                    },
+                    "generated_date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "report_data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "PlatformActivityDTO": {
+                "type": "object",
+                "properties": {
+                    "report_generated_at": {
+                        "type": "string",
+                        "description": "Report generation time",
+                        "format": "date-time"
+                    },
+                    "active_users": {
+                        "type": "integer",
+                        "description": "number of active users",
+                        "format": "int32"
+                    },
+                    "delivery_activity": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "description": "delivery activities like ongoing and completed deliveries",
+                            "format": "int64"
+                        },
+                        "description": "delivery activities like ongoing and completed deliveries"
+                    },
+                    "order_status_count": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "description": "order status map count based on statuses like preparing, delivered, etc.",
+                            "format": "int64"
+                        },
+                        "description": "order status map count based on statuses like preparing, delivered, etc."
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "JWT Authorization header using the Bearer scheme.",
+                "name": "Authorization",
+                "in": "header",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
