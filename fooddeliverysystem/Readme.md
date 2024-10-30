@@ -70,13 +70,15 @@ CREATE TABLE `Customer` (
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `mobileNo` varchar(255) NOT NULL,
-  `paymentDetails` varchar(255) DEFAULT NULL,
   `address_id` bigint DEFAULT NULL,
+  `payment_detail_id` bigint DEFAULT NULL,
   `user_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK3qgg01qojcmbdp47dkaom9x45` (`email`),
   UNIQUE KEY `UKi7f12t1rqxjnufl1k69g1887v` (`address_id`),
+  UNIQUE KEY `UKlkvkcfp0vrq50v228378wp8sa` (`payment_detail_id`),
   UNIQUE KEY `UK8mymjl93593fro12fetnugjxr` (`user_id`),
+  CONSTRAINT `FK6fcmqdibqefuoimvjyji0a8xu` FOREIGN KEY (`payment_detail_id`) REFERENCES `PaymentDetail` (`id`),
   CONSTRAINT `FK6y0rqloalxi6r6lpoqtfohp9i` FOREIGN KEY (`user_id`) REFERENCES `User` (`id`),
   CONSTRAINT `FKfok4ytcqy7lovuiilldbebpd9` FOREIGN KEY (`address_id`) REFERENCES `Address` (`id`)
 );
@@ -128,15 +130,15 @@ CREATE TABLE `OrderDetail` (
   `totalAmount` double NOT NULL,
   `version` bigint DEFAULT NULL,
   `customer_id` bigint NOT NULL,
-  `restaurant_id` bigint NOT NULL,
   `payment_id` bigint DEFAULT NULL,
+  `restaurant_id` bigint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK3u354ci12f8qgq55qvec32xku` (`restaurant_id`),
   UNIQUE KEY `UKnw8e5ie5lb7pw9db1xwy1sj0c` (`payment_id`),
   KEY `FKlwylj1qrsxh84g8d7er0f5585` (`customer_id`),
   CONSTRAINT `FK2vnd6yad4877v3soxcqk937u1` FOREIGN KEY (`restaurant_id`) REFERENCES `Restaurant` (`id`),
   CONSTRAINT `FKlwylj1qrsxh84g8d7er0f5585` FOREIGN KEY (`customer_id`) REFERENCES `Customer` (`id`),
-  CONSTRAINT `FKqdjwmclci19o3951wn6yunax4` FOREIGN KEY (`payment_id`) REFERENCES `PaymentDetail` (`id`)
+  CONSTRAINT `FKso7egdy3vsx02j9rh8bd2tv95` FOREIGN KEY (`payment_id`) REFERENCES `OrderPaymentDetail` (`id`)
 );
 ```
 
@@ -157,15 +159,29 @@ CREATE TABLE `OrderItem` (
 );
 ```
 
-- PaymentDetail
+- OrderPaymentDetail
 ```
-CREATE TABLE `PaymentDetail` (
+CREATE TABLE `OrderPaymentDetail` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `amount` double NOT NULL,
   `createdDate` datetime(6) DEFAULT NULL,
   `modifiedDate` datetime(6) DEFAULT NULL,
   `paymentMethod` enum('CASH','CREDIT_CARD','DEBIT_CARD','UPI') NOT NULL,
   `paymentStatus` enum('COMPLETED','IN_PROGRESS','REJECTED') NOT NULL,
+  `version` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+```
+
+- PaymentDetail
+```
+CREATE TABLE `PaymentDetail` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `cardNumber` varchar(255) DEFAULT NULL,
+  `createdDate` datetime(6) DEFAULT NULL,
+  `modifiedDate` datetime(6) DEFAULT NULL,
+  `paymentMethod` enum('CASH','CREDIT_CARD','DEBIT_CARD','UPI') NOT NULL,
+  `upiId` varchar(255) DEFAULT NULL,
   `version` bigint DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
@@ -220,13 +236,13 @@ CREATE TABLE `RestaurantOpeningDetail` (
 CREATE TABLE `User` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `createdDate` datetime(6) DEFAULT NULL,
+  `lastLogin` datetime(6) DEFAULT NULL,
   `modifiedDate` datetime(6) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `role` enum('ADMIN','CUSTOMER','DELIVERY_PERSONNEL','RESTAURANT_OWNER') NOT NULL,
   `status` enum('ACTIVATED','DEACTIVATED') NOT NULL,
   `username` varchar(255) NOT NULL,
   `version` bigint DEFAULT NULL,
-  `lastLogin` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKjreodf78a7pl5qidfh43axdfb` (`username`)
 );
