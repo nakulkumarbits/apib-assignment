@@ -292,3 +292,9 @@ CREATE TABLE `User` (
 );
 ```
 </details>
+
+Testing
+-
+|No. | Description | Screenshot |
+|----|-------------|------------|
+|1.  | Jacoco test coverage report | ![unit-test-coverage-jacoco](https://github.com/user-attachments/assets/b5148f99-9001-4b02-9e1e-a6820db253ce) |
