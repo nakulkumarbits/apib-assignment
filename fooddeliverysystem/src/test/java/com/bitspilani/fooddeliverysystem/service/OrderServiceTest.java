@@ -1,5 +1,6 @@
 package com.bitspilani.fooddeliverysystem.service;
 
+import static com.bitspilani.fooddeliverysystem.utils.FoodDeliveryTestConstants.ADMIN_TOKEN;
 import static com.bitspilani.fooddeliverysystem.utils.FoodDeliveryTestConstants.CUSTOMER_TOKEN;
 import static com.bitspilani.fooddeliverysystem.utils.FoodDeliveryTestConstants.DELIVERY_TOKEN;
 import static com.bitspilani.fooddeliverysystem.utils.FoodDeliveryTestConstants.RESTAURANT_TOKEN;
@@ -194,6 +195,16 @@ class OrderServiceTest {
     }
 
     @Test
+    void testGetIncomingOrdersForAdmin() {
+        when(orderDetailRepository.findByOrderStatusIn(any())).thenReturn(List.of(getOrderDetail()));
+        when(jwtUtil.hasAdminRole(anyString())).thenReturn(true);
+        List<OrderResponseDTO> result = orderService.getIncomingOrders(ADMIN_TOKEN);
+        assertNotNull(result);
+    }
+
+
+    @Test
+
     void testGetDeliverables() {
         when(orderDetailRepository.findByOrderStatusIn(any())).thenReturn(List.of(getOrderDetail()));
 

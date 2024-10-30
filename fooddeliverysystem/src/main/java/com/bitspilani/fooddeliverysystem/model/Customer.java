@@ -37,7 +37,9 @@ public class Customer {
     @JoinColumn(name = "address_id")
     private Address deliveryAddress;
 
-    private String paymentDetails;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "payment_detail_id")
+    private PaymentDetail paymentDetail;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")

@@ -129,11 +129,14 @@ CREATE TABLE `OrderDetail` (
   `version` bigint DEFAULT NULL,
   `customer_id` bigint NOT NULL,
   `restaurant_id` bigint NOT NULL,
+  `payment_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK3u354ci12f8qgq55qvec32xku` (`restaurant_id`),
+  UNIQUE KEY `UKnw8e5ie5lb7pw9db1xwy1sj0c` (`payment_id`),
   KEY `FKlwylj1qrsxh84g8d7er0f5585` (`customer_id`),
   CONSTRAINT `FK2vnd6yad4877v3soxcqk937u1` FOREIGN KEY (`restaurant_id`) REFERENCES `Restaurant` (`id`),
-  CONSTRAINT `FKlwylj1qrsxh84g8d7er0f5585` FOREIGN KEY (`customer_id`) REFERENCES `Customer` (`id`)
+  CONSTRAINT `FKlwylj1qrsxh84g8d7er0f5585` FOREIGN KEY (`customer_id`) REFERENCES `Customer` (`id`),
+  CONSTRAINT `FKqdjwmclci19o3951wn6yunax4` FOREIGN KEY (`payment_id`) REFERENCES `PaymentDetail` (`id`)
 );
 ```
 
@@ -151,6 +154,20 @@ CREATE TABLE `OrderItem` (
   KEY `FK7cmys9vguhxa89fd095xyeyje` (`order_detail_id`),
   CONSTRAINT `FK7cmys9vguhxa89fd095xyeyje` FOREIGN KEY (`order_detail_id`) REFERENCES `OrderDetail` (`id`),
   CONSTRAINT `FKaqqkf7tjdpqcuohm2g7uww24q` FOREIGN KEY (`menu_item_id`) REFERENCES `MenuItem` (`id`)
+);
+```
+
+- PaymentDetail
+```
+CREATE TABLE `PaymentDetail` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `amount` double NOT NULL,
+  `createdDate` datetime(6) DEFAULT NULL,
+  `modifiedDate` datetime(6) DEFAULT NULL,
+  `paymentMethod` enum('CASH','CREDIT_CARD','DEBIT_CARD','UPI') NOT NULL,
+  `paymentStatus` enum('COMPLETED','IN_PROGRESS','REJECTED') NOT NULL,
+  `version` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`)
 );
 ```
 

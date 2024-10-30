@@ -1,10 +1,14 @@
 package com.bitspilani.fooddeliverysystem.advices;
 
 import com.bitspilani.fooddeliverysystem.dto.ValidationErrorResponse;
+import com.bitspilani.fooddeliverysystem.exceptions.InvalidRequestException;
 import com.bitspilani.fooddeliverysystem.exceptions.UserNotFoundException;
 import com.bitspilani.fooddeliverysystem.exceptions.UsernameMismatchException;
+import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
+import jakarta.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -41,6 +45,21 @@ public class FoodDeliveryExceptionHandler {
     @ExceptionHandler(UsernameMismatchException.class)
     public ResponseEntity<ValidationErrorResponse> handleUsernameMismatchException(UsernameMismatchException ex) {
         ValidationErrorResponse errorResponse = new ValidationErrorResponse(ex.getMessage(), null);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ValidationErrorResponse> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
+        ValidationErrorResponse errorResponse = new ValidationErrorResponse("Invalid input provided", null);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidRequestException.class)
+    public ResponseEntity<ValidationErrorResponse> handleInvalidRequestException(InvalidRequestException ex) {
+        ValidationErrorResponse errorResponse = new ValidationErrorResponse("Invalid input provided", null);
+        if (ex.getMessage().contains(FoodDeliveryConstants.RESTAURANT_STATUS_ERROR)) {
+            errorResponse.setMessage("Invalid status provided for order.");
+        }
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 }

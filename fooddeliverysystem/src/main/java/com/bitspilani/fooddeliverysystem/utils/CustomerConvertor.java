@@ -3,6 +3,7 @@ package com.bitspilani.fooddeliverysystem.utils;
 import com.bitspilani.fooddeliverysystem.dto.CustomerDTO;
 import com.bitspilani.fooddeliverysystem.enums.UserRole;
 import com.bitspilani.fooddeliverysystem.model.Customer;
+import com.bitspilani.fooddeliverysystem.model.PaymentDetail;
 import com.bitspilani.fooddeliverysystem.model.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class CustomerConvertor {
         customer.setEmail(customerDTO.getEmail());
         customer.setMobileNo(customerDTO.getMobileNo());
         customer.setDeliveryAddress(AddressConvertor.toAddress(customerDTO.getAddress()));
-        customer.setPaymentDetails(customerDTO.getPaymentDetails());
+        customer.setPaymentDetail(getPaymentDetails(customerDTO));
 
         User user = new User();
         user.setUsername(customerDTO.getUsername());
@@ -34,7 +35,9 @@ public class CustomerConvertor {
         customerDTO.setUsername(customer.getUser().getUsername());
         customerDTO.setMobileNo(customer.getMobileNo());
         customerDTO.setAddress(AddressConvertor.toAddressDTO(customer.getDeliveryAddress()));
-        customerDTO.setPaymentDetails(customer.getPaymentDetails());
+        customerDTO.setUpiId(customer.getPaymentDetail().getUpiId());
+        customerDTO.setCardNumber(customer.getPaymentDetail().getCardNumber());
+        customerDTO.setPaymentMethod(customer.getPaymentDetail().getPaymentMethod());
         return customerDTO;
     }
 
@@ -42,5 +45,13 @@ public class CustomerConvertor {
         List<CustomerDTO> customerDTOList = new ArrayList<>();
         customers.forEach(customer -> customerDTOList.add(toCustomerDTO(customer)));
         return customerDTOList;
+    }
+
+    private static PaymentDetail getPaymentDetails(CustomerDTO customerDTO) {
+        PaymentDetail paymentDetail = new PaymentDetail();
+        paymentDetail.setPaymentMethod(customerDTO.getPaymentMethod());
+        paymentDetail.setUpiId(customerDTO.getUpiId());
+        paymentDetail.setCardNumber(customerDTO.getCardNumber());
+        return paymentDetail;
     }
 }

@@ -12,7 +12,7 @@ public abstract class AbstractFoodDeliveryTest {
     private static final int EXPIRATION_TIME = 1000 * 60 * 60 * 10; // 10 hours
     private static final String SECRET_KEY = "WoDLBwKrdRF7VHkZsHNgGNFPnq8wCc4n4nu+X8+G3Qs=";
 
-    public String createTokenForRole(String role, String subject) {
+    public static String createTokenForRole(String role, String subject) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("roles", List.of(role));
         return Jwts.builder()

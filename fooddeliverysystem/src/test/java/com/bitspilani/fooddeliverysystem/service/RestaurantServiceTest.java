@@ -22,6 +22,8 @@ import com.bitspilani.fooddeliverysystem.model.MenuItem;
 import com.bitspilani.fooddeliverysystem.model.Restaurant;
 import com.bitspilani.fooddeliverysystem.model.User;
 import com.bitspilani.fooddeliverysystem.repository.MenuItemRepository;
+import com.bitspilani.fooddeliverysystem.repository.RestaurantDeliveryZoneRepository;
+import com.bitspilani.fooddeliverysystem.repository.RestaurantOpeningDetailRepository;
 import com.bitspilani.fooddeliverysystem.repository.RestaurantRepository;
 import com.bitspilani.fooddeliverysystem.repository.UserRepository;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
@@ -49,6 +51,10 @@ class RestaurantServiceTest {
     PasswordEncoder passwordEncoder;
     @Mock
     MenuItemRepository menuItemRepository;
+    @Mock
+    RestaurantOpeningDetailRepository restaurantOpeningDetailRepository;
+    @Mock
+    RestaurantDeliveryZoneRepository restaurantDeliveryZoneRepository;
     @InjectMocks
     RestaurantService restaurantService;
 

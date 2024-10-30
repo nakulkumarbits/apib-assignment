@@ -1,5 +1,7 @@
 package com.bitspilani.fooddeliverysystem.security;
 
+import com.bitspilani.fooddeliverysystem.enums.UserRole;
+import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -7,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -60,12 +63,12 @@ public class JwtUtil {
 
     public Long extractOwnerIdFromToken(String token) {
         Claims claims = extractAllClaims(token.substring(7));
-        return ((Number) claims.get("ownerId")).longValue(); // Cast to Long
+        return getClaimByKey(claims, "ownerId"); // Cast to Long
     }
 
     public Long extractCustomerIdFromToken(String token) {
         Claims claims = extractAllClaims(token.substring(7));
-        return ((Number) claims.get("customerId")).longValue();
+        return getClaimByKey(claims, "customerId");
     }
 
     public Long extractDeliveryPersonnelIdFromToken(String token) {
@@ -73,8 +76,15 @@ public class JwtUtil {
         return getClaimByKey(claims, "deliveryPersonnelId");
     }
 
+    public boolean hasAdminRole(String token) {
+        Claims claims = extractAllClaims(token.replaceFirst("^Bearer ", ""));
+        return claims.get("roles", List.class).contains(FoodDeliveryConstants.ROLE_ADMIN);
+    }
+
     private Long getClaimByKey(Claims claims, String key) {
-        return ((Number) claims.get(key)).longValue();
+        return Optional.ofNullable(claims.get(key))
+            .map(value -> ((Number) value).longValue())
+            .orElse(0L);
     }
 
     private boolean isTokenExpired(String token) {

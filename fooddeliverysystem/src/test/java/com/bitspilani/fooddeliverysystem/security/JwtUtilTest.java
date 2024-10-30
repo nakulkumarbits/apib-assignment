@@ -1,11 +1,20 @@
 package com.bitspilani.fooddeliverysystem.security;
 
+import static com.bitspilani.fooddeliverysystem.security.JwtUtil.EXPIRATION_TIME;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryTestConstants;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import java.lang.reflect.Field;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,8 +34,30 @@ class JwtUtilTest {
     @ParameterizedTest
     @MethodSource("idProvider")
     void testGenerateToken(Long ownerId, Long customerId, Long personnelId) {
-        String result = jwtUtil.generateToken(FoodDeliveryTestConstants.USERNAME, List.of("roles"), ownerId, customerId, personnelId);
+        String result = jwtUtil.generateToken(FoodDeliveryTestConstants.USERNAME, List.of("roles"), ownerId, customerId,
+            personnelId);
         assertNotNull(result);
+    }
+
+    @Test
+    void testHasAdminRole_ValidTokenWithAdminRole() throws NoSuchFieldException, IllegalAccessException {
+
+        Field secretKeyField = JwtUtil.class.getDeclaredField("SECRET_KEY");
+        secretKeyField.setAccessible(true);
+
+        // Create a mock JWT builder with admin role
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("roles", Collections.singletonList(FoodDeliveryConstants.ROLE_ADMIN));
+        String token = Jwts.builder()
+            .setClaims(claims)
+            .setSubject("")
+            .setIssuedAt(new Date(System.currentTimeMillis()))
+            .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+            .signWith(SignatureAlgorithm.HS256, secretKeyField.get("SECRET_KEY").toString())
+            .compact();
+
+        boolean isAdmin = jwtUtil.hasAdminRole("Bearer " + token);
+        assertTrue(isAdmin);
     }
 
     @Test

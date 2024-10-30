@@ -16,6 +16,7 @@ import com.bitspilani.fooddeliverysystem.model.Address;
 import com.bitspilani.fooddeliverysystem.model.Administrator;
 import com.bitspilani.fooddeliverysystem.model.Customer;
 import com.bitspilani.fooddeliverysystem.model.DeliveryPersonnel;
+import com.bitspilani.fooddeliverysystem.model.PaymentDetail;
 import com.bitspilani.fooddeliverysystem.model.RestaurantDeliveryZone;
 import com.bitspilani.fooddeliverysystem.model.RestaurantOpeningDetail;
 import com.bitspilani.fooddeliverysystem.model.Restaurant;
@@ -66,6 +67,7 @@ class UserServiceTest {
     void testRegisterCustomer() {
         Customer customer = new Customer();
         customer.setUser(new User());
+        customer.setPaymentDetail(new PaymentDetail());
         customer.setDeliveryAddress(new Address());
         when(customerRepository.save(any(Customer.class))).thenReturn(customer);
         CustomerDTO customerDTO = new CustomerDTO();

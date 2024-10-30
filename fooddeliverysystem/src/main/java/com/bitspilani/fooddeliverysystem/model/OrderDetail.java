@@ -55,6 +55,10 @@ public class OrderDetail {
   @OneToMany(mappedBy = "orderDetail", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<OrderItem> orderItems;
 
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "payment_id")
+  private OrderPaymentDetail orderPaymentDetail;
+
   @CreatedDate
   private LocalDateTime createdDate;
   @LastModifiedDate

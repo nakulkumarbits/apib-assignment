@@ -1,12 +1,18 @@
 package com.bitspilani.fooddeliverysystem.advices;
 
 import com.bitspilani.fooddeliverysystem.dto.ValidationErrorResponse;
+import com.bitspilani.fooddeliverysystem.enums.UserRole;
+import com.bitspilani.fooddeliverysystem.exceptions.InvalidRequestException;
 import com.bitspilani.fooddeliverysystem.exceptions.UserNotFoundException;
 import com.bitspilani.fooddeliverysystem.exceptions.UsernameMismatchException;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.MockitoAnnotations;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -17,6 +23,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -101,5 +108,37 @@ class FoodDeliveryExceptionHandlerTest {
         ValidationErrorResponse responseBody = responseEntity.getBody();
         assertEquals(FoodDeliveryConstants.USERNAME_MISMATCH, responseBody.getMessage());
         assertNull(responseBody.getErrors());
+    }
+
+    @Test
+    void testHandleDataIntegrityViolationException() {
+        // Mock exception
+        DataIntegrityViolationException exception = new DataIntegrityViolationException("test");
+
+        // Call the handler
+        ResponseEntity<ValidationErrorResponse> responseEntity = exceptionHandler.handleDataIntegrityViolationException(
+            exception);
+
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+        assertNotNull(responseEntity.getBody());
+        assertNotNull(responseEntity.getBody().getMessage());
+    }
+
+    static Stream<Object[]> exceptionProvider() {
+        return Stream.of(
+            new Object[]{FoodDeliveryConstants.RESTAURANT_STATUS_ERROR},
+            new Object[]{FoodDeliveryConstants.DELIVERY_STATUS_ERROR}
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionProvider")
+    void testHandleInvalidRequestException(String message) {
+        InvalidRequestException exception = new InvalidRequestException(message);
+        ResponseEntity<ValidationErrorResponse> responseEntity = exceptionHandler.handleInvalidRequestException(
+            exception);
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+        assertNotNull(responseEntity.getBody());
+        assertNotNull(responseEntity.getBody().getMessage());
     }
 }

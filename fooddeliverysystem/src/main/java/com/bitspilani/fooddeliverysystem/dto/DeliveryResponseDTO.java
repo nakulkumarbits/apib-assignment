@@ -21,6 +21,10 @@ public class DeliveryResponseDTO {
   @JsonProperty("restaurant_name")
   private String restaurantName;
 
+  @Schema(description = "Restaurant address")
+  @JsonProperty("restaurant_address")
+  private AddressDTO restaurantAddress;
+
   @Schema(description = "Total order amount")
   @JsonProperty("total_amount")
   private double totalAmount;
@@ -34,5 +38,6 @@ public class DeliveryResponseDTO {
   private List<OrderItemResponseDTO> orderedItems;
 
   @Schema(description = "Address of the customer")
+  @JsonProperty("customer_address")
   private AddressDTO address;
 }

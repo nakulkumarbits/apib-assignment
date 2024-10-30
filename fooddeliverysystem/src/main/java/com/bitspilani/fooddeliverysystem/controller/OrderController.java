@@ -77,7 +77,7 @@ public class OrderController {
           content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))),
   })
   @PutMapping("/{orderId}/status")
-  @PreAuthorize("hasAnyRole('RESTAURANT_OWNER', 'ADMIN')")
+  @PreAuthorize("hasAnyRole('RESTAURANT_OWNER', 'ADMIN', 'DELIVERY_PERSONNEL')")
   public ResponseEntity<OrderResponseDTO> updateOrderStatus(@PathVariable Long orderId,
       @RequestParam OrderStatus newStatus, @RequestHeader("Authorization") String token) {
     return ResponseEntity.ok(orderService.updateOrderStatus(orderId, newStatus, token));
@@ -103,7 +103,7 @@ public class OrderController {
       @Content(mediaType = "application/json", schema = @Schema(implementation = OrderResponseDTO.class))),
       @ApiResponse(responseCode = "401", description = "Unauthorized")
   })
-  @PreAuthorize("hasRole('RESTAURANT_OWNER')")
+  @PreAuthorize("hasAnyRole('RESTAURANT_OWNER','ADMIN')")
   @GetMapping("/incoming")
   public ResponseEntity<List<OrderResponseDTO>> getIncomingOrders(@RequestHeader("Authorization") String token) {
     return ResponseEntity.ok(orderService.getIncomingOrders(token));

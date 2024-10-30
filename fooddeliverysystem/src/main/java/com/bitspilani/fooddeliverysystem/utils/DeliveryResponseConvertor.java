@@ -9,6 +9,8 @@ public class DeliveryResponseConvertor {
 
   public static DeliveryResponseDTO toDTO(OrderDetail orderDetail) {
     DeliveryResponseDTO deliveryResponseDTO = new DeliveryResponseDTO();
+    deliveryResponseDTO.setRestaurantName(orderDetail.getRestaurant().getRestaurantName());
+    deliveryResponseDTO.setRestaurantAddress(AddressConvertor.toAddressDTO(orderDetail.getRestaurant().getRestaurantAddress()));
     deliveryResponseDTO.setAddress(AddressConvertor.toAddressDTO(orderDetail.getCustomer().getDeliveryAddress()));
     deliveryResponseDTO.setOrderId(orderDetail.getId());
     deliveryResponseDTO.setCustomerName(

@@ -8,6 +8,10 @@ import lombok.Data;
 @Data
 public class RestaurantItemDTO {
 
+    @Schema(description = "Restaurant id")
+    @JsonProperty("restaurant_id")
+    private Long id;
+
     @Schema(description = "Name of the restaurant.")
     @JsonProperty("restaurant_name")
     private String restaurantName;

@@ -15,6 +15,7 @@ import com.bitspilani.fooddeliverysystem.enums.UserRole;
 import com.bitspilani.fooddeliverysystem.exceptions.UserNotFoundException;
 import com.bitspilani.fooddeliverysystem.exceptions.UsernameMismatchException;
 import com.bitspilani.fooddeliverysystem.model.Customer;
+import com.bitspilani.fooddeliverysystem.model.PaymentDetail;
 import com.bitspilani.fooddeliverysystem.model.User;
 import com.bitspilani.fooddeliverysystem.repository.CustomerRepository;
 import com.bitspilani.fooddeliverysystem.repository.UserRepository;
@@ -116,6 +117,7 @@ class CustomerServiceTest {
     private Customer getCustomer() {
         Customer customer = new Customer();
         customer.setUser(new User());
+        customer.setPaymentDetail(new PaymentDetail());
         return customer;
     }
 }

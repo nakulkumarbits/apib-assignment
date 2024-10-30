@@ -18,6 +18,7 @@ import com.bitspilani.fooddeliverysystem.security.JwtUtil;
 import com.bitspilani.fooddeliverysystem.utils.DeliveryResponseConvertor;
 import com.bitspilani.fooddeliverysystem.utils.FoodDeliveryConstants;
 import com.bitspilani.fooddeliverysystem.utils.OrderConvertor;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.stereotype.Service;
@@ -95,9 +96,7 @@ public class OrderService {
     if (jwtUtil.extractOwnerIdFromToken(token) != 0
         && !FoodDeliveryConstants.RESTAURANT_ALLOWED_ORDER_STATUSES.contains(newStatus)) {
       throw new InvalidRequestException(FoodDeliveryConstants.RESTAURANT_STATUS_ERROR + newStatus);
-    }
-
-    if (jwtUtil.extractDeliveryPersonnelIdFromToken(token) != 0
+    } else if (jwtUtil.extractDeliveryPersonnelIdFromToken(token) != 0
         && !FoodDeliveryConstants.DELIVERY_ALLOWED_ORDER_STATUSES.contains(newStatus)) {
       throw new InvalidRequestException(FoodDeliveryConstants.DELIVERY_STATUS_ERROR + newStatus);
     }
@@ -126,11 +125,15 @@ public class OrderService {
   }
 
   public List<OrderResponseDTO> getIncomingOrders(String token) {
-    Long ownerIdFromToken = jwtUtil.extractOwnerIdFromToken(token);
-
-    List<OrderDetail> orderDetails = orderDetailRepository.findByRestaurantIdAndOrderStatusIn(
-        ownerIdFromToken, FoodDeliveryConstants.RESTAURANT_ORDER_STATUSES);
-
+    List<OrderDetail> orderDetails;
+    if (jwtUtil.hasAdminRole(token)) {
+      orderDetails = orderDetailRepository.findByOrderStatusIn(
+          FoodDeliveryConstants.RESTAURANT_ORDER_STATUSES);
+    } else {
+      Long ownerIdFromToken = jwtUtil.extractOwnerIdFromToken(token);
+      orderDetails = orderDetailRepository.findByRestaurantIdAndOrderStatusIn(
+          ownerIdFromToken, FoodDeliveryConstants.RESTAURANT_ORDER_STATUSES);
+    }
     return OrderConvertor.toDTOList(orderDetails);
   }
 
