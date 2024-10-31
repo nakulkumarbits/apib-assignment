@@ -298,3 +298,31 @@ Testing
 |No. | Description | Screenshot |
 |----|-------------|------------|
 |1.  | Jacoco test coverage report | ![unit-test-coverage-jacoco](https://github.com/user-attachments/assets/b5148f99-9001-4b02-9e1e-a6820db253ce) |
+|2.  | Jacoco test coverage report for service package | ![unit-test-coverage-jacoco-2](https://github.com/user-attachments/assets/cd0320b8-5f3c-4a49-b9c9-772c1f811607) |
+|3.  | Test cases folder structure | ![unit-test-classes-structure](https://github.com/user-attachments/assets/5499eea0-e060-48f8-98e3-697d22aabe20) |
+|4.  | Admin registration successful | ![registration-admin-successful](https://github.com/user-attachments/assets/69504629-6cf8-4771-8bdd-10bb5d4d7279) |
+|5.  | Admin registration failed | ![registration-admin-bad-request](https://github.com/user-attachments/assets/ec63b82f-81c4-4281-8ac0-e4eb41ef051f) |
+|6.  | Customer registration successful | ![registration-customer-successful](https://github.com/user-attachments/assets/f780ffea-339f-4bc5-b9e0-5bcd6f52d786) |
+|7.  | Customer regisration failed | ![registration-customer-bad-request](https://github.com/user-attachments/assets/dc205c8f-c58c-40cf-bf95-531ccba77201) |
+|8.  | Delivery personnel registration successful | ![registration-delivery-successful](https://github.com/user-attachments/assets/d12264bc-0dbd-4d12-9723-2f171f1aa6a5) |
+|9.  | Delivery personnel registration failed | ![registration-delivery-bad-request](https://github.com/user-attachments/assets/b99f5486-a720-44be-b17c-989fca17f0f2) |
+|10. | Restaurant registration successful | ![registration-restaurant-successful](https://github.com/user-attachments/assets/212161e8-1ab1-4265-a7b2-5429fb7cc4a2) ![registration-restaurant-successful-2](https://github.com/user-attachments/assets/efee3e59-e990-4620-a34c-fc27078416bb) ![registration-restaurant-successful-3](https://github.com/user-attachments/assets/a3353552-870c-4d85-abf3-a38c4b941bf8) |
+|11. | Restaurant registration failed | ![registration-restaurant-bad-request](https://github.com/user-attachments/assets/cef74565-9b26-4a54-ae5b-567cda7859e7) | 
+|12. | Customer profile fetch successful | ![profile-fetch-customer-successful](https://github.com/user-attachments/assets/f6dbbcf7-6b99-4e37-8fb4-4938a558c271) |
+|13. | Customer profile update successful | ![profile-update-customer-successful](https://github.com/user-attachments/assets/6dfba4b1-58f3-456b-bf0a-e8ba387d1cd8) |
+|14. | Delivery personnel profile successful | ![profile-fetch-delivery-personnel-successful](https://github.com/user-attachments/assets/35963a20-4d38-4371-9780-ac1867fc6e43) |
+|15. | Delivery personnel update successful | ![profile-update-delivery-personnel-successful](https://github.com/user-attachments/assets/48821169-ca4c-4dc9-abf7-214f0e215b7e) |
+|16. |
+|17. |
+|18. |
+|19. |
+|20. |
+
+
+
+
+
+
+
+
+
