@@ -312,11 +312,66 @@ Testing
 |13. | Customer profile update successful | ![profile-update-customer-successful](https://github.com/user-attachments/assets/6dfba4b1-58f3-456b-bf0a-e8ba387d1cd8) |
 |14. | Delivery personnel profile successful | ![profile-fetch-delivery-personnel-successful](https://github.com/user-attachments/assets/35963a20-4d38-4371-9780-ac1867fc6e43) |
 |15. | Delivery personnel update successful | ![profile-update-delivery-personnel-successful](https://github.com/user-attachments/assets/48821169-ca4c-4dc9-abf7-214f0e215b7e) |
-|16. |
-|17. |
-|18. |
-|19. |
-|20. |
+|16. | Restaurant profile fetch successful | ![profile-fetch-restaurant-successful](https://github.com/user-attachments/assets/5ce73e6d-eeca-49b0-9ba5-af6484f246cf) |
+|17. | Restaurant profile update successful | ![profile-update-restaurant-successful](https://github.com/user-attachments/assets/413288c2-2694-4661-bb8d-bb6e5fe6d3f9)
+|18. | Admin fetches all customers | ![admin-fetches-all-customers](https://github.com/user-attachments/assets/fab05278-8e31-4e9a-a7dc-f808dae71b12) |
+|19. | Admin fetches all customers without auth | ![admin-fetches-all-customers-without-auth](https://github.com/user-attachments/assets/0ef73fba-16fc-473d-a099-f22273845dc3) |
+|20. | Admin fetches all Delivery personnels | ![admin-fetches-all-delivery-personnels](https://github.com/user-attachments/assets/928a9202-d0e7-4a79-b4db-22c9734b8fbd) |
+|21. | Admin fetches all Delivery personnels without auth | ![admin-fetches-all-delivery-personnels-without-auth](https://github.com/user-attachments/assets/af9be0fd-ccd9-4c8f-bf61-bf2022f467e3) |
+|22. | Admin fetches all restaurants | ![admin-fetches-all-restaurants](https://github.com/user-attachments/assets/64b5376f-c125-4283-bd97-34918e6d65a9) |
+|23. | Admin fetches all restaurants without auth | ![admin-fetches-all-restaurants-without-auth](https://github.com/user-attachments/assets/a0eccd65-af7d-462d-a9ac-14eb457ff0f7) |
+|24. | Admin deactivates a user | ![deactivates-a-user](https://github.com/user-attachments/assets/0e22f86a-b283-4d1b-9fd5-68b5f728ecbd) |
+|25. | Admin deactivates a user when user does not exists | ![deactivates-a-user-user-not-found](https://github.com/user-attachments/assets/ebeefee4-985d-40aa-879b-0c2dd006259c) |
+|26. | Admin login successful | ![login-admin-successful](https://github.com/user-attachments/assets/743b6b3a-ec7b-49d5-babc-a57427d11c98) |
+|27. | Admin login failed | ![login-admin-failed](https://github.com/user-attachments/assets/6fe74f65-dbaa-4cc7-b471-7ab2d6e7ff5e) |
+|28. | Customer login successful | ![login-customer-successful](https://github.com/user-attachments/assets/dfad5df7-e3f7-41e6-b3e8-7ccfe10df24d) |
+|29. | Delivery personnel login successful | ![login-delivery-personnel-successful](https://github.com/user-attachments/assets/8b8632f3-4b26-4261-8cda-69659254d3b0) |
+|30. | Menu item add successful | ![menu-item-add-successful](https://github.com/user-attachments/assets/95f0a3a4-7898-4a10-b647-7bd38872c63f) |
+|31. | Menu item add bad request failure | ![menu-item-add-bad-request](https://github.com/user-attachments/assets/c60e0cc2-9500-453c-a6a4-e4db994c2480) |
+|32. | Menu item update successful | ![menu-item-update-item-successful](https://github.com/user-attachments/assets/bb2ae4a7-dae6-4b9a-8420-6f373e2b6350) |
+|33. | Menu item deletion successful | <img width="1206" alt="menu-item-delete-successful" src="https://github.com/user-attachments/assets/897e2d1c-1ef8-48a5-8ce1-d9b87921cc22"> |
+|34. | Menu item fetch all items successful | ![menu-item-fetch-all-items-successful](https://github.com/user-attachments/assets/50987cea-8069-4f83-8cc5-e1179cb31ccd) |
+|35. | Order placed successfully | ![order-placed-successful](https://github.com/user-attachments/assets/3f7f6906-102e-42b3-b1c6-d3d84bb2c2b7) |
+|36. | Order place failed | ![order-placed-bad-request](https://github.com/user-attachments/assets/0617ab44-ae05-4ce7-aec2-dd27a057d129) |
+|37. | Fetch order placed by the customer by order id | ![orders-placed-by-customer-by-orderid](https://github.com/user-attachments/assets/179d27e1-d6b0-4204-8145-066de3ee71e2) |
+|38. | Fetch all orders placed by the customer | ![orders-placed-by-customer](https://github.com/user-attachments/assets/ba987f8f-9563-4f4f-9f1d-9f06d2d46c25) |
+|39. | Orders incoming at the restaurant | ![orders-incoming-at-restaurant](https://github.com/user-attachments/assets/fb133d83-5fb8-41a6-b942-9608ee9277d4) |
+|40. | Order incoming checked by the admin | ![orders-incoming-at-restaurant-checked-by-admin](https://github.com/user-attachments/assets/91412eee-2d85-4df4-b056-0f50e2b8b044) |
+|41. | Order status update successful by restaurant | ![order-status-update-successful-by-restaurant](https://github.com/user-attachments/assets/1dcbed73-48b1-4c1d-b1b9-f73969492b13) |
+|42. | Order status update failed by restaurant | ![order-status-update-bad-request-by-restaurant](https://github.com/user-attachments/assets/7e7a62a4-ff90-494e-b707-2a850e94f580) |
+|43. | Order incoming at the delivery personnels | ![order-incoming-for-delivery-personnel](https://github.com/user-attachments/assets/1629156d-0551-45e2-b6cd-450b6d442aed) |
+|44. | Order status update successful by delivery personnel | ![order-status-update-by-delivery-personnel](https://github.com/user-attachments/assets/5a477472-243c-4b9c-8dc2-ee9ff62df119) |
+|45. | Order status update by the admin | ![order-status-update-rejected-by-admin](https://github.com/user-attachments/assets/d8f18977-03a5-4e0d-a626-8b46c2e0b025) |
+|46. | Monitor system by admin | ![monitor-system-by-admin](https://github.com/user-attachments/assets/3600bcf4-dc2f-4a98-9487-bb7d20d2d7f0) |
+|47. | Report - Order trend by admin | ![report-generated-order-trend-by-admin](https://github.com/user-attachments/assets/90ffac0e-785b-426e-a184-d3f443a9f1f7) |
+|48. | Report - Delivery statuses by admin | ![report-generated-delivery-by-admin](https://github.com/user-attachments/assets/0e76669d-9122-4669-8ecc-5062bc7c5a1d) |
+|49. | Report - Popular restaurants by admin | ![report-generated-popular-restaurants-by-admin](https://github.com/user-attachments/assets/d680edcb-a89b-4619-ac14-ad9920b453c6) |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
