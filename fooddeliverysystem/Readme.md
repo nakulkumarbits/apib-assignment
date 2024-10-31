@@ -300,6 +300,7 @@ Testing
 |1.  | Jacoco test coverage report | ![unit-test-coverage-jacoco](https://github.com/user-attachments/assets/b5148f99-9001-4b02-9e1e-a6820db253ce) |
 |2.  | Jacoco test coverage report for service package | ![unit-test-coverage-jacoco-2](https://github.com/user-attachments/assets/cd0320b8-5f3c-4a49-b9c9-772c1f811607) |
 |3.  | Test cases folder structure | ![unit-test-classes-structure](https://github.com/user-attachments/assets/5499eea0-e060-48f8-98e3-697d22aabe20) |
+|3.a. | Sample unit tests |  ![sample-unit-test-1](https://github.com/user-attachments/assets/a0f68e81-677e-46d7-ae0a-33b1424b80cd) ![sample-unit-test-2](https://github.com/user-attachments/assets/1167f6ec-c1b3-45d0-9bb9-446bc419f711) ![sample-unit-test-3](https://github.com/user-attachments/assets/b02c8328-4248-446a-a8fd-efbd01ecd930) |
 |4.  | Admin registration successful | ![registration-admin-successful](https://github.com/user-attachments/assets/69504629-6cf8-4771-8bdd-10bb5d4d7279) |
 |5.  | Admin registration failed | ![registration-admin-bad-request](https://github.com/user-attachments/assets/ec63b82f-81c4-4281-8ac0-e4eb41ef051f) |
 |6.  | Customer registration successful | ![registration-customer-successful](https://github.com/user-attachments/assets/f780ffea-339f-4bc5-b9e0-5bcd6f52d786) |
