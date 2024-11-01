@@ -37,7 +37,7 @@ public class OrderDetail {
   @JoinColumn(name = "customer_id", nullable = false)
   private Customer customer;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name = "restaurant_id", nullable = false)
   private Restaurant restaurant;
 

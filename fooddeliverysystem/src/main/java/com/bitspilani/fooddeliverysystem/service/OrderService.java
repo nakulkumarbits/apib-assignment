@@ -4,11 +4,13 @@ import com.bitspilani.fooddeliverysystem.dto.DeliveryResponseDTO;
 import com.bitspilani.fooddeliverysystem.dto.OrderRequestDTO;
 import com.bitspilani.fooddeliverysystem.dto.OrderResponseDTO;
 import com.bitspilani.fooddeliverysystem.enums.OrderStatus;
+import com.bitspilani.fooddeliverysystem.enums.PaymentStatus;
 import com.bitspilani.fooddeliverysystem.exceptions.InvalidRequestException;
 import com.bitspilani.fooddeliverysystem.model.Customer;
 import com.bitspilani.fooddeliverysystem.model.MenuItem;
 import com.bitspilani.fooddeliverysystem.model.OrderDetail;
 import com.bitspilani.fooddeliverysystem.model.OrderItem;
+import com.bitspilani.fooddeliverysystem.model.OrderPaymentDetail;
 import com.bitspilani.fooddeliverysystem.model.Restaurant;
 import com.bitspilani.fooddeliverysystem.repository.CustomerRepository;
 import com.bitspilani.fooddeliverysystem.repository.MenuItemRepository;
@@ -79,6 +81,13 @@ public class OrderService {
     Double totalAmount = orderItems.stream().mapToDouble(OrderItem::getTotalPrice).sum();
     orderDetail.setTotalAmount(totalAmount);
     orderDetail.setOrderItems(orderItems);
+
+    OrderPaymentDetail orderPaymentDetail = new OrderPaymentDetail();
+    orderPaymentDetail.setAmount(totalAmount);
+    orderPaymentDetail.setPaymentMethod(orderRequestDTO.getPaymentMethod());
+    orderPaymentDetail.setPaymentStatus(PaymentStatus.COMPLETED);
+
+    orderDetail.setOrderPaymentDetail(orderPaymentDetail);
 
     // Save the order
     OrderDetail savedOrder = orderDetailRepository.save(orderDetail);
