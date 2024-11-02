@@ -13,5 +13,8 @@ Deliverables
    * 7.3. [Admin registration and login](https://youtu.be/BByyj26oBXE)
    * 7.4. [Customer, Delivery personnel and Restaurant owner registration](https://youtu.be/UcYhVogLNtE)
    * 7.5. [Customer profile get/update profile and logout](https://youtu.be/bxQ1WgAv41s)
+   * 7.6. [Admin fetching Customers, Delivery personnels and Restaurants in the system](https://youtu.be/iAW4JD0_cBo)
+   * 7.7. [Admin deactivates a customer](https://youtu.be/SMvoO43gxpc)
+   * 
 
 Detailed project information is documented in [README.md](https://github.com/nakulkumarbits/apib-assignment/tree/master/fooddeliverysystem)
