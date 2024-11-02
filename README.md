@@ -10,5 +10,7 @@ Deliverables
 7. Demonstration video : 
    * 7.1. [Design and implementation](https://youtu.be/nWB4LxcWvgo)
    * 7.2. [Local and Cloud deployment](https://youtu.be/cQGBW1IQeQ0)
+   * 7.3. [Admin registration and login](https://youtu.be/BByyj26oBXE)
+   * 7.4. [Customer, Delivery personnel and Restaurant owner registration](https://youtu.be/UcYhVogLNtE)
 
 Detailed project information is documented in [README.md](https://github.com/nakulkumarbits/apib-assignment/tree/master/fooddeliverysystem)
