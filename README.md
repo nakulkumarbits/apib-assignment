@@ -3,7 +3,7 @@ Deliverables
 
 1. API Codebase : git@github.com:nakulkumarbits/apib-assignment.git
 2. [Api documentation](https://github.com/nakulkumarbits/apib-assignment/blob/master/api-documentation.json)
-3. Deployed API :
+3. Deployed API : Deployed on AWS at location - http://ec2-3-80-44-147.compute-1.amazonaws.com:8085, but instance stopped currently to avoid any charges.
 4. [Database schema](https://github.com/nakulkumarbits/apib-assignment/tree/master/fooddeliverysystem#database-schema)
 5. [Test cases - screenshots from unit and manual testing](https://github.com/nakulkumarbits/apib-assignment/tree/master/fooddeliverysystem#testing)
 6. Report :
