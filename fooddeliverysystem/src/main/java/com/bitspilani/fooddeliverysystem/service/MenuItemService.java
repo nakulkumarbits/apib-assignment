@@ -82,5 +82,8 @@ public class MenuItemService {
         menuItem.setName(menuItemDTO.getName());
         menuItem.setDescription(menuItemDTO.getDescription());
         menuItem.setPrice(menuItemDTO.getPrice());
+        menuItem.setItemType(menuItemDTO.getItemType());
+        menuItem.setItemAvailable(menuItemDTO.getItemAvailable());
+        menuItem.setCuisine(menuItemDTO.getCuisine());
     }
 }
