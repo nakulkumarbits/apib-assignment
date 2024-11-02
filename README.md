@@ -15,6 +15,10 @@ Deliverables
    * 7.5. [Customer profile get/update profile and logout](https://youtu.be/bxQ1WgAv41s)
    * 7.6. [Admin fetching Customers, Delivery personnels and Restaurants in the system](https://youtu.be/iAW4JD0_cBo)
    * 7.7. [Admin deactivates a customer](https://youtu.be/SMvoO43gxpc)
-   * 
+   * 7.8. [Menu item addition, updation and deletion by Restaurant owner](https://youtu.be/b6uB85Yw8eA)
+   * 7.9. [Placing order, fetch order detail and all orders placed by the customer](https://youtu.be/sWzZz75NLHE)
+   * 7.10. [Incoming orders at the restaurant and changing their status by restaurant owner and admin](https://youtu.be/G1Dk6-jVR28)
+   * 7.11. [Incoming orders for delivery and changing their status by delivery personnel and admin](https://youtu.be/4vwK3vz1oJ8)
+   * 7.12. [Monitoring and report generation by admin + fetch restaurant based on filters](https://youtu.be/w3HfJvi-t-g)
 
 Detailed project information is documented in [README.md](https://github.com/nakulkumarbits/apib-assignment/tree/master/fooddeliverysystem)
